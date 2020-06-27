@@ -1,0 +1,4 @@
+name: Draconic_Evolution
+version: 1.0
+main: de.kevin.draconic.main.Main
+api-version: 1.16
