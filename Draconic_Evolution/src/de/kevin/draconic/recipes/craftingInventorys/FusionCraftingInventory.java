@@ -1,5 +1,6 @@
 package de.kevin.draconic.recipes.craftingInventorys;
 
+import de.kevin.draconic.items.CraftingTablets;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -22,8 +23,10 @@ public class FusionCraftingInventory implements Listener {
 	public ItemStack confirmItem;
 	public ItemStack loadPurple;
 	public ItemStack loadOrange;
+
+	CraftingTablets craftingTablets = new CraftingTablets();
 	
-	public final String fcName = "ง6Fusion ง5Quafting";
+	public final String fcName = "ยง6Fusion ยง5Quafting";
 	
 	//=========================== ITEMS ====================================
 	
@@ -32,7 +35,7 @@ public class FusionCraftingInventory implements Listener {
 		confirmItem = new ItemStack(Material.GREEN_STAINED_GLASS_PANE);
 		
 		ItemMeta confirmItemMeta = confirmItem.getItemMeta();
-		confirmItemMeta.setDisplayName("ง2Craft item!");
+		confirmItemMeta.setDisplayName("ยง2Craft item!");
 		confirmItem.setItemMeta(confirmItemMeta);
 		
 		return confirmItem;
@@ -43,7 +46,7 @@ public class FusionCraftingInventory implements Listener {
 		resultBarrier = new ItemStack(Material.BARRIER);
 		
 		ItemMeta resultBarrierMeta = resultBarrier.getItemMeta();
-		resultBarrierMeta.setDisplayName("ง4No Result!");
+		resultBarrierMeta.setDisplayName("ยง4No Result!");
 		resultBarrier.setItemMeta(resultBarrierMeta);
 		
 		return resultBarrier;
@@ -194,9 +197,9 @@ public class FusionCraftingInventory implements Listener {
 		Player player = event.getPlayer();
 		
 		if(event.getAction() == Action.RIGHT_CLICK_AIR) {
-			if(event.getItem().getType() == Material.COMPASS) {
+			if(event.getItem().isSimilar(new ItemStack(Material.COMPASS))) {
 				createInventory(player);
-			} else return;
+			}
 		}
 	}
 	
@@ -236,9 +239,9 @@ public class FusionCraftingInventory implements Listener {
 						|| event.getClick().equals(ClickType.DROP)) {
 							event.setCancelled(true);
 					}
-				} else return;
-			} else return; 
-		} else return;
+				}
+			}
+		}
 	}
 	
 	//================== GETTER & SETTER ======================

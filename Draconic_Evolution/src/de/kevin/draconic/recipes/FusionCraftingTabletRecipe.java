@@ -1,35 +1,33 @@
 package de.kevin.draconic.recipes;
 
+import de.kevin.draconic.items.CraftingTablets;
+import de.kevin.draconic.items.ItemStackFactory;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.PrepareItemCraftEvent;
+import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.inventory.ItemStack;
 
-import de.kevin.draconic.items.CraftingTablets;
-import de.kevin.draconic.items.Endirium;
-
 public class FusionCraftingTabletRecipe implements Listener{
-	
-	Endirium endirium = new Endirium();
+
 	CraftingTablets craftingTablets = new CraftingTablets();
 	
 	@EventHandler
-	public void createFusionCraftingTabletRecipe(PrepareItemCraftEvent event) {
+	public void FusionCraftingTabletRecipe(CraftItemEvent event) {
 		
-		ItemStack fusionCraftingTablet = craftingTablets.createCraftingTablets(Material.KNOWLEDGE_BOOK, "ง5Fusion Crafting Tablet", "For Fusion Crafting");
-		
-		if(event.getInventory().getItem(4) != null) {
-			if(event.getInventory().getItem(4).isSimilar(endirium.createEndirium())) {
+		ItemStack fusionCraftingTablet = craftingTablets.createCraftingTablets(Material.KNOWLEDGE_BOOK,
+				"ยง5Fusion Crafting Tablet", "For Fusion Crafting");
+
+		if(event.getInventory().getMatrix()[4] != null) {
+			if(event.getInventory().getMatrix()[4].isSimilar(ItemStackFactory.getInstance().getEndirium())) {
 				event.getInventory().setResult(fusionCraftingTablet);
+				Bukkit.broadcastMessage("Ja");
 			} else {
-				Bukkit.broadcastMessage("joa");
-				return;
+				Bukkit.broadcastMessage("nein");
 			}
 		} else {
-			Bukkit.broadcastMessage("mist");
-			return;
+			Bukkit.broadcastMessage("nein nein nein!");
 		}
 	}
 }

@@ -15,7 +15,7 @@ public class DragonScale {
 		dragonScale = new ItemStack(Material.COMMAND_BLOCK, 4);
 		
 		ItemMeta dragonScaleMeta = dragonScale.getItemMeta();
-		dragonScaleMeta.setDisplayName("§dDragon Scale");
+		dragonScaleMeta.setDisplayName("Â§dDragon Scale");
 		dragonScaleMeta.addEnchant(Enchantment.KNOCKBACK, 1, true);
 		dragonScaleMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		dragonScaleMeta.setCustomModelData(123456);

@@ -1,10 +1,10 @@
 package de.kevin.draconic.items;
 
-import java.util.ArrayList;
-
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.ArrayList;
 
 public class CraftingTablets extends ItemStack {
 	
@@ -12,14 +12,16 @@ public class CraftingTablets extends ItemStack {
 	
 	public ItemStack createCraftingTablets(Material material, String displayname, String lore) {
 		
-		craftingTablets = new ItemStack(Material.BARRIER);
+		craftingTablets = new ItemStack(material);
 		
 		ItemMeta craftingTabletsMeta = craftingTablets.getItemMeta();
-		craftingTabletsMeta.setDisplayName(displayname);
-		ArrayList<String> Lore = new ArrayList<String>();
-		Lore.add(lore);
-		craftingTabletsMeta.setLore(Lore);
-		craftingTabletsMeta.setCustomModelData(32123);
+		if(craftingTabletsMeta != null) {
+			craftingTabletsMeta.setDisplayName(displayname);
+			ArrayList<String> loreList = new ArrayList<>();
+			loreList.add(lore);
+			craftingTabletsMeta.setLore(loreList);
+			craftingTabletsMeta.setCustomModelData(32123);
+		}
 		craftingTablets.setItemMeta(craftingTabletsMeta);
 		
 		return craftingTablets;

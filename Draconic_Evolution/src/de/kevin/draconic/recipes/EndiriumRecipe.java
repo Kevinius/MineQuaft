@@ -1,5 +1,9 @@
 package de.kevin.draconic.recipes;
 
+import de.kevin.draconic.items.DragonScale;
+import de.kevin.draconic.items.ItemStackFactory;
+import de.kevin.draconic.recipes.craftingInventorys.FusionCraftingInventory;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -9,15 +13,10 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import de.kevin.draconic.items.DragonScale;
-import de.kevin.draconic.items.Endirium;
-import de.kevin.draconic.recipes.craftingInventorys.FusionCraftingInventory;
-
 public class EndiriumRecipe implements Listener{
 	
 	DragonScale dragonScale = new DragonScale();
 	FusionCraftingInventory fusionCraftingInventory = new FusionCraftingInventory();
-	Endirium endirium = new Endirium();
 	
 	@EventHandler
 	public void endiriumResult(InventoryClickEvent event) {
@@ -54,25 +53,25 @@ public class EndiriumRecipe implements Listener{
 							event.getWhoClicked().getOpenInventory().getItem(19).setAmount(amt19 - 1);
 							int amt25 = event.getInventory().getItem(25).getAmount();
 							event.getWhoClicked().getOpenInventory().getItem(25).setAmount(amt25 - 1);
+
+							Bukkit.broadcastMessage("Es wurde geändert!");
 							
 							if(event.getInventory().getItem(40).isSimilar(fusionCraftingInventory.createResultBarrier())) {
-								event.getInventory().setItem(40, endirium.getEndirium());
+								event.getInventory().setItem(40, ItemStackFactory.getInstance().getEndirium());
 								((Player) event.getView().getPlayer()).playSound(event.getView().getPlayer().getLocation(), Sound.BLOCK_FIRE_EXTINGUISH, 0.7F, 0.7F);
-							} else if (resultamount < 64 && event.getInventory().getItem(40).isSimilar(endirium.getEndirium())) {
-								event.getInventory().addItem(endirium.getEndirium()).put(resultamount + 1, endirium.getEndirium());
+							} else if (resultamount < 64 && event.getInventory().getItem(40).isSimilar(ItemStackFactory.getInstance().getEndirium())) {
+								event.getInventory().addItem(ItemStackFactory.getInstance().getEndirium()).put(resultamount + 1, ItemStackFactory.getInstance().getEndirium());
 								((Player) event.getView().getPlayer()).playSound(event.getView().getPlayer().getLocation(), Sound.BLOCK_FIRE_EXTINGUISH, 0.7F, 0.7F);
 							} else {
 								event.setCancelled(true);
-								return;
 							}
-						} else return;
+						}
 					} else {
-						event.getWhoClicked().sendMessage("�4Invalid recipe!");
-						return;
+						event.getWhoClicked().sendMessage("§4Invalid recipe!");
 					}
-				} else return;
-			} else return;
-		} else 	return;
+				}
+			}
+		}
 	}
 }
 
