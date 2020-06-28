@@ -1,9 +1,7 @@
 package de.kevin.draconic.recipes;
 
-import de.kevin.draconic.items.DragonScale;
 import de.kevin.draconic.items.ItemStackFactory;
 import de.kevin.draconic.recipes.craftingInventorys.FusionCraftingInventory;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -15,7 +13,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class EndiriumRecipe implements Listener{
 	
-	DragonScale dragonScale = new DragonScale();
+	ItemStack dragonScale = ItemStackFactory.getInstance().getDragonScale();
 	FusionCraftingInventory fusionCraftingInventory = new FusionCraftingInventory();
 	
 	@EventHandler
@@ -33,11 +31,11 @@ public class EndiriumRecipe implements Listener{
 					&& event.getInventory().getItem(19) != null
 					&& event.getInventory().getItem(25) != null) {
 						
-						if(event.getInventory().getItem(10).isSimilar(dragonScale.getDragonScale())
+						if(event.getInventory().getItem(10).isSimilar(dragonScale)
 						&& event.getInventory().getItem(13).isSimilar(new ItemStack(Material.IRON_INGOT))
-						&& event.getInventory().getItem(16).isSimilar(dragonScale.getDragonScale())
-						&& event.getInventory().getItem(19).isSimilar(dragonScale.getDragonScale())
-						&& event.getInventory().getItem(25).isSimilar(dragonScale.getDragonScale())) {
+						&& event.getInventory().getItem(16).isSimilar(dragonScale)
+						&& event.getInventory().getItem(19).isSimilar(dragonScale)
+						&& event.getInventory().getItem(25).isSimilar(dragonScale)) {
 							//event.getWhoClicked().sendMessage("yay");
 							
 							int resultamount = event.getInventory().getItem(40).getAmount();
@@ -53,8 +51,6 @@ public class EndiriumRecipe implements Listener{
 							event.getWhoClicked().getOpenInventory().getItem(19).setAmount(amt19 - 1);
 							int amt25 = event.getInventory().getItem(25).getAmount();
 							event.getWhoClicked().getOpenInventory().getItem(25).setAmount(amt25 - 1);
-
-							Bukkit.broadcastMessage("Es wurde geändert!");
 							
 							if(event.getInventory().getItem(40).isSimilar(fusionCraftingInventory.createResultBarrier())) {
 								event.getInventory().setItem(40, ItemStackFactory.getInstance().getEndirium());

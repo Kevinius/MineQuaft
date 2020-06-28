@@ -1,6 +1,5 @@
 package de.kevin.draconic.recipes.craftingInventorys;
 
-import de.kevin.draconic.items.CraftingTablets;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -23,8 +22,6 @@ public class FusionCraftingInventory implements Listener {
 	public ItemStack confirmItem;
 	public ItemStack loadPurple;
 	public ItemStack loadOrange;
-
-	CraftingTablets craftingTablets = new CraftingTablets();
 	
 	public final String fcName = "§6Fusion §5Quafting";
 	
@@ -35,6 +32,7 @@ public class FusionCraftingInventory implements Listener {
 		confirmItem = new ItemStack(Material.GREEN_STAINED_GLASS_PANE);
 		
 		ItemMeta confirmItemMeta = confirmItem.getItemMeta();
+		assert confirmItemMeta != null;
 		confirmItemMeta.setDisplayName("§2Craft item!");
 		confirmItem.setItemMeta(confirmItemMeta);
 		
@@ -46,6 +44,7 @@ public class FusionCraftingInventory implements Listener {
 		resultBarrier = new ItemStack(Material.BARRIER);
 		
 		ItemMeta resultBarrierMeta = resultBarrier.getItemMeta();
+		assert resultBarrierMeta != null;
 		resultBarrierMeta.setDisplayName("§4No Result!");
 		resultBarrier.setItemMeta(resultBarrierMeta);
 		
@@ -57,6 +56,7 @@ public class FusionCraftingInventory implements Listener {
 		fillItem = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
 		
 		ItemMeta fillItemMeta = fillItem.getItemMeta();
+		assert fillItemMeta != null;
 		fillItemMeta.setDisplayName(" ");
 		fillItem.setItemMeta(fillItemMeta);
 		
@@ -69,6 +69,7 @@ public class FusionCraftingInventory implements Listener {
 		loadBackround = new ItemStack(Material.BLUE_STAINED_GLASS_PANE);
 		
 		ItemMeta loadBackgroundMeta = loadBackround.getItemMeta();
+		assert loadBackgroundMeta != null;
 		loadBackgroundMeta.setDisplayName(" ");
 		loadBackround.setItemMeta(loadBackgroundMeta);
 		
@@ -81,6 +82,7 @@ public class FusionCraftingInventory implements Listener {
 		loadPurple = new ItemStack(Material.PURPLE_STAINED_GLASS_PANE);
 		
 		ItemMeta loadPurpleMeta = loadPurple.getItemMeta();
+		assert loadPurpleMeta != null;
 		loadPurpleMeta.setDisplayName(" ");
 		loadPurple.setItemMeta(loadPurpleMeta);
 		
@@ -93,6 +95,7 @@ public class FusionCraftingInventory implements Listener {
 		loadOrange = new ItemStack(Material.ORANGE_STAINED_GLASS_PANE);
 		
 		ItemMeta loadOrangeMeta = loadOrange.getItemMeta();
+		assert loadOrangeMeta != null;
 		loadOrangeMeta.setDisplayName(" ");
 		loadOrange.setItemMeta(loadOrangeMeta);
 		
@@ -209,12 +212,11 @@ public class FusionCraftingInventory implements Listener {
 	
 	@EventHandler
 	public void noTakingItems(InventoryClickEvent event) {
-		
-		
-		if(event.getWhoClicked().getOpenInventory().getItem(40) == null) {
-			event.getWhoClicked().getOpenInventory().setItem(40, resultBarrier);
+		if(event.getWhoClicked().getOpenInventory().equals(inventory)) {
+			if(event.getWhoClicked().getOpenInventory().getItem(40) == null) {
+				event.getWhoClicked().getOpenInventory().setItem(40, resultBarrier);
+			}
 		}
-
 		
 		if(inventory != null) {
 			if(event.getView().getTitle().equals(fcName)) {
