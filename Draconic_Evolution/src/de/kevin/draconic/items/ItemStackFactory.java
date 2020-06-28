@@ -19,7 +19,7 @@ public class ItemStackFactory {
     private ItemStackFactory(){}
 
     public static ItemStackFactory getInstance(){
-        if(instance == null){
+        if(instance == null) {
             instance = new ItemStackFactory();
         }
         return instance;
