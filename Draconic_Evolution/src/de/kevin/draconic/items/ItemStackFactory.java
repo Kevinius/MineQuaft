@@ -4,9 +4,11 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ItemStackFactory {
 
@@ -15,6 +17,7 @@ public class ItemStackFactory {
     private ItemStack endirium;
     private ItemStack dragonScale;
     private ItemStack dragonScalePiece;
+    private ItemStack fusionTomb;
 
     private ItemStackFactory(){}
 
@@ -100,5 +103,25 @@ public class ItemStackFactory {
             createDragonScalePiece();
         }
         return dragonScalePiece;
+    }
+
+    public void createFusionTomb() {
+
+        fusionTomb = new ItemStack(Material.WRITTEN_BOOK);
+
+        BookMeta fusionTombMeta = (BookMeta)fusionTomb.getItemMeta();
+        fusionTombMeta.setTitle("Quafting guide");
+        fusionTombMeta.setAuthor("§4The new Civilization");
+        fusionTombMeta.setLore(Arrays.asList("§5Gives you the knowledge to craft a §6[Fusion Crafting Tablet] §5!"));
+        fusionTombMeta.setDisplayName("§eQuafting guide");
+        fusionTombMeta.setPages("Hallo lul §5Lila?", "Seite 2 ist das, oder?\n\nNeue Zeile?", "Seite 3, hier kommt nichts rein hehe");
+        fusionTomb.setItemMeta(fusionTombMeta);
+    }
+
+    public ItemStack getFusionTomb() {
+        if(fusionTomb == null) {
+            createFusionTomb();
+        }
+        return fusionTomb;
     }
 }

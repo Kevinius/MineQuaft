@@ -4,7 +4,7 @@ import de.kevin.draconic.items.ItemStackFactory;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.ShapelessRecipe;
 
 public class DragonScalePieceRecipe {
 
@@ -12,13 +12,9 @@ public class DragonScalePieceRecipe {
 
     public void createDragonScalePieceRecipe() {
 
-        ShapedRecipe dragonScalePieceRecipe = new ShapedRecipe(dragonScalePiece);
+        ShapelessRecipe dragonScalePieceRecipe = new ShapelessRecipe(dragonScalePiece);
 
-        dragonScalePieceRecipe.shape("***",
-                                     "*O*",
-                                     "***");
-        dragonScalePieceRecipe.setIngredient('*', Material.AIR);
-        dragonScalePieceRecipe.setIngredient('O', Material.COMMAND_BLOCK);
+        dragonScalePieceRecipe.addIngredient(Material.COMMAND_BLOCK);
 
         Bukkit.addRecipe(dragonScalePieceRecipe);
     }

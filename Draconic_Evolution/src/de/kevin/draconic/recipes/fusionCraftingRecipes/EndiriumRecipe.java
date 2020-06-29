@@ -1,4 +1,4 @@
-package de.kevin.draconic.recipes.craftingTableRecipes;
+package de.kevin.draconic.recipes.fusionCraftingRecipes;
 
 import de.kevin.draconic.items.ItemStackFactory;
 import de.kevin.draconic.inventorys.craftingInventorys.FusionCraftingInventory;

@@ -18,6 +18,8 @@ public class PrevendFromDespawn implements Listener {
         if(event.getEntity().getItemStack().isSimilar(endirium)) {
             Bukkit.broadcastMessage("Fired");
             event.setCancelled(true);
+        } else if(!event.getEntity().getItemStack().equals(endirium) && event.isCancelled() == true) {
+            event.setCancelled(false);
         }
 
         if(event.getEntity().getItemStack().isSimilar(endiriumPickaxe));

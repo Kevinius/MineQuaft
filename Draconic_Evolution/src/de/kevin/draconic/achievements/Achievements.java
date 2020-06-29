@@ -6,7 +6,7 @@ import org.bukkit.inventory.ItemStack;
 
 public enum Achievements {
 
-    FIRSTJOIN("FirstJoin", "The Beginning of everything",
+    HASFUSIONBOOK("The Beginning", "The Beginning of the end",
             ItemStackFactory.getInstance().createCraftingTablets(Material.KNOWLEDGE_BOOK,
                     "Fusion Quafting Tablet", "Fusioniere Sachen um noch besser Sachen zu machen :D"));
 
