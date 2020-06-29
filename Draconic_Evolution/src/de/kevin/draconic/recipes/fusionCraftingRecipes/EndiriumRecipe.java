@@ -1,7 +1,7 @@
 package de.kevin.draconic.recipes.fusionCraftingRecipes;
 
 import de.kevin.draconic.items.ItemStackFactory;
-import de.kevin.draconic.inventorys.craftingInventorys.FusionCraftingInventory;
+import de.kevin.draconic.inventorys.FusionCraftingInventory;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;

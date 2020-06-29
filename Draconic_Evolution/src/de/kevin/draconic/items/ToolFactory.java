@@ -26,6 +26,7 @@ public class ToolFactory extends ItemStack{
         ItemMeta endiriumPickaxeMeta = endiriumPickaxe.getItemMeta();
         endiriumPickaxeMeta.setDisplayName("§6Endirium Pickaxe");
         endiriumPickaxeMeta.setCustomModelData(135246);
+        endiriumPickaxe.setItemMeta(endiriumPickaxeMeta);
     }
 
     public ItemStack getEndiriumPickaxe() {

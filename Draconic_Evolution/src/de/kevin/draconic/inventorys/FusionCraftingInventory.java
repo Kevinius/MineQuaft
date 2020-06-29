@@ -1,5 +1,6 @@
-package de.kevin.draconic.inventorys.craftingInventorys;
+package de.kevin.draconic.inventorys;
 
+import de.kevin.draconic.main.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -212,9 +213,13 @@ public class FusionCraftingInventory implements Listener {
 	
 	@EventHandler
 	public void noTakingItems(InventoryClickEvent event) {
-		if(event.getWhoClicked().getOpenInventory().equals(inventory)) {
-			if(event.getWhoClicked().getOpenInventory().getItem(40) == null) {
-				event.getWhoClicked().getOpenInventory().setItem(40, resultBarrier);
+		if(event.getClickedInventory() != null) {
+			if(event.getClickedInventory().equals(inventory)) {
+				Bukkit.getServer().getScheduler().runTaskLater(Main.getPlugin(), () -> {
+					if(event.getWhoClicked().getOpenInventory().getItem(40) == null) {
+						event.getWhoClicked().getOpenInventory().setItem(40, resultBarrier);
+					}
+				}, 1);
 			}
 		}
 		

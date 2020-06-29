@@ -14,10 +14,10 @@ public class FusionTombRecipe {
 
         ShapedRecipe fusionTombRecipe = new ShapedRecipe(fusiontomb);
 
-        fusionTombRecipe.shape("*S*",
+        fusionTombRecipe.shape("DSD",
                                "SBS",
-                               "*S*");
-        fusionTombRecipe.setIngredient('*', Material.AIR);
+                               "DSD");
+        fusionTombRecipe.setIngredient('D', Material.DIAMOND);
         fusionTombRecipe.setIngredient('S', Material.COMMAND_BLOCK);
         fusionTombRecipe.setIngredient('B', Material.BOOK);
 
