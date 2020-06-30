@@ -2,6 +2,7 @@ package de.kevin.draconic.achievements;
 
 import de.kevin.draconic.items.ItemStackFactory;
 import de.kevin.draconic.main.Main;
+import org.bukkit.Material;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,6 +12,8 @@ import org.bukkit.inventory.ItemStack;
 public class HasFusionTomb implements Listener {
 
     ItemStack fusionTomb = ItemStackFactory.getInstance().getFusionTomb();
+    ItemStack fusionCraftingTablet = ItemStackFactory.getInstance().createCraftingTablets(Material.KNOWLEDGE_BOOK,
+                    "§6Fusion Quafting Tablet", "§7Quaft really powerful items with it!");
 
     AchievementClass achievementClass = new AchievementClass(Main.getPlugin());
 
@@ -18,8 +21,9 @@ public class HasFusionTomb implements Listener {
     public void onCraftedFusionTomb(CraftItemEvent event) {
         HumanEntity player = event.getWhoClicked();
         if(event.getInventory().getResult() != null) {
-            if(event.getInventory().getResult().isSimilar(fusionTomb))
-            achievementClass.giveAchievements(player, Achievements.HASFUSIONBOOK);
+            if(event.getInventory().getResult().isSimilar(fusionTomb)) {
+                achievementClass.giveAchievements(player, Achievements.HASFUSIONBOOK);
+            }
         }
     }
 }

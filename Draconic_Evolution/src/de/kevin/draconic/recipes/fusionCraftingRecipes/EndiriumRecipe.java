@@ -13,12 +13,12 @@ import org.bukkit.inventory.ItemStack;
 
 public class EndiriumRecipe implements Listener{
 	
-	ItemStack dragonScale = ItemStackFactory.getInstance().getDragonScale();
+	ItemStack dragonScale = ItemStackFactory.getInstance().createDragonScale(1);
 	FusionCraftingInventory fusionCraftingInventory = new FusionCraftingInventory();
 	
 	@EventHandler
 	public void endiriumResult(InventoryClickEvent event) {
-		Inventory fcInventory = fusionCraftingInventory.getInventory();
+		Inventory fcInventory = fusionCraftingInventory.getFusionCraftinInventory();
 		
 		if(!event.getInventory().equals(fcInventory)) {
 			if(event.isLeftClick() && event.getSlot() == 31
@@ -52,7 +52,7 @@ public class EndiriumRecipe implements Listener{
 							int amt25 = event.getInventory().getItem(25).getAmount();
 							event.getWhoClicked().getOpenInventory().getItem(25).setAmount(amt25 - 1);
 							
-							if(event.getInventory().getItem(40).isSimilar(fusionCraftingInventory.createResultBarrier())) {
+							if(event.getInventory().getItem(40).isSimilar(ItemStackFactory.getInstance().getResultBarrier())) {
 								event.getInventory().setItem(40, ItemStackFactory.getInstance().getEndirium());
 								((Player) event.getView().getPlayer()).playSound(event.getView().getPlayer().getLocation(), Sound.BLOCK_FIRE_EXTINGUISH, 0.7F, 0.7F);
 							} else if (resultamount < 64 && event.getInventory().getItem(40).isSimilar(ItemStackFactory.getInstance().getEndirium())) {

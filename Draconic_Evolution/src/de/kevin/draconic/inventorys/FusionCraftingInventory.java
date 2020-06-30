@@ -1,118 +1,44 @@
 package de.kevin.draconic.inventorys;
 
+import de.kevin.draconic.items.ItemStackFactory;
 import de.kevin.draconic.main.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.Objects;
 
 public class FusionCraftingInventory implements Listener {
 	
-	public Inventory inventory;
-	public ItemStack fillItem;
-	public ItemStack loadBackround;
-	public ItemStack resultBarrier;
-	public ItemStack confirmItem;
-	public ItemStack loadPurple;
-	public ItemStack loadOrange;
-	
+	public Inventory FusionCraftinInventory;
+	ItemStack createFillItem = ItemStackFactory.getInstance().getFillItem();
+	ItemStack createLoadBackground = ItemStackFactory.getInstance().getLoadBackround();
+	ItemStack createResultBarrier = ItemStackFactory.getInstance().getResultBarrier();
+	ItemStack createConfirmItem = ItemStackFactory.getInstance().getConfirmItem();
+	ItemStack fusionCraftingTablet = ItemStackFactory.getInstance().createCraftingTablets(Material.KNOWLEDGE_BOOK,
+			"§6Fusion Quafting Tablet", "§7Quaft really powerful items with it!");
+;
 	public final String fcName = "§6Fusion §5Quafting";
-
-	//=========================== ITEMS ====================================
-	
-	public ItemStack createConfirmItem() {
-		
-		confirmItem = new ItemStack(Material.GREEN_STAINED_GLASS_PANE);
-		
-		ItemMeta confirmItemMeta = confirmItem.getItemMeta();
-		assert confirmItemMeta != null;
-		confirmItemMeta.setDisplayName("§2Craft item!");
-		confirmItem.setItemMeta(confirmItemMeta);
-		
-		return confirmItem;
-	}
-	
-	public ItemStack createResultBarrier() {
-		
-		resultBarrier = new ItemStack(Material.BARRIER);
-		
-		ItemMeta resultBarrierMeta = resultBarrier.getItemMeta();
-		assert resultBarrierMeta != null;
-		resultBarrierMeta.setDisplayName("§4No Result!");
-		resultBarrier.setItemMeta(resultBarrierMeta);
-		
-		return resultBarrier;
-	}
-	
-	public ItemStack createFillItem() {
-		
-		fillItem = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
-		
-		ItemMeta fillItemMeta = fillItem.getItemMeta();
-		assert fillItemMeta != null;
-		fillItemMeta.setDisplayName(" ");
-		fillItem.setItemMeta(fillItemMeta);
-		
-		return fillItem;
-		
-	}
-	
-	public ItemStack createLoadBackground() {
-		
-		loadBackround = new ItemStack(Material.BLUE_STAINED_GLASS_PANE);
-		
-		ItemMeta loadBackgroundMeta = loadBackround.getItemMeta();
-		assert loadBackgroundMeta != null;
-		loadBackgroundMeta.setDisplayName(" ");
-		loadBackround.setItemMeta(loadBackgroundMeta);
-		
-		return loadBackround;
-		
-	}
-	
-	public ItemStack createLoadPurple() {
-		
-		loadPurple = new ItemStack(Material.PURPLE_STAINED_GLASS_PANE);
-		
-		ItemMeta loadPurpleMeta = loadPurple.getItemMeta();
-		assert loadPurpleMeta != null;
-		loadPurpleMeta.setDisplayName(" ");
-		loadPurple.setItemMeta(loadPurpleMeta);
-		
-		return loadPurple;
-		
-	}
-	
-	public ItemStack createLoadOrange() {
-		
-		loadOrange = new ItemStack(Material.ORANGE_STAINED_GLASS_PANE);
-		
-		ItemMeta loadOrangeMeta = loadOrange.getItemMeta();
-		assert loadOrangeMeta != null;
-		loadOrangeMeta.setDisplayName(" ");
-		loadOrange.setItemMeta(loadOrangeMeta);
-		
-		return loadOrange;
-		
-	}
 	
 	//==================== INVENTORY =====================================
 	
-	public void createInventory(Player player) {
-		inventory = Bukkit.createInventory(null, 9*6, fcName);
+	public void createFusionCraftingInventory(Player player) {
+		FusionCraftinInventory = Bukkit.createInventory(null, 9*6, fcName);
 		
-		ItemStack fi = createFillItem();
-		ItemStack lb = createLoadBackground();
-		ItemStack rb = createResultBarrier();
-		ItemStack ci = createConfirmItem();
+		ItemStack fi = createFillItem;
+		ItemStack lb = createLoadBackground;
+		ItemStack rb = createResultBarrier;
+		ItemStack ci = createConfirmItem;
 		
 		lb.setAmount(1);
 		fi.setAmount(1);
@@ -120,79 +46,79 @@ public class FusionCraftingInventory implements Listener {
 		
 		//=================== 1 ====================
 		
-		inventory.setItem(0, lb);
-		inventory.setItem(1, lb);
-		inventory.setItem(2, lb);
-		inventory.setItem(3, lb);
-		inventory.setItem(4, lb);
-		inventory.setItem(5, lb);
-		inventory.setItem(6, lb);
-		inventory.setItem(7, lb);
-		inventory.setItem(8, lb);
+		FusionCraftinInventory.setItem(0, lb);
+		FusionCraftinInventory.setItem(1, lb);
+		FusionCraftinInventory.setItem(2, lb);
+		FusionCraftinInventory.setItem(3, lb);
+		FusionCraftinInventory.setItem(4, lb);
+		FusionCraftinInventory.setItem(5, lb);
+		FusionCraftinInventory.setItem(6, lb);
+		FusionCraftinInventory.setItem(7, lb);
+		FusionCraftinInventory.setItem(8, lb);
 		
 		//==================== 2 =====================
 		
-		inventory.setItem(9, lb);
+		FusionCraftinInventory.setItem(9, lb);
 		
-		inventory.setItem(11, fi);
-		inventory.setItem(12, fi);
+		FusionCraftinInventory.setItem(11, fi);
+		FusionCraftinInventory.setItem(12, fi);
 		
-		inventory.setItem(14, fi);
-		inventory.setItem(15, fi);
+		FusionCraftinInventory.setItem(14, fi);
+		FusionCraftinInventory.setItem(15, fi);
 		
-		inventory.setItem(17, lb);
+		FusionCraftinInventory.setItem(17, lb);
 		
 		//===================== 3 ====================
 		
-		inventory.setItem(18, lb);
+		FusionCraftinInventory.setItem(18, lb);
 		
-		inventory.setItem(20, fi);
-		inventory.setItem(21, fi);
-		inventory.setItem(22, fi);
-		inventory.setItem(23, fi);
-		inventory.setItem(24, fi);
+		FusionCraftinInventory.setItem(20, fi);
+		FusionCraftinInventory.setItem(21, fi);
+		FusionCraftinInventory.setItem(22, fi);
+		FusionCraftinInventory.setItem(23, fi);
+		FusionCraftinInventory.setItem(24, fi);
 		
-		inventory.setItem(26, lb);
+		FusionCraftinInventory.setItem(26, lb);
 		
 		//====================== 4 ====================
 		
-		inventory.setItem(27, lb);
+		FusionCraftinInventory.setItem(27, lb);
 		
-		inventory.setItem(29, fi);
-		inventory.setItem(30, fi);
-		inventory.setItem(31, ci);
-		inventory.setItem(32, fi);
-		inventory.setItem(33, fi);
+		FusionCraftinInventory.setItem(29, fi);
+		FusionCraftinInventory.setItem(30, fi);
+		FusionCraftinInventory.setItem(31, ci);
+		FusionCraftinInventory.setItem(32, fi);
+		FusionCraftinInventory.setItem(33, fi);
 		
-		inventory.setItem(35, lb);
+		FusionCraftinInventory.setItem(35, lb);
 		
 		//====================== 5 ====================
 		
-		inventory.setItem(36, lb);
+		FusionCraftinInventory.setItem(36, lb);
 		
-		inventory.setItem(38, fi);
-		inventory.setItem(39, fi);
-		inventory.setItem(40, rb);
-		inventory.setItem(41, fi);
-		inventory.setItem(42, fi);
+		FusionCraftinInventory.setItem(38, fi);
+		FusionCraftinInventory.setItem(39, fi);
+		FusionCraftinInventory.setItem(40, rb);
+		FusionCraftinInventory.setItem(41, fi);
+		FusionCraftinInventory.setItem(42, fi);
 		
-		inventory.setItem(44, lb);
+		FusionCraftinInventory.setItem(44, lb);
 		
 		//====================== 6 ====================
 		
-		inventory.setItem(45, lb);
-		inventory.setItem(46, lb);
-		inventory.setItem(47, lb);
-		inventory.setItem(48, lb);
-		inventory.setItem(49, lb);
-		inventory.setItem(50, lb);
-		inventory.setItem(51, lb);
-		inventory.setItem(52, lb);
-		inventory.setItem(53, lb);
+		FusionCraftinInventory.setItem(45, lb);
+		FusionCraftinInventory.setItem(46, lb);
+		FusionCraftinInventory.setItem(47, lb);
+		FusionCraftinInventory.setItem(48, lb);
+		FusionCraftinInventory.setItem(49, lb);
+		FusionCraftinInventory.setItem(50, lb);
+		FusionCraftinInventory.setItem(51, lb);
+		FusionCraftinInventory.setItem(52, lb);
+		FusionCraftinInventory.setItem(53, lb);
 		
 		//================== END ======================
 		
-		player.openInventory(inventory);
+		player.openInventory(FusionCraftinInventory);
 	}
 
 	@EventHandler
@@ -201,47 +127,121 @@ public class FusionCraftingInventory implements Listener {
 		Player player = event.getPlayer();
 		
 		if(event.getAction() == Action.RIGHT_CLICK_AIR) {
-			if(event.getItem().isSimilar(new ItemStack(Material.COMPASS))) {
-				createInventory(player);
+			if(event.getItem().isSimilar(fusionCraftingTablet)) {
+				createFusionCraftingInventory(player);
+			}
+		}
+	}
+
+	@EventHandler
+	public void onClose(InventoryCloseEvent event) {
+		HumanEntity player = event.getPlayer();
+
+		if(event.getPlayer().getOpenInventory() == FusionCraftinInventory) {
+			if(event.getPlayer().getInventory().firstEmpty() != -1) {
+				if(event.getPlayer().getOpenInventory().getItem(10) != null) {
+					event.getPlayer().getInventory().addItem(event.getPlayer().getOpenInventory().getItem(10));
+				}
+				if(event.getPlayer().getOpenInventory().getItem(13) != null) {
+					event.getPlayer().getInventory().addItem(event.getPlayer().getOpenInventory().getItem(13));
+				}
+				if(event.getPlayer().getOpenInventory().getItem(16) != null) {
+					event.getPlayer().getInventory().addItem(event.getPlayer().getOpenInventory().getItem(16));
+				}
+				if(event.getPlayer().getOpenInventory().getItem(19) != null) {
+					event.getPlayer().getInventory().addItem(event.getPlayer().getOpenInventory().getItem(19));
+				}
+				if(event.getPlayer().getOpenInventory().getItem(25) != null) {
+					event.getPlayer().getInventory().addItem(event.getPlayer().getOpenInventory().getItem(25));
+				}
+				if(event.getPlayer().getOpenInventory().getItem(28) != null) {
+					event.getPlayer().getInventory().addItem(event.getPlayer().getOpenInventory().getItem(28));
+				}
+				if(event.getPlayer().getOpenInventory().getItem(34) != null) {
+					event.getPlayer().getInventory().addItem(event.getPlayer().getOpenInventory().getItem(34));
+				}
+				if(event.getPlayer().getOpenInventory().getItem(37) != null) {
+					event.getPlayer().getInventory().addItem(event.getPlayer().getOpenInventory().getItem(37));
+				}
+				if(event.getPlayer().getOpenInventory().getItem(40) != null &&
+						!Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(40)).isSimilar(createResultBarrier)) {
+					event.getPlayer().getInventory().addItem(event.getPlayer().getOpenInventory().getItem(40));
+				}
+				if(event.getPlayer().getOpenInventory().getItem(43) != null) {
+					event.getPlayer().getInventory().addItem(event.getPlayer().getOpenInventory().getItem(43));
+				}
+			} else {
+				player.sendMessage("§6No empty slots!");
+				if(event.getPlayer().getOpenInventory().getItem(10) != null) {
+					player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(10)));
+				}
+				if(event.getPlayer().getOpenInventory().getItem(13) != null) {
+					player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(13)));
+				}
+				if(event.getPlayer().getOpenInventory().getItem(16) != null) {
+					player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(16)));
+				}
+				if(event.getPlayer().getOpenInventory().getItem(19) != null) {
+					player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(19)));
+				}
+				if(event.getPlayer().getOpenInventory().getItem(25) != null) {
+					player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(25)));
+				}
+				if(event.getPlayer().getOpenInventory().getItem(28) != null) {
+					player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(28)));
+				}
+				if(event.getPlayer().getOpenInventory().getItem(34) != null) {
+					player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(34)));
+				}
+				if(event.getPlayer().getOpenInventory().getItem(37) != null) {
+					player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(37)));
+				}
+				if(event.getPlayer().getOpenInventory().getItem(43) != null) {
+					player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(43)));
+				}
+				if(event.getPlayer().getOpenInventory().getItem(40) != null &&
+						!Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(40)).isSimilar(createResultBarrier)) {
+					player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(40)));
+				}
 			}
 		}
 	}
 	
-	public Inventory getInventory() {
-		return inventory;
+	public Inventory getFusionCraftinInventory() {
+		return FusionCraftinInventory;
 	}
 	
 	@EventHandler
 	public void noTakingItems(InventoryClickEvent event) {
 		if(event.getClickedInventory() != null) {
-			if(event.getClickedInventory().equals(inventory)) {
+			if(event.getClickedInventory().equals(FusionCraftinInventory)) {
 				Bukkit.getServer().getScheduler().runTaskLater(Main.getPlugin(), () -> {
 					if(event.getWhoClicked().getOpenInventory().getItem(40) == null) {
-						event.getWhoClicked().getOpenInventory().setItem(40, resultBarrier);
+						event.getWhoClicked().getOpenInventory().setItem(40, createResultBarrier);
 					}
 				}, 1);
 			}
 		}
 		
-		if(inventory != null) {
+		if(FusionCraftinInventory != null) {
 			if(event.getView().getTitle().equals(fcName)) {
 				if(event.getCurrentItem() != null) {
 					event.getClick();
-					if(event.isLeftClick() && event.getCurrentItem().isSimilar(fillItem) 
-						|| event.isRightClick() && event.getCurrentItem().isSimilar(fillItem)
-						|| event.isShiftClick() && event.getCurrentItem().isSimilar(fillItem)
+					if(event.isLeftClick() && event.getCurrentItem().isSimilar(createFillItem)
+						|| event.isRightClick() && event.getCurrentItem().isSimilar(createFillItem)
+						|| event.isShiftClick() && event.getCurrentItem().isSimilar(createFillItem)
 						
-						|| event.isRightClick() && event.getCurrentItem().isSimilar(loadBackround)
-						|| event.isLeftClick() && event.getCurrentItem().isSimilar(loadBackround)
-						|| event.isShiftClick() && event.getCurrentItem().isSimilar(loadBackround)
+						|| event.isRightClick() && event.getCurrentItem().isSimilar(createLoadBackground)
+						|| event.isLeftClick() && event.getCurrentItem().isSimilar(createLoadBackground)
+						|| event.isShiftClick() && event.getCurrentItem().isSimilar(createLoadBackground)
 						
-						|| event.isShiftClick() && event.getCurrentItem().isSimilar(resultBarrier)
-						|| event.isRightClick() && event.getCurrentItem().isSimilar(resultBarrier)
-						|| event.isLeftClick() && event.getCurrentItem().isSimilar(resultBarrier)
+						|| event.isShiftClick() && event.getCurrentItem().isSimilar(createResultBarrier)
+						|| event.isRightClick() && event.getCurrentItem().isSimilar(createResultBarrier)
+						|| event.isLeftClick() && event.getCurrentItem().isSimilar(createResultBarrier)
 						
-						|| event.isShiftClick() && event.getCurrentItem().isSimilar(confirmItem)
-						|| event.isRightClick() && event.getCurrentItem().isSimilar(confirmItem)
-						|| event.isLeftClick() && event.getCurrentItem().isSimilar(confirmItem)
+						|| event.isShiftClick() && event.getCurrentItem().isSimilar(createConfirmItem)
+						|| event.isRightClick() && event.getCurrentItem().isSimilar(createConfirmItem)
+						|| event.isLeftClick() && event.getCurrentItem().isSimilar(createConfirmItem)
 						
 						|| event.getClick().equals(ClickType.DROP)) {
 							event.setCancelled(true);
@@ -250,39 +250,4 @@ public class FusionCraftingInventory implements Listener {
 			}
 		}
 	}
-	
-	//================== GETTER & SETTER ======================
-	
-/*	public ItemStack getFillItem() {
-		return fillItem;
-	}
-
-	public ItemStack getResultBarrier() {
-		if(resultBarrier == null) {
-			createConfirmItem();
-		}
-		return resultBarrier;
-	}
-
-	public ItemStack getConfirmItem() {
-		if(confirmItem == null) {
-			createConfirmItem();
-		}
-		return confirmItem;
-	}
-	
-	public ItemStack getLoadPurple() {
-		if(loadPurple == null) {
-			createLoadPurple();
-		}
-		return loadPurple;
-	}
-
-	public ItemStack getLoadOrange() {
-		if(loadOrange == null) {
-			createLoadOrange();
-		}
-		return loadOrange;
-	}*/
-
 }

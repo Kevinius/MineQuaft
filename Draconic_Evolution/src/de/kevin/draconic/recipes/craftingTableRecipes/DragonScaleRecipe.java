@@ -8,7 +8,7 @@ import org.bukkit.inventory.ShapedRecipe;
 
 public class DragonScaleRecipe {
 
-    ItemStack dragonScale = ItemStackFactory.getInstance().getDragonScale();
+    ItemStack dragonScale = ItemStackFactory.getInstance().createDragonScale(1);
 
     public void createDragonScaleRecipe() {
 

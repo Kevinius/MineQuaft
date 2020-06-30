@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class DragonDrop implements Listener{
 
-	ItemStack dragonScale = ItemStackFactory.getInstance().getDragonScale();
+	ItemStack dragonScale = ItemStackFactory.getInstance().createDragonScale(4);
 
 	@EventHandler
 	public void mobDeath(EntityDeathEvent event) {

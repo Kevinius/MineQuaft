@@ -18,6 +18,13 @@ public class ItemStackFactory {
     private ItemStack dragonScale;
     private ItemStack dragonScalePiece;
     private ItemStack fusionTomb;
+    public ItemStack fillItem;
+    public ItemStack loadBackround;
+    public ItemStack resultBarrier;
+    public ItemStack confirmItem;
+    public ItemStack loadPurple;
+    public ItemStack loadOrange;
+    public ItemStack loadLightBlue;
 
     private ItemStackFactory(){}
 
@@ -47,9 +54,9 @@ public class ItemStackFactory {
         return endirium;
     }
 
-    public ItemStack createDragonScale() {
+    public ItemStack createDragonScale(int amount) {
 
-        dragonScale = new ItemStack(Material.COMMAND_BLOCK, 4);
+        dragonScale = new ItemStack(Material.COMMAND_BLOCK, amount);
 
         ItemMeta dragonScaleMeta = dragonScale.getItemMeta();
         assert dragonScaleMeta != null;
@@ -61,13 +68,6 @@ public class ItemStackFactory {
 
 		return dragonScale;
 }
-
-    public ItemStack getDragonScale() {
-        if(dragonScale == null) {
-            createDragonScale();
-        }
-        return dragonScale;
-    }
 
     public ItemStack createCraftingTablets(Material material, String displayname, String lore) {
 
@@ -123,5 +123,130 @@ public class ItemStackFactory {
             createFusionTomb();
         }
         return fusionTomb;
+    }
+
+    public ItemStack createConfirmItem() {
+
+        confirmItem = new ItemStack(Material.GREEN_STAINED_GLASS_PANE);
+
+        ItemMeta confirmItemMeta = confirmItem.getItemMeta();
+        assert confirmItemMeta != null;
+        confirmItemMeta.setDisplayName("§2Craft item!");
+        confirmItem.setItemMeta(confirmItemMeta);
+
+        return confirmItem;
+    }
+    public ItemStack getConfirmItem() {
+        if(confirmItem == null) {
+            createConfirmItem();
+        }
+        return confirmItem;
+    }
+
+    public ItemStack createResultBarrier() {
+
+        resultBarrier = new ItemStack(Material.BARRIER);
+
+        ItemMeta resultBarrierMeta = resultBarrier.getItemMeta();
+        assert resultBarrierMeta != null;
+        resultBarrierMeta.setDisplayName("§4No Result!");
+        resultBarrier.setItemMeta(resultBarrierMeta);
+
+        return resultBarrier;
+    }
+    public ItemStack getResultBarrier() {
+        if(resultBarrier == null) {
+            createResultBarrier();
+        }
+        return resultBarrier;
+    }
+
+    public ItemStack createFillItem() {
+
+        fillItem = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
+
+        ItemMeta fillItemMeta = fillItem.getItemMeta();
+        assert fillItemMeta != null;
+        fillItemMeta.setDisplayName(" ");
+        fillItem.setItemMeta(fillItemMeta);
+
+        return fillItem;
+    }
+    public ItemStack getFillItem() {
+        if(fillItem == null) {
+            createFillItem();
+        }
+        return fillItem;
+    }
+
+    public ItemStack createLoadBackground() {
+
+        loadBackround = new ItemStack(Material.BLUE_STAINED_GLASS_PANE);
+
+        ItemMeta loadBackgroundMeta = loadBackround.getItemMeta();
+        assert loadBackgroundMeta != null;
+        loadBackgroundMeta.setDisplayName(" ");
+        loadBackround.setItemMeta(loadBackgroundMeta);
+
+        return loadBackround;
+
+    }
+    public ItemStack getLoadBackround() {
+        if(loadBackround == null) {
+            createLoadBackground();
+        }
+        return loadBackround;
+    }
+
+    public ItemStack createLoadLightBlue() {
+
+        loadLightBlue = new ItemStack(Material.LIGHT_BLUE_STAINED_GLASS_PANE);
+
+        ItemMeta loadLightBlueMeta = loadLightBlue.getItemMeta();
+        assert loadLightBlueMeta != null;
+        loadLightBlueMeta.setDisplayName(" ");
+        loadLightBlue.setItemMeta(loadLightBlueMeta);
+
+        return loadLightBlue;
+
+    }
+    public ItemStack getLoadLightBlue() {
+        if(loadLightBlue == null) {
+            createLoadLightBlue();
+        }
+        return loadLightBlue;
+    }
+
+    public ItemStack createLoadPurple() {
+
+        loadPurple = new ItemStack(Material.PURPLE_STAINED_GLASS_PANE);
+
+        ItemMeta loadPurpleMeta = loadPurple.getItemMeta();
+        assert loadPurpleMeta != null;
+        loadPurpleMeta.setDisplayName(" ");
+        loadPurple.setItemMeta(loadPurpleMeta);
+
+        return loadPurple;
+
+    }
+    public ItemStack getLoadPurple() {
+        return loadPurple;
+    }
+
+    public ItemStack createLoadOrange() {
+
+        loadOrange = new ItemStack(Material.ORANGE_STAINED_GLASS_PANE);
+
+        ItemMeta loadOrangeMeta = loadOrange.getItemMeta();
+        assert loadOrangeMeta != null;
+        loadOrangeMeta.setDisplayName(" ");
+        loadOrange.setItemMeta(loadOrangeMeta);
+
+        return loadOrange;
+
+    }
+
+    public ItemStack getLoadOrange() {
+        return loadOrange;
     }
 }

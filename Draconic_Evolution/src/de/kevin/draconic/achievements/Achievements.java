@@ -8,7 +8,7 @@ public enum Achievements {
 
     HASFUSIONBOOK("The Beginning", "The Beginning of the end",
             ItemStackFactory.getInstance().createCraftingTablets(Material.KNOWLEDGE_BOOK,
-                    "Fusion Quafting Tablet", "Fusioniere Sachen um noch besser Sachen zu machen :D"));
+                    "§6Fusion Quafting Tablet", "§7Quaft really powerful items with it!"));
 
     String name;
     String description;
