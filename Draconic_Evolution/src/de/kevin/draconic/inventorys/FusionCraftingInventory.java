@@ -20,20 +20,20 @@ import java.util.Objects;
 
 public class FusionCraftingInventory implements Listener {
 	
-	public Inventory FusionCraftinInventory;
+	public Inventory fusionCraftingInventory;
 	ItemStack createFillItem = ItemStackFactory.getInstance().getFillItem();
 	ItemStack createLoadBackground = ItemStackFactory.getInstance().getLoadBackround();
 	ItemStack createResultBarrier = ItemStackFactory.getInstance().getResultBarrier();
 	ItemStack createConfirmItem = ItemStackFactory.getInstance().getConfirmItem();
 	ItemStack fusionCraftingTablet = ItemStackFactory.getInstance().createCraftingTablets(Material.KNOWLEDGE_BOOK,
-			"§6Fusion Quafting Tablet", "§7Quaft really powerful items with it!");
+			"§dFusion Quafting Tablet", "§7Quaft really powerful items with it!");
 ;
 	public final String fcName = "§6Fusion §5Quafting";
 	
 	//==================== INVENTORY =====================================
 	
 	public void createFusionCraftingInventory(Player player) {
-		FusionCraftinInventory = Bukkit.createInventory(null, 9*6, fcName);
+		fusionCraftingInventory = Bukkit.createInventory(null, 9*6, fcName);
 		
 		ItemStack fi = createFillItem;
 		ItemStack lb = createLoadBackground;
@@ -46,79 +46,79 @@ public class FusionCraftingInventory implements Listener {
 		
 		//=================== 1 ====================
 		
-		FusionCraftinInventory.setItem(0, lb);
-		FusionCraftinInventory.setItem(1, lb);
-		FusionCraftinInventory.setItem(2, lb);
-		FusionCraftinInventory.setItem(3, lb);
-		FusionCraftinInventory.setItem(4, lb);
-		FusionCraftinInventory.setItem(5, lb);
-		FusionCraftinInventory.setItem(6, lb);
-		FusionCraftinInventory.setItem(7, lb);
-		FusionCraftinInventory.setItem(8, lb);
+		fusionCraftingInventory.setItem(0, lb);
+		fusionCraftingInventory.setItem(1, lb);
+		fusionCraftingInventory.setItem(2, lb);
+		fusionCraftingInventory.setItem(3, lb);
+		fusionCraftingInventory.setItem(4, lb);
+		fusionCraftingInventory.setItem(5, lb);
+		fusionCraftingInventory.setItem(6, lb);
+		fusionCraftingInventory.setItem(7, lb);
+		fusionCraftingInventory.setItem(8, lb);
 		
 		//==================== 2 =====================
 		
-		FusionCraftinInventory.setItem(9, lb);
+		fusionCraftingInventory.setItem(9, lb);
 		
-		FusionCraftinInventory.setItem(11, fi);
-		FusionCraftinInventory.setItem(12, fi);
+		fusionCraftingInventory.setItem(11, fi);
+		fusionCraftingInventory.setItem(12, fi);
 		
-		FusionCraftinInventory.setItem(14, fi);
-		FusionCraftinInventory.setItem(15, fi);
+		fusionCraftingInventory.setItem(14, fi);
+		fusionCraftingInventory.setItem(15, fi);
 		
-		FusionCraftinInventory.setItem(17, lb);
+		fusionCraftingInventory.setItem(17, lb);
 		
 		//===================== 3 ====================
 		
-		FusionCraftinInventory.setItem(18, lb);
+		fusionCraftingInventory.setItem(18, lb);
 		
-		FusionCraftinInventory.setItem(20, fi);
-		FusionCraftinInventory.setItem(21, fi);
-		FusionCraftinInventory.setItem(22, fi);
-		FusionCraftinInventory.setItem(23, fi);
-		FusionCraftinInventory.setItem(24, fi);
+		fusionCraftingInventory.setItem(20, fi);
+		fusionCraftingInventory.setItem(21, fi);
+		fusionCraftingInventory.setItem(22, fi);
+		fusionCraftingInventory.setItem(23, fi);
+		fusionCraftingInventory.setItem(24, fi);
 		
-		FusionCraftinInventory.setItem(26, lb);
+		fusionCraftingInventory.setItem(26, lb);
 		
 		//====================== 4 ====================
 		
-		FusionCraftinInventory.setItem(27, lb);
+		fusionCraftingInventory.setItem(27, lb);
 		
-		FusionCraftinInventory.setItem(29, fi);
-		FusionCraftinInventory.setItem(30, fi);
-		FusionCraftinInventory.setItem(31, ci);
-		FusionCraftinInventory.setItem(32, fi);
-		FusionCraftinInventory.setItem(33, fi);
+		fusionCraftingInventory.setItem(29, fi);
+		fusionCraftingInventory.setItem(30, fi);
+		fusionCraftingInventory.setItem(31, ci);
+		fusionCraftingInventory.setItem(32, fi);
+		fusionCraftingInventory.setItem(33, fi);
 		
-		FusionCraftinInventory.setItem(35, lb);
+		fusionCraftingInventory.setItem(35, lb);
 		
 		//====================== 5 ====================
 		
-		FusionCraftinInventory.setItem(36, lb);
+		fusionCraftingInventory.setItem(36, lb);
 		
-		FusionCraftinInventory.setItem(38, fi);
-		FusionCraftinInventory.setItem(39, fi);
-		FusionCraftinInventory.setItem(40, rb);
-		FusionCraftinInventory.setItem(41, fi);
-		FusionCraftinInventory.setItem(42, fi);
+		fusionCraftingInventory.setItem(38, fi);
+		fusionCraftingInventory.setItem(39, fi);
+		fusionCraftingInventory.setItem(40, rb);
+		fusionCraftingInventory.setItem(41, fi);
+		fusionCraftingInventory.setItem(42, fi);
 		
-		FusionCraftinInventory.setItem(44, lb);
+		fusionCraftingInventory.setItem(44, lb);
 		
 		//====================== 6 ====================
 		
-		FusionCraftinInventory.setItem(45, lb);
-		FusionCraftinInventory.setItem(46, lb);
-		FusionCraftinInventory.setItem(47, lb);
-		FusionCraftinInventory.setItem(48, lb);
-		FusionCraftinInventory.setItem(49, lb);
-		FusionCraftinInventory.setItem(50, lb);
-		FusionCraftinInventory.setItem(51, lb);
-		FusionCraftinInventory.setItem(52, lb);
-		FusionCraftinInventory.setItem(53, lb);
+		fusionCraftingInventory.setItem(45, lb);
+		fusionCraftingInventory.setItem(46, lb);
+		fusionCraftingInventory.setItem(47, lb);
+		fusionCraftingInventory.setItem(48, lb);
+		fusionCraftingInventory.setItem(49, lb);
+		fusionCraftingInventory.setItem(50, lb);
+		fusionCraftingInventory.setItem(51, lb);
+		fusionCraftingInventory.setItem(52, lb);
+		fusionCraftingInventory.setItem(53, lb);
 		
 		//================== END ======================
 		
-		player.openInventory(FusionCraftinInventory);
+		player.openInventory(fusionCraftingInventory);
 	}
 
 	@EventHandler
@@ -134,87 +134,86 @@ public class FusionCraftingInventory implements Listener {
 	}
 
 	@EventHandler
-	public void onClose(InventoryCloseEvent event) {
+	public void closeFusionCraftingInventory(InventoryCloseEvent event) {
 		HumanEntity player = event.getPlayer();
 
-		if(event.getPlayer().getOpenInventory() == FusionCraftinInventory) {
-			if(event.getPlayer().getInventory().firstEmpty() != -1) {
-				if(event.getPlayer().getOpenInventory().getItem(10) != null) {
-					event.getPlayer().getInventory().addItem(event.getPlayer().getOpenInventory().getItem(10));
+		if(player.getOpenInventory().getTopInventory() == fusionCraftingInventory) {
+			if(player.getInventory().firstEmpty() != -1) {
+				if(player.getOpenInventory().getItem(10) != null) {
+					player.getInventory().addItem(player.getOpenInventory().getItem(10));
 				}
-				if(event.getPlayer().getOpenInventory().getItem(13) != null) {
-					event.getPlayer().getInventory().addItem(event.getPlayer().getOpenInventory().getItem(13));
+				if(player.getOpenInventory().getItem(13) != null) {
+					player.getInventory().addItem(player.getOpenInventory().getItem(13));
 				}
-				if(event.getPlayer().getOpenInventory().getItem(16) != null) {
-					event.getPlayer().getInventory().addItem(event.getPlayer().getOpenInventory().getItem(16));
+				if(player.getOpenInventory().getItem(16) != null) {
+					player.getInventory().addItem(player.getOpenInventory().getItem(16));
 				}
-				if(event.getPlayer().getOpenInventory().getItem(19) != null) {
-					event.getPlayer().getInventory().addItem(event.getPlayer().getOpenInventory().getItem(19));
+				if(player.getOpenInventory().getItem(19) != null) {
+					player.getInventory().addItem(player.getOpenInventory().getItem(19));
 				}
-				if(event.getPlayer().getOpenInventory().getItem(25) != null) {
-					event.getPlayer().getInventory().addItem(event.getPlayer().getOpenInventory().getItem(25));
+				if(player.getOpenInventory().getItem(25) != null) {
+					player.getInventory().addItem(player.getOpenInventory().getItem(25));
 				}
-				if(event.getPlayer().getOpenInventory().getItem(28) != null) {
-					event.getPlayer().getInventory().addItem(event.getPlayer().getOpenInventory().getItem(28));
+				if(player.getOpenInventory().getItem(28) != null) {
+					player.getInventory().addItem(player.getOpenInventory().getItem(28));
 				}
-				if(event.getPlayer().getOpenInventory().getItem(34) != null) {
-					event.getPlayer().getInventory().addItem(event.getPlayer().getOpenInventory().getItem(34));
+				if(player.getOpenInventory().getItem(34) != null) {
+					player.getInventory().addItem(player.getOpenInventory().getItem(34));
 				}
-				if(event.getPlayer().getOpenInventory().getItem(37) != null) {
-					event.getPlayer().getInventory().addItem(event.getPlayer().getOpenInventory().getItem(37));
+				if(player.getOpenInventory().getItem(37) != null) {
+					player.getInventory().addItem(player.getOpenInventory().getItem(37));
 				}
-				if(event.getPlayer().getOpenInventory().getItem(40) != null &&
-						!Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(40)).isSimilar(createResultBarrier)) {
-					event.getPlayer().getInventory().addItem(event.getPlayer().getOpenInventory().getItem(40));
+				if(player.getOpenInventory().getItem(40) != null &&
+						!Objects.requireNonNull(player.getOpenInventory().getItem(40)).isSimilar(createResultBarrier)) {
+					player.getInventory().addItem(player.getOpenInventory().getItem(40));
 				}
-				if(event.getPlayer().getOpenInventory().getItem(43) != null) {
-					event.getPlayer().getInventory().addItem(event.getPlayer().getOpenInventory().getItem(43));
+				if(player.getOpenInventory().getItem(43) != null) {
+					player.getInventory().addItem(player.getOpenInventory().getItem(43));
 				}
 			} else {
-				player.sendMessage("§6No empty slots!");
-				if(event.getPlayer().getOpenInventory().getItem(10) != null) {
+				if(player.getOpenInventory().getItem(10) != null) {
 					player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(10)));
 				}
-				if(event.getPlayer().getOpenInventory().getItem(13) != null) {
+				if(player.getOpenInventory().getItem(13) != null) {
 					player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(13)));
 				}
-				if(event.getPlayer().getOpenInventory().getItem(16) != null) {
+				if(player.getOpenInventory().getItem(16) != null) {
 					player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(16)));
 				}
-				if(event.getPlayer().getOpenInventory().getItem(19) != null) {
+				if(player.getOpenInventory().getItem(19) != null) {
 					player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(19)));
 				}
-				if(event.getPlayer().getOpenInventory().getItem(25) != null) {
+				if(player.getOpenInventory().getItem(25) != null) {
 					player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(25)));
 				}
-				if(event.getPlayer().getOpenInventory().getItem(28) != null) {
+				if(player.getOpenInventory().getItem(28) != null) {
 					player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(28)));
 				}
-				if(event.getPlayer().getOpenInventory().getItem(34) != null) {
+				if(player.getOpenInventory().getItem(34) != null) {
 					player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(34)));
 				}
-				if(event.getPlayer().getOpenInventory().getItem(37) != null) {
+				if(player.getOpenInventory().getItem(37) != null) {
 					player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(37)));
 				}
-				if(event.getPlayer().getOpenInventory().getItem(43) != null) {
+				if(player.getOpenInventory().getItem(43) != null) {
 					player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(43)));
 				}
-				if(event.getPlayer().getOpenInventory().getItem(40) != null &&
-						!Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(40)).isSimilar(createResultBarrier)) {
+				if(player.getOpenInventory().getItem(40) != null &&
+						!Objects.requireNonNull(player.getOpenInventory().getItem(40)).isSimilar(createResultBarrier)) {
 					player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(40)));
 				}
 			}
 		}
 	}
 	
-	public Inventory getFusionCraftinInventory() {
-		return FusionCraftinInventory;
+	public Inventory getFusionCraftingInventory() {
+		return fusionCraftingInventory;
 	}
 	
 	@EventHandler
 	public void noTakingItems(InventoryClickEvent event) {
 		if(event.getClickedInventory() != null) {
-			if(event.getClickedInventory().equals(FusionCraftinInventory)) {
+			if(event.getClickedInventory().equals(fusionCraftingInventory)) {
 				Bukkit.getServer().getScheduler().runTaskLater(Main.getPlugin(), () -> {
 					if(event.getWhoClicked().getOpenInventory().getItem(40) == null) {
 						event.getWhoClicked().getOpenInventory().setItem(40, createResultBarrier);
@@ -223,7 +222,7 @@ public class FusionCraftingInventory implements Listener {
 			}
 		}
 		
-		if(FusionCraftinInventory != null) {
+		if(fusionCraftingInventory != null) {
 			if(event.getView().getTitle().equals(fcName)) {
 				if(event.getCurrentItem() != null) {
 					event.getClick();

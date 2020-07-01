@@ -18,7 +18,7 @@ public class EndiriumRecipe implements Listener{
 	
 	@EventHandler
 	public void endiriumResult(InventoryClickEvent event) {
-		Inventory fcInventory = fusionCraftingInventory.getFusionCraftinInventory();
+		Inventory fcInventory = fusionCraftingInventory.getFusionCraftingInventory();
 		
 		if(!event.getInventory().equals(fcInventory)) {
 			if(event.isLeftClick() && event.getSlot() == 31
@@ -36,8 +36,7 @@ public class EndiriumRecipe implements Listener{
 						&& event.getInventory().getItem(16).isSimilar(dragonScale)
 						&& event.getInventory().getItem(19).isSimilar(dragonScale)
 						&& event.getInventory().getItem(25).isSimilar(dragonScale)) {
-							//event.getWhoClicked().sendMessage("yay");
-							
+
 							int resultamount = event.getInventory().getItem(40).getAmount();
 							
 						if(resultamount < 64) {
@@ -62,8 +61,6 @@ public class EndiriumRecipe implements Listener{
 								event.setCancelled(true);
 							}
 						}
-					} else {
-						event.getWhoClicked().sendMessage("§4Invalid recipe!");
 					}
 				}
 			}

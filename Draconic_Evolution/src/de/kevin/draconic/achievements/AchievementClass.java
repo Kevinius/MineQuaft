@@ -12,7 +12,7 @@ public class AchievementClass {
     Plugin plugin;
 
     ItemStack fusionCraftingTablet = ItemStackFactory.getInstance().createCraftingTablets(Material.KNOWLEDGE_BOOK,
-            "§6Fusion Quafting Tablet", "§7Quaft really powerful items with it!");
+            "§dFusion Quafting Tablet", "§7Quaft really powerful items with it!");
 
     public AchievementClass(Plugin plugin) {
         this.plugin = plugin;

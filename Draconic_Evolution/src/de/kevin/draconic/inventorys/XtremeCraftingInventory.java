@@ -4,15 +4,19 @@ import de.kevin.draconic.items.ItemStackFactory;
 import de.kevin.draconic.main.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+
+import java.util.Objects;
 
 public class XtremeCraftingInventory implements Listener {
 
@@ -87,7 +91,7 @@ public class XtremeCraftingInventory implements Listener {
         Player player = event.getPlayer();
 
         if(event.getAction() == Action.RIGHT_CLICK_AIR) {
-            if(event.getItem().isSimilar(new ItemStack(Material.COMPASS))) {
+            if(event.getItem().isSimilar(xtremeCraftingTablet)) {
                 createXtremeCraftingInventory(player);
             }
         }
@@ -133,4 +137,218 @@ public class XtremeCraftingInventory implements Listener {
         }
     }
 
+    //======================== GETTER & SETTER ===========================
+
+    public Inventory getXtremeCraftingInventory() {
+        return xtremeCraftingInventory;
+    }
+
+    @EventHandler
+    public void closeXtremeCraftingInventory(InventoryCloseEvent event) {
+        HumanEntity player = event.getPlayer();
+
+        //Gives the items back to the player when inventory is closed
+
+        if(player.getOpenInventory().getTopInventory() == xtremeCraftingInventory) {
+
+            //================================= 1 ===========================================
+
+            if(player.getInventory().firstEmpty() != -1) {
+                if(player.getOpenInventory().getItem(0) != null) {
+                    player.getInventory().addItem(player.getOpenInventory().getItem(0));
+                }
+            } else if(player.getOpenInventory().getItem(0) != null) {
+                player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(0)));
+            }
+            if(player.getInventory().firstEmpty() != -1) {
+                if(player.getOpenInventory().getItem(1) != null) {
+                    player.getInventory().addItem(player.getOpenInventory().getItem(1));
+                }
+            } else if(player.getOpenInventory().getItem(1) != null) {
+                player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(1)));
+            }
+            if(player.getInventory().firstEmpty() != -1) {
+                if(player.getOpenInventory().getItem(2) != null) {
+                    player.getInventory().addItem(player.getOpenInventory().getItem(2));
+                }
+            } else if(player.getOpenInventory().getItem(2) != null) {
+                player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(2)));
+            }
+            if(player.getInventory().firstEmpty() != -1) {
+                if(player.getOpenInventory().getItem(3) != null) {
+                    player.getInventory().addItem(player.getOpenInventory().getItem(3));
+                }
+            } else if(player.getOpenInventory().getItem(3) != null) {
+                player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(3)));
+            }
+            if(player.getInventory().firstEmpty() != -1) {
+                if(player.getOpenInventory().getItem(4) != null) {
+                    player.getInventory().addItem(player.getOpenInventory().getItem(4));
+                }
+            } else if(player.getOpenInventory().getItem(4) != null) {
+                player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(4)));
+            }
+
+            //================================= 2 ===========================================
+
+            if(player.getInventory().firstEmpty() != -1) {
+                if(player.getOpenInventory().getItem(9) != null) {
+                    player.getInventory().addItem(player.getOpenInventory().getItem(9));
+                }
+            } else if(player.getOpenInventory().getItem(9) != null) {
+                player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(9)));
+            }
+            if(player.getInventory().firstEmpty() != -1) {
+                if(player.getOpenInventory().getItem(10) != null) {
+                    player.getInventory().addItem(player.getOpenInventory().getItem(10));
+                }
+            } else if(player.getOpenInventory().getItem(10) != null) {
+                player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(10)));
+            }
+            if(player.getInventory().firstEmpty() != -1) {
+                if(player.getOpenInventory().getItem(11) != null) {
+                    player.getInventory().addItem(player.getOpenInventory().getItem(11));
+                }
+            } else if(player.getOpenInventory().getItem(11) != null) {
+                player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(11)));
+            }
+            if(player.getInventory().firstEmpty() != -1) {
+                if(player.getOpenInventory().getItem(12) != null) {
+                    player.getInventory().addItem(player.getOpenInventory().getItem(12));
+                }
+            } else if(player.getOpenInventory().getItem(12) != null) {
+                player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(12)));
+            }
+            if(player.getInventory().firstEmpty() != -1) {
+                if(player.getOpenInventory().getItem(13) != null) {
+                    player.getInventory().addItem(player.getOpenInventory().getItem(13));
+                }
+            } else if(player.getOpenInventory().getItem(13) != null) {
+                player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(13)));
+            }
+
+            //================================= 3 ===========================================
+
+            if(player.getInventory().firstEmpty() != -1) {
+                if(player.getOpenInventory().getItem(18) != null) {
+                    player.getInventory().addItem(player.getOpenInventory().getItem(18));
+                }
+            } else if(player.getOpenInventory().getItem(18) != null) {
+                player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(18)));
+            }
+            if(player.getInventory().firstEmpty() != -1) {
+                if(player.getOpenInventory().getItem(19) != null) {
+                    player.getInventory().addItem(player.getOpenInventory().getItem(19));
+                }
+            } else if(player.getOpenInventory().getItem(19) != null) {
+                player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(19)));
+            }
+            if(player.getInventory().firstEmpty() != -1) {
+                if(player.getOpenInventory().getItem(20) != null) {
+                    player.getInventory().addItem(player.getOpenInventory().getItem(20));
+                }
+            } else if(player.getOpenInventory().getItem(20) != null) {
+                player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(20)));
+            }
+            if(player.getInventory().firstEmpty() != -1) {
+                if(player.getOpenInventory().getItem(21) != null) {
+                    player.getInventory().addItem(player.getOpenInventory().getItem(21));
+                }
+            } else if(player.getOpenInventory().getItem(21) != null) {
+                player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(21)));
+            }
+            if(player.getInventory().firstEmpty() != -1) {
+                if(player.getOpenInventory().getItem(22) != null) {
+                    player.getInventory().addItem(player.getOpenInventory().getItem(22));
+                }
+            } else if(player.getOpenInventory().getItem(22) != null) {
+                player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(22)));
+            }
+            if(player.getInventory().firstEmpty() != -1) {
+                if(player.getOpenInventory().getItem(25) != null &&
+                   !player.getOpenInventory().getItem(25).isSimilar(resultBarrier)) {
+                    player.getInventory().addItem(player.getOpenInventory().getItem(25));
+                }
+            } else if(player.getOpenInventory().getItem(25) != null &&
+                    !player.getOpenInventory().getItem(25).isSimilar(resultBarrier)) {
+                player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(25)));
+            }
+
+            //================================= 4 ===========================================
+
+            if(player.getInventory().firstEmpty() != -1) {
+                if(player.getOpenInventory().getItem(27) != null) {
+                    player.getInventory().addItem(player.getOpenInventory().getItem(27));
+                }
+            } else if(player.getOpenInventory().getItem(27) != null) {
+                player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(27)));
+            }
+            if(player.getInventory().firstEmpty() != -1) {
+                if(player.getOpenInventory().getItem(28) != null) {
+                    player.getInventory().addItem(player.getOpenInventory().getItem(28));
+                }
+            } else if(player.getOpenInventory().getItem(28) != null) {
+                player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(28)));
+            }
+            if(player.getInventory().firstEmpty() != -1) {
+                if(player.getOpenInventory().getItem(29) != null) {
+                    player.getInventory().addItem(player.getOpenInventory().getItem(29));
+                }
+            } else if(player.getOpenInventory().getItem(29) != null) {
+                player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(29)));
+            }
+            if(player.getInventory().firstEmpty() != -1) {
+                if(player.getOpenInventory().getItem(30) != null) {
+                    player.getInventory().addItem(player.getOpenInventory().getItem(30));
+                }
+            } else if(player.getOpenInventory().getItem(30) != null) {
+                player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(30)));
+            }
+            if(player.getInventory().firstEmpty() != -1) {
+                if(player.getOpenInventory().getItem(31) != null) {
+                    player.getInventory().addItem(player.getOpenInventory().getItem(31));
+                }
+            } else if(player.getOpenInventory().getItem(31) != null) {
+                player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(31)));
+            }
+
+            //================================= 5 ===========================================
+
+            if(player.getInventory().firstEmpty() != -1) {
+                if(player.getOpenInventory().getItem(36) != null) {
+                    player.getInventory().addItem(player.getOpenInventory().getItem(36));
+                }
+            } else if(player.getOpenInventory().getItem(36) != null) {
+                player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(36)));
+            }
+            if(player.getInventory().firstEmpty() != -1) {
+                if(player.getOpenInventory().getItem(37) != null) {
+                    player.getInventory().addItem(player.getOpenInventory().getItem(37));
+                }
+            } else if(player.getOpenInventory().getItem(37) != null) {
+                player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(37)));
+            }
+            if(player.getInventory().firstEmpty() != -1) {
+                if(player.getOpenInventory().getItem(38) != null) {
+                    player.getInventory().addItem(player.getOpenInventory().getItem(38));
+                }
+            } else if(player.getOpenInventory().getItem(38) != null) {
+                player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(38)));
+            }
+            if(player.getInventory().firstEmpty() != -1) {
+                if(player.getOpenInventory().getItem(39) != null) {
+                    player.getInventory().addItem(player.getOpenInventory().getItem(39));
+                }
+            } else if(player.getOpenInventory().getItem(39) != null) {
+                player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(39)));
+            }
+            if(player.getInventory().firstEmpty() != -1) {
+                if(player.getOpenInventory().getItem(40) != null) {
+                    player.getInventory().addItem(player.getOpenInventory().getItem(40));
+                }
+            } else if(player.getOpenInventory().getItem(40) != null) {
+                player.getWorld().dropItemNaturally(player.getLocation(), Objects.requireNonNull(event.getPlayer().getOpenInventory().getItem(40)));
+            }
+        }
+    }
 }

@@ -25,6 +25,7 @@ public class ItemStackFactory {
     public ItemStack loadPurple;
     public ItemStack loadOrange;
     public ItemStack loadLightBlue;
+    public ItemStack compressedEndstone;
 
     private ItemStackFactory(){}
 
@@ -246,7 +247,20 @@ public class ItemStackFactory {
 
     }
 
-    public ItemStack getLoadOrange() {
+    public ItemStack createCompressedEndstone() {
+
+        compressedEndstone = new ItemStack(Material.CHAIN_COMMAND_BLOCK);
+
+        ItemMeta compressedEndstoneItemMeta = compressedEndstone.getItemMeta();
+        assert compressedEndstoneItemMeta != null;
+        compressedEndstoneItemMeta.setDisplayName("compressed Endstone");
+        compressedEndstone.setItemMeta(compressedEndstoneItemMeta);
+
         return loadOrange;
+
+    }
+
+    public ItemStack getCompressedEndstone() {
+        return compressedEndstone;
     }
 }
