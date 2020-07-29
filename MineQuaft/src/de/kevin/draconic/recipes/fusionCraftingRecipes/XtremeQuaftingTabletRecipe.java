@@ -14,8 +14,6 @@ import org.bukkit.inventory.ItemStack;
 public class XtremeQuaftingTabletRecipe implements Listener {
 
     ItemStack dragonScale = ItemStackFactory.getInstance().createDragonScale(1);
-    ItemStack xtremeCraftingTablet = ItemStackFactory.getInstance().createCraftingTablets(Material.KNOWLEDGE_BOOK,
-            "§6Xtreme Quafting Tablet", "§7Just a bigger crafting table(t) (^._.^)");
     XtremeCraftingInventory xtremeCraftingInventory = new XtremeCraftingInventory();
 
     @EventHandler
@@ -69,15 +67,15 @@ public class XtremeQuaftingTabletRecipe implements Listener {
                             int amt43 = event.getInventory().getItem(43).getAmount();
                             event.getWhoClicked().getOpenInventory().getItem(43).setAmount(amt43 - 1);
 
-                            if(event.getInventory().getItem(40).isSimilar(ItemStackFactory.getInstance().getResultBarrier())) {
-                                event.getInventory().setItem(40, xtremeCraftingTablet);
+/*                            if(event.getInventory().getItem(40).isSimilar(ItemStackFactory.getInstance().getResultBarrier())) {
+                                event.getInventory().setItem(40, xtremeQuaftingExtention);
                                 ((Player) event.getView().getPlayer()).playSound(event.getView().getPlayer().getLocation(), Sound.BLOCK_FIRE_EXTINGUISH, 0.7F, 0.7F);
-                            } else if (resultamount < 64 && event.getInventory().getItem(40).isSimilar(xtremeCraftingTablet)) {
-                                event.getInventory().addItem(xtremeCraftingTablet).put(resultamount + 1, xtremeCraftingTablet);
+                            } else if (resultamount < 64 && event.getInventory().getItem(40).isSimilar(xtremeQuaftingExtention)) {
+                                event.getInventory().addItem(xtremeQuaftingExtention).put(resultamount + 1, xtremeQuaftingExtention);
                                 ((Player) event.getView().getPlayer()).playSound(event.getView().getPlayer().getLocation(), Sound.BLOCK_FIRE_EXTINGUISH, 0.7F, 0.7F);
                             } else {
                                 event.setCancelled(true);
-                            }
+                            }*/
                         }
                     }
                 }

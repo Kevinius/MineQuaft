@@ -1,8 +1,0 @@
-name: MineQuaft_Evolution
-version: 1.0
-main: de.kevin.draconic.main.Main
-api-version: 1.16
-
-commands:
-  fctablet:
-    description: Nichts besonderes, nur für interne zwecke gedacht :D
