@@ -13,12 +13,8 @@ import java.util.Objects;
 
 public class CompressedEndstoneRecipe implements Listener {
 
-    ItemStack endstone = new ItemStack(Material.END_STONE);
     ItemStack compressedEndstone = ItemStackFactory.getInstance().getCompressedEndstone();
     ItemStack resultBarrier = ItemStackFactory.getInstance().getResultBarrier();
-    ItemStack fillItem = ItemStackFactory.getInstance().getFillItem();
-    ItemStack loadLightBlue = ItemStackFactory.getInstance().getLoadLightBlue();
-    ItemStack loadBackground = ItemStackFactory.getInstance().getLoadBackround();
 
 
     @EventHandler

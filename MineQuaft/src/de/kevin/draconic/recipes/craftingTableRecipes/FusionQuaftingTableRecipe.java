@@ -1,10 +1,10 @@
 package de.kevin.draconic.recipes.craftingTableRecipes;
 
-public class FusionQuaftingTabletRecipe {
+public class FusionQuaftingTableRecipe {
 
     public void createFusionQuaftingRecipe() {
 
-
+        
 
     }
 

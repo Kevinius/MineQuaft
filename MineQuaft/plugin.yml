@@ -1,0 +1,8 @@
+  name: MineQuaft-Plugin
+  main: de.kevin.draconic.main.Main
+  version: 1.0
+  api-version: 1.16
+
+  commands:
+    give:
+      description: gives you specific plugin items
