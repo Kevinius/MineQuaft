@@ -5,6 +5,7 @@ import de.kevin.draconic.main.Main;
 import eu.endercentral.crazy_advancements.*;
 import eu.endercentral.crazy_advancements.manager.AdvancementManager;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,7 +18,7 @@ public class AdvancementListener implements Listener {
 
     private AdvancementManager manager;
 
-    private Advancement root, draconicTimes;
+    private Advancement root, draconicTimes, upgradesPeople;
 
     ItemStack dragonscale = ItemStackFactory.getInstance().createDragonScale(1);
     ItemStack endirium = ItemStackFactory.getInstance().getEndirium();
@@ -31,10 +32,14 @@ public class AdvancementListener implements Listener {
         root = new Advancement(null, new NameKey("MineQuaft", "root"), rootDisplay);
 
         AdvancementDisplay draconicTimesDisplay = new AdvancementDisplay(dragonscale, "Draconic times", "Pick up the powerful scales of an ender dragon", AdvancementDisplay.AdvancementFrame.GOAL, false, false, AdvancementVisibility.ALWAYS);
-        draconicTimesDisplay.setCoordinates(2, 0);
+        draconicTimesDisplay.setCoordinates(1, 0);
         draconicTimes = new Advancement(root, new NameKey("MineQuaft", "draconicTimes"), draconicTimesDisplay);
 
-        manager.addAdvancement(root, draconicTimes);
+        AdvancementDisplay upgradesPeopleDisplay = new AdvancementDisplay(Material.CRAFTING_TABLE, "Upgrades people, upgrades!", "Craft a Xtreme Quafting table", AdvancementDisplay.AdvancementFrame.GOAL, false, false, AdvancementVisibility.ALWAYS);
+        upgradesPeopleDisplay.setCoordinates(2, 0);
+        upgradesPeople = new Advancement(draconicTimes, new NameKey("MineQuaft", "upgradesPeople"), upgradesPeopleDisplay);
+
+        manager.addAdvancement(root, draconicTimes, upgradesPeople);
     }
 
     @EventHandler
@@ -55,6 +60,7 @@ public class AdvancementListener implements Listener {
 
     //Advancements
 
+    /*-------------- Draconic Times ------------------*/
     @EventHandler
     private void draconicTimesEvent(EntityPickupItemEvent event) {
 
@@ -75,4 +81,6 @@ public class AdvancementListener implements Listener {
             }
         }, 1);
     }
+
+    /*-------------- Upgrades people, upgrades ------------------*/
 }

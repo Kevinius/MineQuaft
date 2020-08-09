@@ -6,18 +6,19 @@ import de.kevin.draconic.blocks.blockPlace.PlaceFusionQuaftingTable;
 import de.kevin.draconic.blocks.blockPlace.PlaceXtremeQuaftingTable;
 import de.kevin.draconic.inventorys.FusionCraftingInventory;
 import de.kevin.draconic.inventorys.XtremeCraftingInventory;
-import de.kevin.draconic.items.ItemStackFactory;
-import de.kevin.draconic.items.functions.PrevendFromDespawn;
+import de.kevin.draconic.items.functions.food.Food;
+import de.kevin.draconic.items.functions.tool.PrevendFromDespawn;
 import de.kevin.draconic.mobdrops.DragonDrop;
 import de.kevin.draconic.recipes.craftingTableRecipes.BlackStoneRecipe;
+import de.kevin.draconic.recipes.craftingTableRecipes.BorgarRecipe;
 import de.kevin.draconic.recipes.craftingTableRecipes.DragonScalePieceRecipe;
 import de.kevin.draconic.recipes.craftingTableRecipes.DragonScaleRecipe;
+import de.kevin.draconic.recipes.fusionCraftingRecipes.DragonEggRecipe;
 import de.kevin.draconic.recipes.fusionCraftingRecipes.EndiriumRecipe;
 import de.kevin.draconic.recipes.fusionCraftingRecipes.XtremeQuaftingTabletRecipe;
 import de.kevin.draconic.recipes.xtremeCrafting.CompressedEndstoneRecipe;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -25,9 +26,6 @@ import java.io.IOException;
 
 public class Main extends JavaPlugin implements Listener {
 	private static Main plugin;
-
-	ItemStack fusionQuaftingTable = ItemStackFactory.getInstance().getFusionQuaftingTable();
-	ItemStack xtremeQuaftingTable = ItemStackFactory.getInstance().getXtremeQuaftingTable();
 
 	public void onEnable() {
 		plugin = this;
@@ -38,6 +36,7 @@ public class Main extends JavaPlugin implements Listener {
 		new DragonScalePieceRecipe().createDragonScalePieceRecipe();
 		new DragonScaleRecipe().createDragonScaleRecipe();
 		new BlackStoneRecipe().createBlackStoneRecipe();
+		new BorgarRecipe().createBorgarRecipe();
 
 		//Events
 		pluginManager.registerEvents(new DragonDrop(), this);
@@ -50,6 +49,8 @@ public class Main extends JavaPlugin implements Listener {
 		pluginManager.registerEvents(new PlaceFusionQuaftingTable(), this);
 		pluginManager.registerEvents(new PlaceXtremeQuaftingTable(), this);
 		pluginManager.registerEvents(new AdvancementListener(), this);
+		pluginManager.registerEvents(new DragonEggRecipe(), this);
+		pluginManager.registerEvents(new Food(), this);
 
 		//Configs
 		try {

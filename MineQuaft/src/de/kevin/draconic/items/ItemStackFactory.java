@@ -5,19 +5,14 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.Arrays;
 
 public class ItemStackFactory {
 
     private static ItemStackFactory instance;
 
     private ItemStack endirium;
-    private ItemStack dragonScale;
     private ItemStack dragonScalePiece;
-    private ItemStack fusionTomb;
     private ItemStack fillItem;
     private ItemStack loadBackround;
     private ItemStack resultBarrier;
@@ -28,6 +23,7 @@ public class ItemStackFactory {
     private ItemStack compressedEndstone;
     private ItemStack fusionQuaftingTable;
     private ItemStack xtremeQuaftingTable;
+    private ItemStack borgar;
 
     private ItemStackFactory(){}
 
@@ -59,7 +55,7 @@ public class ItemStackFactory {
 
     public ItemStack createDragonScale(int amount) {
 
-        dragonScale = new ItemStack(Material.COMMAND_BLOCK, amount);
+        ItemStack dragonScale = new ItemStack(Material.COMMAND_BLOCK, amount);
 
         ItemMeta dragonScaleMeta = dragonScale.getItemMeta();
         assert dragonScaleMeta != null;
@@ -90,26 +86,6 @@ public class ItemStackFactory {
             createDragonScalePiece();
         }
         return dragonScalePiece;
-    }
-
-    private void createFusionTomb() {
-
-        fusionTomb = new ItemStack(Material.WRITTEN_BOOK);
-
-        BookMeta fusionTombMeta = (BookMeta)fusionTomb.getItemMeta();
-        fusionTombMeta.setTitle("Quafting guide");
-        fusionTombMeta.setAuthor("§4The new Civilization");
-        fusionTombMeta.setLore(Arrays.asList("§5Gives you the knowledge to craft a §6[Fusion Crafting Tablet] §5!"));
-        fusionTombMeta.setDisplayName("§eQuafting guide");
-        fusionTombMeta.setPages("Hallo lul §5Lila?", "Seite 2 ist das, oder?\n\nNeue Zeile?", "Seite 3, hier kommt nichts rein hehe");
-        fusionTomb.setItemMeta(fusionTombMeta);
-    }
-
-    public ItemStack getFusionTomb() {
-        if(fusionTomb == null) {
-            createFusionTomb();
-        }
-        return fusionTomb;
     }
 
     private ItemStack createConfirmItem() {
@@ -267,6 +243,7 @@ public class ItemStackFactory {
         fusionQuaftingTable = new ItemStack(Material.SMOKER);
 
         ItemMeta fusionQuaftingTableMeta = fusionQuaftingTable.getItemMeta();
+        assert fusionQuaftingTableMeta != null;
         fusionQuaftingTableMeta.setDisplayName("§fFusion Quafting Table");
         fusionQuaftingTable.setItemMeta(fusionQuaftingTableMeta);
 
@@ -285,6 +262,7 @@ public class ItemStackFactory {
         xtremeQuaftingTable = new ItemStack(Material.CRAFTING_TABLE);
 
         ItemMeta xtremeQuaftingTableMeta = xtremeQuaftingTable.getItemMeta();
+        assert xtremeQuaftingTableMeta != null;
         xtremeQuaftingTableMeta.setDisplayName("§fXtreme Quafting Table");
         xtremeQuaftingTable.setItemMeta(xtremeQuaftingTableMeta);
 
@@ -296,6 +274,24 @@ public class ItemStackFactory {
             createXtremeQuaftingTable();
         }
         return xtremeQuaftingTable;
+    }
+
+    private ItemStack createBorgar() {
+        borgar = new ItemStack(Material.COOKED_BEEF);
+
+        ItemMeta borgarMeta = borgar.getItemMeta();
+        assert borgarMeta != null;
+        borgarMeta.setDisplayName("§fBorgar");
+        borgar.setItemMeta(borgarMeta);
+
+        return borgar;
+    }
+
+    public ItemStack getBorgar() {
+        if(borgar == null) {
+            createBorgar();
+        }
+        return borgar;
     }
 
     public ItemStack getLanternRed() {

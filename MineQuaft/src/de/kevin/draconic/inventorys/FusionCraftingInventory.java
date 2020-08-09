@@ -1,5 +1,6 @@
 package de.kevin.draconic.inventorys;
 
+import de.kevin.draconic.advancements.SaveAdvancements;
 import de.kevin.draconic.items.ItemStackFactory;
 import de.kevin.draconic.main.Main;
 import org.bukkit.Bukkit;
@@ -125,20 +126,27 @@ public class FusionCraftingInventory implements Listener {
 
 	@EventHandler
 	public void openInventory(PlayerInteractEvent event) {
+		Player player = event.getPlayer();
 		if(event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
-			if(Objects.requireNonNull(event.getClickedBlock()).getType() != null
-					&& event.getClickedBlock().getType().equals(Material.SMOKER)) {
-				List<Entity> armorstand = event.getClickedBlock().getWorld().getEntities();
-				double blockX = event.getClickedBlock().getX() + 0.5;
-				double blockZ = event.getClickedBlock().getZ() + 0.5;
-				double blockY = event.getClickedBlock().getY() + 0.3;
-				for(Entity e : armorstand) {
+				if(//Objects.requireNonNull(event.getClickedBlock()).getType() != null
+						 event.getClickedBlock().getType().equals(Material.SMOKER)) {
+					if(SaveAdvancements.Config.getBoolean(player.getName() + ".Advancements.draconicTimes")) {
+
+						List<Entity> armorstand = event.getClickedBlock().getWorld().getEntities();
+					double blockX = event.getClickedBlock().getX() + 0.5;
+					double blockZ = event.getClickedBlock().getZ() + 0.5;
+					double blockY = event.getClickedBlock().getY() + 0.3;
+					for(Entity e : armorstand) {
 						if(e.getLocation().getX() == blockX
 								&& e.getLocation().getY() == blockY
 								&& e.getLocation().getZ() == blockZ){
-							Bukkit.getScheduler().runTaskLater(Main.getPlugin(), () -> createFusionCraftingInventory(event.getPlayer()), 1);
+							Bukkit.getScheduler().runTaskLater(Main.getPlugin(), () -> createFusionCraftingInventory(player), 1);
+						}
 					}
-				}
+				} else {
+						event.setCancelled(true);
+						event.getPlayer().sendMessage("§cIt seems like you don't have the knowledge to use this table...");
+					}
 			}
 		}
 	}
@@ -170,11 +178,9 @@ public class FusionCraftingInventory implements Listener {
 	public void noTakingItems(InventoryClickEvent event) {
 		if(event.getClickedInventory() != null) {
 			if(event.getClickedInventory().equals(fusionCraftingInventory)) {
-				Bukkit.getServer().getScheduler().runTaskLater(Main.getPlugin(), () -> {
-					if(event.getWhoClicked().getOpenInventory().getItem(40) == null) {
-						event.getWhoClicked().getOpenInventory().setItem(40, resultBarrier);
-					}
-				}, 1);
+				if(event.getWhoClicked().getOpenInventory().getItem(40) == null) {
+					event.getWhoClicked().getOpenInventory().setItem(40, resultBarrier);
+				}
 			}
 		}
 		

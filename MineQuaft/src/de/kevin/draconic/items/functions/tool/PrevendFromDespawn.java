@@ -1,4 +1,4 @@
-package de.kevin.draconic.items.functions;
+package de.kevin.draconic.items.functions.tool;
 
 import de.kevin.draconic.items.ItemStackFactory;
 import de.kevin.draconic.items.ToolFactory;
