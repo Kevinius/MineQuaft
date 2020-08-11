@@ -43,7 +43,7 @@ public class CompressedEndstoneRecipe implements Listener {
                     && playerInventory.getItem(22) != null
                     && playerInventory.getItem(27) != null
                     && playerInventory.getItem(28) != null
-                    && playerInventory.getItem(39) != null
+                    && playerInventory.getItem(29) != null
                     && playerInventory.getItem(30) != null
                     && playerInventory.getItem(31) != null
                     && playerInventory.getItem(36) != null
@@ -108,35 +108,35 @@ public class CompressedEndstoneRecipe implements Listener {
 
                                 for(int i = 0; i < 45; i++) {
                                     if(event.getCurrentItem() != null && event.getCurrentItem().isSimilar(compressedEndstone)) {
-                                        if(i > 26 && i < 32) {
-                                            Bukkit.broadcastMessage("-4");
-                                            int amount = Objects.requireNonNull(playerInventory.getItem(i)).getAmount();
-                                            Objects.requireNonNull(playerInventory.getItem(i)).setAmount(amount - 64);
-                                        }
-                                        if(i > 35 && i < 41) {
-                                            Bukkit.broadcastMessage("-5");
-                                            int amount = Objects.requireNonNull(playerInventory.getItem(i)).getAmount();
-                                            Objects.requireNonNull(playerInventory.getItem(i)).setAmount(amount - 64);
-                                        }
                                         if(i < 5) {
-                                            Bukkit.broadcastMessage("-1");
                                             int amount = Objects.requireNonNull(playerInventory.getItem(i)).getAmount();
                                             Objects.requireNonNull(playerInventory.getItem(i)).setAmount(amount - 64);
                                         }
                                         if(i > 8 && i < 14) {
-                                            Bukkit.broadcastMessage("-2");
                                             int amount = Objects.requireNonNull(playerInventory.getItem(i)).getAmount();
                                             Objects.requireNonNull(playerInventory.getItem(i)).setAmount(amount - 64);
                                         }
                                         if(i > 17 && i < 23) {
-                                            Bukkit.broadcastMessage("-3");
                                             int amount = Objects.requireNonNull(playerInventory.getItem(i)).getAmount();
                                             Objects.requireNonNull(playerInventory.getItem(i)).setAmount(amount - 64);
+                                        }
+                                        if(i > 26 && i < 32) {
+                                            int amount = Objects.requireNonNull(playerInventory.getItem(i)).getAmount();
+                                            Objects.requireNonNull(playerInventory.getItem(i)).setAmount(amount - 64);
+                                        }
+                                        if(i > 35 && i < 41) {
+                                            int amount = Objects.requireNonNull(playerInventory.getItem(i)).getAmount();
+                                            Objects.requireNonNull(playerInventory.getItem(i)).setAmount(amount - 64);
+                                        }
+                                        if(i > 41) {
+                                            playerInventory.setItem(25, resultBarrier);
                                         }
                                     }
                                 }
                             }
                         }
+                    } else {
+                        playerInventory.setItem(25, resultBarrier);
                     }
                 }, 1);
             }

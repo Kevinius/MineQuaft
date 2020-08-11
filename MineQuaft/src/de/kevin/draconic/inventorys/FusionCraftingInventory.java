@@ -129,7 +129,7 @@ public class FusionCraftingInventory implements Listener {
 		Player player = event.getPlayer();
 		if(event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
 				if(//Objects.requireNonNull(event.getClickedBlock()).getType() != null
-						 event.getClickedBlock().getType().equals(Material.SMOKER)) {
+						 Objects.requireNonNull(event.getClickedBlock()).getType().equals(Material.SMOKER)) {
 					if(SaveAdvancements.Config.getBoolean(player.getName() + ".Advancements.draconicTimes")) {
 
 						List<Entity> armorstand = event.getClickedBlock().getWorld().getEntities();

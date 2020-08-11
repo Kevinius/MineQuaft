@@ -24,6 +24,8 @@ public class ItemStackFactory {
     private ItemStack fusionQuaftingTable;
     private ItemStack xtremeQuaftingTable;
     private ItemStack borgar;
+    private ItemStack sushi;
+    private ItemStack donut;
 
     private ItemStackFactory(){}
 
@@ -276,12 +278,30 @@ public class ItemStackFactory {
         return xtremeQuaftingTable;
     }
 
+    private ItemStack createSushi() {
+        sushi = new ItemStack(Material.COOKED_SALMON);
+
+        ItemMeta sushiMeta = sushi.getItemMeta();
+        assert sushiMeta != null;
+        sushiMeta.setDisplayName("§fSushi");
+        sushi.setItemMeta(sushiMeta);
+
+        return sushi;
+    }
+
+    public ItemStack getSushi() {
+        if(sushi == null) {
+            createSushi();
+        }
+        return sushi;
+    }
+
     private ItemStack createBorgar() {
         borgar = new ItemStack(Material.COOKED_BEEF);
 
         ItemMeta borgarMeta = borgar.getItemMeta();
         assert borgarMeta != null;
-        borgarMeta.setDisplayName("§fBorgar");
+        borgarMeta.setDisplayName("§fbigmoc");
         borgar.setItemMeta(borgarMeta);
 
         return borgar;
@@ -292,6 +312,24 @@ public class ItemStackFactory {
             createBorgar();
         }
         return borgar;
+    }
+
+    private ItemStack createDonut() {
+        donut = new ItemStack(Material.PUMPKIN_PIE);
+
+        ItemMeta donutMeta = donut.getItemMeta();
+        assert donutMeta != null;
+        donutMeta.setDisplayName("§fDonut");
+        donut.setItemMeta(donutMeta);
+
+        return donut;
+    }
+
+    public ItemStack getDonut() {
+        if(donut == null) {
+            createDonut();
+        }
+        return donut;
     }
 
     public ItemStack getLanternRed() {

@@ -16,16 +16,17 @@ public class BorgarRecipe {
 
     public void createBorgarRecipe() {
 
-        ShapedRecipe blackStoneRecipe = new ShapedRecipe(key, borgar);
+        ShapedRecipe borgarRecipe = new ShapedRecipe(key, borgar);
 
-        blackStoneRecipe.shape("BBB",
-                               "SSS",
-                               "BBB");
+        borgarRecipe.shape("*B*",
+                           "*S*",
+                           "*B*");
 
-        blackStoneRecipe.setIngredient('S', Material.COOKED_BEEF);
-        blackStoneRecipe.setIngredient('B', Material.BREAD);
+        borgarRecipe.setIngredient('S', Material.COOKED_BEEF);
+        borgarRecipe.setIngredient('B', Material.BREAD);
+        borgarRecipe.setIngredient('*', Material.AIR);
 
-        Bukkit.addRecipe(blackStoneRecipe);
+        Bukkit.addRecipe(borgarRecipe);
 
     }
 
