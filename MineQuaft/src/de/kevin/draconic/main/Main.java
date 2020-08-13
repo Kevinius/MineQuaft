@@ -2,8 +2,8 @@ package de.kevin.draconic.main;
 
 import de.kevin.draconic.advancements.AdvancementListener;
 import de.kevin.draconic.advancements.SaveAdvancements;
-import de.kevin.draconic.blocks.blockPlace.PlaceFusionQuaftingTable;
-import de.kevin.draconic.blocks.blockPlace.PlaceXtremeQuaftingTable;
+import de.kevin.draconic.blocks.functions.FusionQuaftingTableFunctions;
+import de.kevin.draconic.blocks.functions.XtremeQuaftingTableFunctions;
 import de.kevin.draconic.commands.GiveCommand;
 import de.kevin.draconic.inventorys.FusionCraftingInventory;
 import de.kevin.draconic.inventorys.XtremeCraftingInventory;
@@ -57,8 +57,8 @@ public class Main extends JavaPlugin implements Listener {
 		pluginManager.registerEvents(new XtremeCraftingInventory(), this);
 		pluginManager.registerEvents(new XtremeQuaftingTabletRecipe(), this);
 		pluginManager.registerEvents(new CompressedEndstoneRecipe(), this);
-		pluginManager.registerEvents(new PlaceFusionQuaftingTable(), this);
-		pluginManager.registerEvents(new PlaceXtremeQuaftingTable(), this);
+		pluginManager.registerEvents(new FusionQuaftingTableFunctions(), this);
+		pluginManager.registerEvents(new XtremeQuaftingTableFunctions(), this);
 		pluginManager.registerEvents(new AdvancementListener(), this);
 		pluginManager.registerEvents(new DragonEggRecipe(), this);
 		pluginManager.registerEvents(new Food(), this);

@@ -1,4 +1,4 @@
-package de.kevin.draconic.blocks.blockPlace;
+package de.kevin.draconic.blocks.functions;
 
 import de.kevin.draconic.blocks.entitys.EntityFactory;
 import org.bukkit.Material;
@@ -9,11 +9,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
-public class PlaceFusionQuaftingTable implements Listener {
+public class FusionQuaftingTableFunctions implements Listener {
 
     @EventHandler
     public void placeFusionQuaftingTable(BlockPlaceEvent event) {
