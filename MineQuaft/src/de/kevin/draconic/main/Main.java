@@ -7,8 +7,9 @@ import de.kevin.draconic.blocks.functions.XtremeQuaftingTableFunctions;
 import de.kevin.draconic.commands.GiveCommand;
 import de.kevin.draconic.inventorys.FusionCraftingInventory;
 import de.kevin.draconic.inventorys.XtremeCraftingInventory;
+import de.kevin.draconic.items.ToolFactory;
 import de.kevin.draconic.items.functions.food.Food;
-import de.kevin.draconic.items.functions.tool.PrevendFromDespawn;
+import de.kevin.draconic.items.functions.tool.PreventDestroying;
 import de.kevin.draconic.mobdrops.DragonDrop;
 import de.kevin.draconic.recipes.craftingTableRecipes.*;
 import de.kevin.draconic.recipes.craftingTableRecipes.SushiRecipe;
@@ -20,6 +21,7 @@ import de.kevin.draconic.recipes.xtremeCrafting.ElytraRecipe;
 import de.kevin.draconic.recipes.xtremeCrafting.ShulkerShellRecipe;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -33,27 +35,30 @@ import java.util.Objects;
  */
 
 public class Main extends JavaPlugin implements Listener {
+
 	private static Main plugin;
 
 	public void onEnable() {
 		plugin = this;
-
+		
 		PluginManager pluginManager = Bukkit.getPluginManager();
 
 		//Recipes
-		new DragonScalePieceRecipe().createDragonScalePieceRecipe();
 		new DragonScaleRecipe().createDragonScaleRecipe();
 		new BlackStoneRecipe().createBlackStoneRecipe();
 		new BorgarRecipe().createBorgarRecipe();
 		new SushiRecipe().createSalmonSushiRecipe();
 		new SushiRecipe().createCodSushiRecipe();
 		new DonutRecipe().createDonutRecipe();
+		new FusionQuaftingTableRecipe().fusionQuaftingTableResult();
 
 		//Events
 		pluginManager.registerEvents(new DragonDrop(), this);
+		pluginManager.registerEvents(new DragonScalePieceRecipe(), this);
+		pluginManager.registerEvents(new FusionQuaftingTableRecipe(), this);
 		pluginManager.registerEvents(new FusionCraftingInventory(), this);
 		pluginManager.registerEvents(new EndiriumRecipe(), this);
-		pluginManager.registerEvents(new PrevendFromDespawn(), this);
+		pluginManager.registerEvents(new PreventDestroying(), this);
 		pluginManager.registerEvents(new XtremeCraftingInventory(), this);
 		pluginManager.registerEvents(new XtremeQuaftingTabletRecipe(), this);
 		pluginManager.registerEvents(new CompressedEndstoneRecipe(), this);

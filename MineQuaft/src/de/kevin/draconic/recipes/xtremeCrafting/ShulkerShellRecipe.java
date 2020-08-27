@@ -15,7 +15,7 @@ import java.util.Objects;
 
 public class ShulkerShellRecipe implements Listener {
 
-    ItemStack dragonScale = ItemStackFactory.getInstance().createDragonScale(1);
+    ItemStack dragonScale = ItemStackFactory.getInstance().createDragonScale();
     ItemStack resultBarrier = ItemStackFactory.getInstance().getResultBarrier();
     ItemStack chorusFruit = new ItemStack(Material.CHORUS_FRUIT);
     ItemStack blazeRod = new ItemStack(Material.BLAZE_ROD);

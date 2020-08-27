@@ -178,9 +178,11 @@ public class FusionCraftingInventory implements Listener {
 	public void noTakingItems(InventoryClickEvent event) {
 		if(event.getClickedInventory() != null) {
 			if(event.getClickedInventory().equals(fusionCraftingInventory)) {
-				if(event.getWhoClicked().getOpenInventory().getItem(40) == null) {
-					event.getWhoClicked().getOpenInventory().setItem(40, resultBarrier);
-				}
+				Bukkit.getScheduler().runTaskLater(Main.getPlugin(), () -> {
+					if(event.getWhoClicked().getOpenInventory().getItem(40) == null) {
+						event.getWhoClicked().getOpenInventory().setItem(40, resultBarrier);
+					}
+				}, 1);
 			}
 		}
 		
@@ -204,7 +206,7 @@ public class FusionCraftingInventory implements Listener {
 						|| event.isRightClick() && event.getCurrentItem().isSimilar(confirmItem)
 						|| event.isLeftClick() && event.getCurrentItem().isSimilar(confirmItem)
 						
-						|| event.getClick().equals(ClickType.DROP)) {
+						|| event.getClick().isKeyboardClick()) {
 							event.setCancelled(true);
 					}
 				}

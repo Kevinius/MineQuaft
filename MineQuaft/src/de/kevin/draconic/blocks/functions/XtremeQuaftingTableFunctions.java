@@ -3,8 +3,6 @@ package de.kevin.draconic.blocks.functions;
 import de.kevin.draconic.blocks.entitys.EntityFactory;
 import de.kevin.draconic.items.ItemStackFactory;
 import de.kevin.draconic.main.Main;
-import net.minecraft.server.v1_16_R1.DoubleBlockFinder;
-import net.minecraft.server.v1_16_R1.PistonExtendsChecker;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -52,12 +50,9 @@ public class XtremeQuaftingTableFunctions implements Listener {
                     if(event.getPlayer().getGameMode().equals(GameMode.SURVIVAL)) {
                         event.setCancelled(true);
                         Objects.requireNonNull(event.getBlock().getLocation().getWorld()).dropItemNaturally(event.getBlock().getLocation(), xtremeQuaftingTable);
-                        Bukkit.getScheduler().runTaskLater(Main.getPlugin(), new Runnable() {
-                            @Override
-                            public void run() {
-                                if(event.isCancelled()) {
-                                    event.getBlock().getLocation().getBlock().setType(Material.AIR);
-                                }
+                        Bukkit.getScheduler().runTaskLater(Main.getPlugin(), () -> {
+                            if(event.isCancelled()) {
+                                event.getBlock().getLocation().getBlock().setType(Material.AIR);
                             }
                         }, 1);
                     }
@@ -69,9 +64,6 @@ public class XtremeQuaftingTableFunctions implements Listener {
     @EventHandler
     public void onMovePiston(BlockPistonExtendEvent event) {
         for(Block block : event.getBlocks()) {
-            double locationX = event.getBlock().getX() + 0.5;
-            double locationZ = event.getBlock().getZ() + 0.5;
-            double locationY = event.getBlock().getY() + 0.3;
             if(block.getType().equals(Material.CRAFTING_TABLE)) {
                 event.setCancelled(true);
             }
@@ -80,9 +72,6 @@ public class XtremeQuaftingTableFunctions implements Listener {
     @EventHandler
     public void onRetractPiston(BlockPistonRetractEvent event) {
         for(Block block : event.getBlocks()) {
-            double locationX = event.getBlock().getX() + 0.5;
-            double locationZ = event.getBlock().getZ() + 0.5;
-            double locationY = event.getBlock().getY() + 0.3;
             if(block.getType().equals(Material.CRAFTING_TABLE)) {
                 event.setCancelled(true);
             }

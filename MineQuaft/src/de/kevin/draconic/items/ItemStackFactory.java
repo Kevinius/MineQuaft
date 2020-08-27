@@ -23,7 +23,7 @@ public class ItemStackFactory {
     private ItemStack compressedEndstone;
     private ItemStack fusionQuaftingTable;
     private ItemStack xtremeQuaftingTable;
-    private ItemStack borgar;
+    private ItemStack bigmoq;
     private ItemStack sushi;
     private ItemStack donut;
 
@@ -55,16 +55,15 @@ public class ItemStackFactory {
         return endirium;
     }
 
-    public ItemStack createDragonScale(int amount) {
+    public ItemStack createDragonScale() {
 
-        ItemStack dragonScale = new ItemStack(Material.COMMAND_BLOCK, amount);
+        ItemStack dragonScale = new ItemStack(Material.COMMAND_BLOCK);
 
         ItemMeta dragonScaleMeta = dragonScale.getItemMeta();
         assert dragonScaleMeta != null;
         dragonScaleMeta.setDisplayName("§dDragon Scale");
 		dragonScaleMeta.addEnchant(Enchantment.KNOCKBACK, 1, true);
 		dragonScaleMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-		dragonScaleMeta.setCustomModelData(123456);
 		dragonScale.setItemMeta(dragonScaleMeta);
 
 		return dragonScale;
@@ -296,22 +295,22 @@ public class ItemStackFactory {
         return sushi;
     }
 
-    private ItemStack createBorgar() {
-        borgar = new ItemStack(Material.COOKED_BEEF);
+    private ItemStack createBigMoq() {
+        bigmoq = new ItemStack(Material.COOKED_BEEF);
 
-        ItemMeta borgarMeta = borgar.getItemMeta();
-        assert borgarMeta != null;
-        borgarMeta.setDisplayName("§fbigmoc");
-        borgar.setItemMeta(borgarMeta);
+        ItemMeta bigmoqMeta = bigmoq.getItemMeta();
+        assert bigmoqMeta != null;
+        bigmoqMeta.setDisplayName("§fBig MoQ");
+        bigmoq.setItemMeta(bigmoqMeta);
 
-        return borgar;
+        return bigmoq;
     }
 
-    public ItemStack getBorgar() {
-        if(borgar == null) {
-            createBorgar();
+    public ItemStack getBigMoq() {
+        if(bigmoq == null) {
+            createBigMoq();
         }
-        return borgar;
+        return bigmoq;
     }
 
     private ItemStack createDonut() {

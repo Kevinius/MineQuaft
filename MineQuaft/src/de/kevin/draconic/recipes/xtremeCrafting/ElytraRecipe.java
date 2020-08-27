@@ -15,7 +15,7 @@ import java.util.Objects;
 
 public class ElytraRecipe implements Listener {
 
-    ItemStack dragonScale = ItemStackFactory.getInstance().createDragonScale(1);
+    ItemStack dragonScale = ItemStackFactory.getInstance().createDragonScale();
     ItemStack resultBarrier = ItemStackFactory.getInstance().getResultBarrier();
     ItemStack phantomMembrane = new ItemStack(Material.PHANTOM_MEMBRANE);
     ItemStack feather = new ItemStack(Material.FEATHER);

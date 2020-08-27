@@ -143,7 +143,7 @@ public class XtremeCraftingInventory implements Listener {
                             || event.isRightClick() && event.getCurrentItem().isSimilar(loadLightBlue)
                             || event.isLeftClick() && event.getCurrentItem().isSimilar(loadLightBlue)
 
-                            || event.getClick().equals(ClickType.DROP)) {
+                            || event.getClick().isKeyboardClick()) {
                         event.setCancelled(true);
                     }
                 }

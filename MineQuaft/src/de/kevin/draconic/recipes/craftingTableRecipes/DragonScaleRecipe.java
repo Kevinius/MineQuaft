@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapedRecipe;
 
 public class DragonScaleRecipe {
 
-    ItemStack dragonScale = ItemStackFactory.getInstance().createDragonScale(1);
+    ItemStack dragonScale = ItemStackFactory.getInstance().createDragonScale();
     NamespacedKey key = new NamespacedKey(Main.getPlugin(), "DragonScaleRecipe");
 
     public void createDragonScaleRecipe() {

@@ -12,7 +12,7 @@ public class BorgarRecipe {
 
     NamespacedKey key = new NamespacedKey(Main.getPlugin(), "BorgarRecipe");
 
-    ItemStack borgar = ItemStackFactory.getInstance().getBorgar();
+    ItemStack borgar = ItemStackFactory.getInstance().getBigMoq();
 
     public void createBorgarRecipe() {
 

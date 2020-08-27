@@ -1,26 +1,40 @@
 package de.kevin.draconic.recipes.craftingTableRecipes;
 
-import de.kevin.draconic.items.ItemStackFactory;
-import de.kevin.draconic.main.Main;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.ShapelessRecipe;
+import org.bukkit.event.Listener;
 
-public class DragonScalePieceRecipe {
+public class DragonScalePieceRecipe implements Listener {
 
+/*
     ItemStack dragonScalePiece = ItemStackFactory.getInstance().getDragonScalePiece();
-    NamespacedKey key = new NamespacedKey(Main.getPlugin(), "DragonScalePieceRecipe");
+    ItemStack dragonScale = ItemStackFactory.getInstance().createDragonScale();
 
-    public void createDragonScalePieceRecipe() {
+    @EventHandler
+    public void onPlayerCraftItem1(PrepareItemCraftEvent event) {
 
-        ShapelessRecipe dragonScalePieceRecipe = new ShapelessRecipe(key, dragonScalePiece);
-
-        dragonScalePieceRecipe.addIngredient(Material.COMMAND_BLOCK);
-
-        Bukkit.addRecipe(dragonScalePieceRecipe);
+        checkCraft(dragonScalePiece, event.getInventory(), new HashMap<Integer, ItemStack>() {{
+            put(0, dragonScale);
+        }});
     }
+
+    private void checkCraft(ItemStack result, CraftingInventory inventory, HashMap<Integer, ItemStack> ingredients) {
+        ItemStack[] matrix = inventory.getMatrix();
+        for(int i = 0; i < 9; i++) {
+            if(ingredients.containsKey(i)) {
+                if(matrix[i] == null) {
+                    assert matrix[i] != null;
+                    if (!matrix[i].equals(ingredients.get(i))) {
+                        return;
+                    }
+                }
+            } else {
+                if(matrix[i] != null) {
+                    return;
+                }
+            }
+        }
+        inventory.setResult(result);
+    }
+*/
 }
 
 

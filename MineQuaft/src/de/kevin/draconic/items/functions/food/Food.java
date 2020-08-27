@@ -10,7 +10,7 @@ import org.bukkit.potion.PotionEffectType;
 
 public class Food implements Listener {
 
-    ItemStack borgar = ItemStackFactory.getInstance().getBorgar();
+    ItemStack borgar = ItemStackFactory.getInstance().getBigMoq();
     ItemStack sushi = ItemStackFactory.getInstance().getSushi();
     ItemStack donut = ItemStackFactory.getInstance().getDonut();
 

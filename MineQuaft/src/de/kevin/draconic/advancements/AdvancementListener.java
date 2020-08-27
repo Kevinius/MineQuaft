@@ -20,7 +20,7 @@ public class AdvancementListener implements Listener {
 
     private Advancement root, draconicTimes, upgradesPeople;
 
-    ItemStack dragonscale = ItemStackFactory.getInstance().createDragonScale(1);
+    ItemStack dragonscale = ItemStackFactory.getInstance().createDragonScale();
     ItemStack endirium = ItemStackFactory.getInstance().getEndirium();
 
     public AdvancementListener() {
@@ -36,7 +36,7 @@ public class AdvancementListener implements Listener {
         draconicTimes = new Advancement(root, new NameKey("MineQuaft", "draconicTimes"), draconicTimesDisplay);
 
         AdvancementDisplay upgradesPeopleDisplay = new AdvancementDisplay(Material.CRAFTING_TABLE, "Upgrades people, upgrades!", "Craft a Xtreme Quafting table", AdvancementDisplay.AdvancementFrame.GOAL, false, false, AdvancementVisibility.ALWAYS);
-        upgradesPeopleDisplay.setCoordinates(2, 0);
+        upgradesPeopleDisplay.setCoordinates(2, -1);
         upgradesPeople = new Advancement(draconicTimes, new NameKey("MineQuaft", "upgradesPeople"), upgradesPeopleDisplay);
 
         manager.addAdvancement(root, draconicTimes, upgradesPeople);
@@ -67,15 +67,17 @@ public class AdvancementListener implements Listener {
         Player player = (Player) event.getEntity();
 
         Bukkit.getScheduler().runTaskLater(Main.getPlugin(), () -> {
-            if(event.getItem().getItemStack().isSimilar(dragonscale)) {
-                if(manager.getCriteriaProgress(player, draconicTimes) < draconicTimes.getCriteria()) {
-                    manager.grantAdvancement(player, draconicTimes);
-                    draconicTimes.displayToast(player);
-                    manager.saveProgress(player, "MineQuaft");
-                    try {
-                        SaveAdvancements.setDraconicTimes(player, true);
-                    } catch (Exception exception) {
-                        exception.printStackTrace();
+            if(event.getEntity() instanceof Player) {
+                if(event.getItem().getItemStack().isSimilar(dragonscale)) {
+                    if(manager.getCriteriaProgress(player, draconicTimes) < draconicTimes.getCriteria()) {
+                        manager.grantAdvancement(player, draconicTimes);
+                        draconicTimes.displayToast(player);
+                        manager.saveProgress(player, "MineQuaft");
+                        try {
+                            SaveAdvancements.setDraconicTimes(player, true);
+                        } catch (Exception exception) {
+                            exception.printStackTrace();
+                        }
                     }
                 }
             }
