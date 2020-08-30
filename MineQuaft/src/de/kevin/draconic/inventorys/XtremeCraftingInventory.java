@@ -5,16 +5,12 @@ import de.kevin.draconic.main.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
-import org.bukkit.block.Furnace;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.HumanEntity;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.inventory.ClickType;
+import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -22,7 +18,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -94,8 +89,7 @@ public class XtremeCraftingInventory implements Listener {
     @EventHandler
     public void openInventory(PlayerInteractEvent event) {
         if(event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
-            if(Objects.requireNonNull(event.getClickedBlock()).getType() != null
-                    && event.getClickedBlock().getType().equals(Material.CRAFTING_TABLE)) {
+            if(Objects.requireNonNull(event.getClickedBlock()).getType().equals(Material.CRAFTING_TABLE)) {
                 List<Entity> armorstand = event.getClickedBlock().getWorld().getEntities();
                 double blockX = event.getClickedBlock().getX() + 0.5;
                 double blockZ = event.getClickedBlock().getZ() + 0.5;
@@ -168,11 +162,5 @@ public class XtremeCraftingInventory implements Listener {
                 }
             }
         }
-    }
-
-    //======================== GETTER & SETTER ===========================
-
-    public Inventory getXtremeCraftingInventory() {
-        return xtremeCraftingInventory;
     }
 }

@@ -1,4 +1,4 @@
-package de.kevin.draconic.recipes.xtremeCrafting;
+package de.kevin.draconic.recipes.xtremeQaftingRecipes;
 
 import de.kevin.draconic.items.ItemStackFactory;
 import de.kevin.draconic.main.Main;
@@ -12,15 +12,15 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.Objects;
 
-public class CompressedEndstoneRecipe implements Listener {
+public class EndstoneClusterRecipe implements Listener {
 
-    ItemStack compressedEndstone = ItemStackFactory.getInstance().getCompressedEndstone();
-    ItemStack resultBarrier = ItemStackFactory.getInstance().getResultBarrier();
-    ItemStack endstone = new ItemStack(Material.END_STONE);
+    private final ItemStack compressedEndstone = ItemStackFactory.getInstance().getEndstoneCluster();
+    private final ItemStack resultBarrier = ItemStackFactory.getInstance().getResultBarrier();
+    private final ItemStack endstone = new ItemStack(Material.END_STONE);
 
 
     @EventHandler
-    public void compressedEndstoneResult(InventoryClickEvent event) {
+    public void endstoneClusterResult(InventoryClickEvent event) {
         if(event.getView().getTitle().equals("§3Xtreme Quafting")) {
             if(event.isRightClick() && event.getRawSlot() < 45 || event.isLeftClick() && event.getRawSlot() < 45 || event.isShiftClick() && event.getRawSlot() > 45) {
                 Bukkit.getScheduler().runTaskLater(Main.getPlugin(), () -> {

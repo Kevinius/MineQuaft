@@ -30,6 +30,7 @@ public class ToolFactory extends ItemStack{
         ItemMeta endiriumPickaxeMeta = endiriumPickaxe.getItemMeta();
         assert endiriumPickaxeMeta != null;
         endiriumPickaxeMeta.setDisplayName("§6Endirium Pickaxe");
+        endiriumPickaxeMeta.setCustomModelData(101001);
         endiriumPickaxe.setItemMeta(endiriumPickaxeMeta);
     }
 
@@ -47,6 +48,7 @@ public class ToolFactory extends ItemStack{
         ItemMeta endiriumSwordMeta = endiriumSword.getItemMeta();
         assert endiriumSwordMeta != null;
         endiriumSwordMeta.setDisplayName("§6Endirium Sword");
+        endiriumSwordMeta.setCustomModelData(101002);
         endiriumSword.setItemMeta(endiriumSwordMeta);
     }
 
@@ -63,6 +65,7 @@ public class ToolFactory extends ItemStack{
         ItemMeta endiriumAxeMeta = endiriumAxe.getItemMeta();
         assert endiriumAxeMeta != null;
         endiriumAxeMeta.setDisplayName("§6Endirium Axe");
+        endiriumAxeMeta.setCustomModelData(101003);
         endiriumAxe.setItemMeta(endiriumAxeMeta);
     }
 
@@ -79,6 +82,7 @@ public class ToolFactory extends ItemStack{
         ItemMeta endiriumShovelMeta = endiriumShovel.getItemMeta();
         assert endiriumShovelMeta != null;
         endiriumShovelMeta.setDisplayName("§6Endirium Shovel");
+        endiriumShovelMeta.setCustomModelData(101004);
         endiriumShovel.setItemMeta(endiriumShovelMeta);
     }
 
@@ -95,6 +99,7 @@ public class ToolFactory extends ItemStack{
         ItemMeta endiriumHoeMeta = endiriumHoe.getItemMeta();
         assert endiriumHoeMeta != null;
         endiriumHoeMeta.setDisplayName("§6Endirium Hoe");
+        endiriumHoeMeta.setCustomModelData(101005);
         endiriumHoe.setItemMeta(endiriumHoeMeta);
     }
 

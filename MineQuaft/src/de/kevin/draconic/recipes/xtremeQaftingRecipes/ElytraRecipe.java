@@ -1,4 +1,4 @@
-package de.kevin.draconic.recipes.xtremeCrafting;
+package de.kevin.draconic.recipes.xtremeQaftingRecipes;
 
 import de.kevin.draconic.items.ItemStackFactory;
 import de.kevin.draconic.main.Main;
@@ -15,12 +15,12 @@ import java.util.Objects;
 
 public class ElytraRecipe implements Listener {
 
-    ItemStack dragonScale = ItemStackFactory.getInstance().createDragonScale();
-    ItemStack resultBarrier = ItemStackFactory.getInstance().getResultBarrier();
-    ItemStack phantomMembrane = new ItemStack(Material.PHANTOM_MEMBRANE);
-    ItemStack feather = new ItemStack(Material.FEATHER);
-    ItemStack dragonEgg = new ItemStack(Material.DRAGON_EGG);
-    ItemStack result = new ItemStack(Material.ELYTRA);
+    private final int dragonScaleData = Objects.requireNonNull(ItemStackFactory.getInstance().getDragonScale().getItemMeta()).getCustomModelData();
+    private final ItemStack resultBarrier = ItemStackFactory.getInstance().getResultBarrier();
+    private final ItemStack phantomMembrane = new ItemStack(Material.PHANTOM_MEMBRANE);
+    private final ItemStack feather = new ItemStack(Material.FEATHER);
+    private final ItemStack dragonEgg = new ItemStack(Material.DRAGON_EGG);
+    private final ItemStack result = new ItemStack(Material.ELYTRA);
 
     @EventHandler
     public void elytraResult(InventoryClickEvent event) {
@@ -50,11 +50,11 @@ public class ElytraRecipe implements Listener {
                             && playerClickInventory.getItem(37) != null
                             && playerClickInventory.getItem(39) != null) {
 
-                        if (Objects.requireNonNull(playerClickInventory.getItem(0)).isSimilar(dragonScale)
-                                && Objects.requireNonNull(playerClickInventory.getItem(1)).isSimilar(dragonScale)
-                                && Objects.requireNonNull(playerClickInventory.getItem(2)).isSimilar(dragonScale)
-                                && Objects.requireNonNull(playerClickInventory.getItem(3)).isSimilar(dragonScale)
-                                && Objects.requireNonNull(playerClickInventory.getItem(4)).isSimilar(dragonScale)
+                        if (Objects.requireNonNull(Objects.requireNonNull(playerClickInventory.getItem(0)).getItemMeta()).getCustomModelData() == dragonScaleData
+                                && Objects.requireNonNull(Objects.requireNonNull(playerClickInventory.getItem(0)).getItemMeta()).getCustomModelData() == dragonScaleData
+                                && Objects.requireNonNull(Objects.requireNonNull(playerClickInventory.getItem(0)).getItemMeta()).getCustomModelData() == dragonScaleData
+                                && Objects.requireNonNull(Objects.requireNonNull(playerClickInventory.getItem(0)).getItemMeta()).getCustomModelData() == dragonScaleData
+                                && Objects.requireNonNull(Objects.requireNonNull(playerClickInventory.getItem(0)).getItemMeta()).getCustomModelData() == dragonScaleData
                                 && Objects.requireNonNull(playerClickInventory.getItem(9)).isSimilar(feather)
                                 && Objects.requireNonNull(playerClickInventory.getItem(10)).isSimilar(phantomMembrane)
                                 && Objects.requireNonNull(playerClickInventory.getItem(11)).isSimilar(dragonEgg)
@@ -153,11 +153,11 @@ public class ElytraRecipe implements Listener {
                         && playerDragInventory.getItem(37) != null
                         && playerDragInventory.getItem(39) != null) {
 
-                    if (Objects.requireNonNull(playerDragInventory.getItem(0)).isSimilar(dragonScale)
-                            && Objects.requireNonNull(playerDragInventory.getItem(1)).isSimilar(dragonScale)
-                            && Objects.requireNonNull(playerDragInventory.getItem(2)).isSimilar(dragonScale)
-                            && Objects.requireNonNull(playerDragInventory.getItem(3)).isSimilar(dragonScale)
-                            && Objects.requireNonNull(playerDragInventory.getItem(4)).isSimilar(dragonScale)
+                    if (Objects.requireNonNull(Objects.requireNonNull(playerDragInventory.getItem(0)).getItemMeta()).getCustomModelData() == dragonScaleData
+                            && Objects.requireNonNull(Objects.requireNonNull(playerDragInventory.getItem(0)).getItemMeta()).getCustomModelData() == dragonScaleData
+                            && Objects.requireNonNull(Objects.requireNonNull(playerDragInventory.getItem(0)).getItemMeta()).getCustomModelData() == dragonScaleData
+                            && Objects.requireNonNull(Objects.requireNonNull(playerDragInventory.getItem(0)).getItemMeta()).getCustomModelData() == dragonScaleData
+                            && Objects.requireNonNull(Objects.requireNonNull(playerDragInventory.getItem(0)).getItemMeta()).getCustomModelData() == dragonScaleData
                             && Objects.requireNonNull(playerDragInventory.getItem(9)).isSimilar(feather)
                             && Objects.requireNonNull(playerDragInventory.getItem(10)).isSimilar(phantomMembrane)
                             && Objects.requireNonNull(playerDragInventory.getItem(11)).isSimilar(dragonEgg)

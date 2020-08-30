@@ -7,21 +7,17 @@ import de.kevin.draconic.blocks.functions.XtremeQuaftingTableFunctions;
 import de.kevin.draconic.commands.GiveCommand;
 import de.kevin.draconic.inventorys.FusionCraftingInventory;
 import de.kevin.draconic.inventorys.XtremeCraftingInventory;
-import de.kevin.draconic.items.ToolFactory;
 import de.kevin.draconic.items.functions.food.Food;
 import de.kevin.draconic.items.functions.tool.PreventDestroying;
 import de.kevin.draconic.mobdrops.DragonDrop;
 import de.kevin.draconic.recipes.craftingTableRecipes.*;
-import de.kevin.draconic.recipes.craftingTableRecipes.SushiRecipe;
-import de.kevin.draconic.recipes.fusionCraftingRecipes.DragonEggRecipe;
-import de.kevin.draconic.recipes.fusionCraftingRecipes.EndiriumRecipe;
-import de.kevin.draconic.recipes.fusionCraftingRecipes.XtremeQuaftingTabletRecipe;
-import de.kevin.draconic.recipes.xtremeCrafting.CompressedEndstoneRecipe;
-import de.kevin.draconic.recipes.xtremeCrafting.ElytraRecipe;
-import de.kevin.draconic.recipes.xtremeCrafting.ShulkerShellRecipe;
+import de.kevin.draconic.recipes.fusionQaftingRecipes.DragonEggRecipe;
+import de.kevin.draconic.recipes.fusionQaftingRecipes.EndiriumRecipe;
+import de.kevin.draconic.recipes.fusionQaftingRecipes.XtremeQuaftingTabletRecipe;
+import de.kevin.draconic.recipes.xtremeQaftingRecipes.EndstoneClusterRecipe;
+import de.kevin.draconic.recipes.xtremeQaftingRecipes.ElytraRecipe;
+import de.kevin.draconic.recipes.xtremeQaftingRecipes.ShulkerShellRecipe;
 import org.bukkit.Bukkit;
-import org.bukkit.event.Listener;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -34,7 +30,7 @@ import java.util.Objects;
  *
  */
 
-public class Main extends JavaPlugin implements Listener {
+public class Main extends JavaPlugin {
 
 	private static Main plugin;
 
@@ -44,7 +40,6 @@ public class Main extends JavaPlugin implements Listener {
 		PluginManager pluginManager = Bukkit.getPluginManager();
 
 		//Recipes
-		new DragonScaleRecipe().createDragonScaleRecipe();
 		new BlackStoneRecipe().createBlackStoneRecipe();
 		new BorgarRecipe().createBorgarRecipe();
 		new SushiRecipe().createSalmonSushiRecipe();
@@ -54,14 +49,13 @@ public class Main extends JavaPlugin implements Listener {
 
 		//Events
 		pluginManager.registerEvents(new DragonDrop(), this);
-		pluginManager.registerEvents(new DragonScalePieceRecipe(), this);
 		pluginManager.registerEvents(new FusionQuaftingTableRecipe(), this);
 		pluginManager.registerEvents(new FusionCraftingInventory(), this);
 		pluginManager.registerEvents(new EndiriumRecipe(), this);
 		pluginManager.registerEvents(new PreventDestroying(), this);
 		pluginManager.registerEvents(new XtremeCraftingInventory(), this);
 		pluginManager.registerEvents(new XtremeQuaftingTabletRecipe(), this);
-		pluginManager.registerEvents(new CompressedEndstoneRecipe(), this);
+		pluginManager.registerEvents(new EndstoneClusterRecipe(), this);
 		pluginManager.registerEvents(new FusionQuaftingTableFunctions(), this);
 		pluginManager.registerEvents(new XtremeQuaftingTableFunctions(), this);
 		pluginManager.registerEvents(new AdvancementListener(), this);

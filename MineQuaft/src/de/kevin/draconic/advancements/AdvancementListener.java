@@ -14,23 +14,25 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.Objects;
+
 public class AdvancementListener implements Listener {
 
-    private AdvancementManager manager;
+    private final AdvancementManager manager;
 
-    private Advancement root, draconicTimes, upgradesPeople;
-
-    ItemStack dragonscale = ItemStackFactory.getInstance().createDragonScale();
-    ItemStack endirium = ItemStackFactory.getInstance().getEndirium();
+    private final Advancement draconicTimes;
+    private final Advancement upgradesPeople;
 
     public AdvancementListener() {
 
         manager = CrazyAdvancements.getNewAdvancementManager();
 
+        ItemStack endirium = ItemStackFactory.getInstance().getEndirium();
         AdvancementDisplay rootDisplay = new AdvancementDisplay(endirium, "MineQuaft-Evolution", "everything about MineQuaft", AdvancementDisplay.AdvancementFrame.TASK, false, false, AdvancementVisibility.ALWAYS);
         rootDisplay.setBackgroundTexture("textures/block/end_stone.png");
-        root = new Advancement(null, new NameKey("MineQuaft", "root"), rootDisplay);
+        Advancement root = new Advancement(null, new NameKey("MineQuaft", "root"), rootDisplay);
 
+        ItemStack dragonscale = ItemStackFactory.getInstance().getDragonScale();
         AdvancementDisplay draconicTimesDisplay = new AdvancementDisplay(dragonscale, "Draconic times", "Pick up the powerful scales of an ender dragon", AdvancementDisplay.AdvancementFrame.GOAL, false, false, AdvancementVisibility.ALWAYS);
         draconicTimesDisplay.setCoordinates(1, 0);
         draconicTimes = new Advancement(root, new NameKey("MineQuaft", "draconicTimes"), draconicTimesDisplay);
@@ -64,11 +66,12 @@ public class AdvancementListener implements Listener {
     @EventHandler
     private void draconicTimesEvent(EntityPickupItemEvent event) {
 
-        Player player = (Player) event.getEntity();
+        int dragonScaleData = Objects.requireNonNull(ItemStackFactory.getInstance().getDragonScale().getItemMeta()).getCustomModelData();
 
         Bukkit.getScheduler().runTaskLater(Main.getPlugin(), () -> {
             if(event.getEntity() instanceof Player) {
-                if(event.getItem().getItemStack().isSimilar(dragonscale)) {
+                Player player = (Player) event.getEntity();
+                if(Objects.requireNonNull(event.getItem().getItemStack().getItemMeta()).getCustomModelData() == dragonScaleData) {
                     if(manager.getCriteriaProgress(player, draconicTimes) < draconicTimes.getCriteria()) {
                         manager.grantAdvancement(player, draconicTimes);
                         draconicTimes.displayToast(player);

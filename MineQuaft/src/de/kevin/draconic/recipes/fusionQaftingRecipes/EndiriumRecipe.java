@@ -1,8 +1,7 @@
-package de.kevin.draconic.recipes.fusionCraftingRecipes;
+package de.kevin.draconic.recipes.fusionQaftingRecipes;
 
 import de.kevin.draconic.items.ItemStackFactory;
 import de.kevin.draconic.inventorys.FusionCraftingInventory;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -17,10 +16,9 @@ import java.util.Objects;
 
 public class EndiriumRecipe implements Listener{
 	
-	ItemStack dragonScale = ItemStackFactory.getInstance().createDragonScale();
-	ItemStack compressedEndstone = ItemStackFactory.getInstance().getCompressedEndstone();
-	ItemStack dragonEgg = new ItemStack(Material.DRAGON_EGG);
-	ItemStack netherStar = new ItemStack(Material.NETHER_STAR);
+	private final int endstoneClusterData = Objects.requireNonNull(ItemStackFactory.getInstance().getEndstoneCluster().getItemMeta()).getCustomModelData();
+	private final ItemStack dragonEgg = new ItemStack(Material.DRAGON_EGG);
+	private final ItemStack netherStar = new ItemStack(Material.NETHER_STAR);
 
 	FusionCraftingInventory fusionCraftingInventory = new FusionCraftingInventory();
 	
@@ -46,15 +44,15 @@ public class EndiriumRecipe implements Listener{
 							&& playerInventory.getItem(37) != null
 							&& playerInventory.getItem(43) != null) {
 
-						if(Objects.requireNonNull(playerInventory.getItem(10)).isSimilar(dragonEgg)
+						if(Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(10)).getItemMeta()).getCustomModelData() == endstoneClusterData
 								&& Objects.requireNonNull(playerInventory.getItem(13)).isSimilar(new ItemStack(Material.IRON_INGOT))
-								&& Objects.requireNonNull(playerInventory.getItem(16)).isSimilar(dragonEgg)
-								&& Objects.requireNonNull(playerInventory.getItem(19)).isSimilar(compressedEndstone)
-								&& Objects.requireNonNull(playerInventory.getItem(25)).isSimilar(compressedEndstone)
+								&& Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(10)).getItemMeta()).getCustomModelData() == endstoneClusterData
+								&& Objects.requireNonNull(playerInventory.getItem(19)).isSimilar(dragonEgg)
+								&& Objects.requireNonNull(playerInventory.getItem(25)).isSimilar(dragonEgg)
 								&& Objects.requireNonNull(playerInventory.getItem(28)).isSimilar(netherStar)
 								&& Objects.requireNonNull(playerInventory.getItem(34)).isSimilar(netherStar)
-								&& Objects.requireNonNull(playerInventory.getItem(37)).isSimilar(dragonScale)
-								&& Objects.requireNonNull(playerInventory.getItem(43)).isSimilar(dragonScale)) {
+								&& Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(10)).getItemMeta()).getCustomModelData() == endstoneClusterData
+								&& Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(10)).getItemMeta()).getCustomModelData() == endstoneClusterData) {
 
 							int resultamount = Objects.requireNonNull(event.getInventory().getItem(40)).getAmount();
 

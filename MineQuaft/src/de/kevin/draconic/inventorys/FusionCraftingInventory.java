@@ -10,7 +10,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -128,25 +127,23 @@ public class FusionCraftingInventory implements Listener {
 	public void openInventory(PlayerInteractEvent event) {
 		Player player = event.getPlayer();
 		if(event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
-				if(//Objects.requireNonNull(event.getClickedBlock()).getType() != null
-						 Objects.requireNonNull(event.getClickedBlock()).getType().equals(Material.SMOKER)) {
-					if(SaveAdvancements.Config.getBoolean(player.getName() + ".Advancements.draconicTimes")) {
-
-						List<Entity> armorstand = event.getClickedBlock().getWorld().getEntities();
+				if(Objects.requireNonNull(event.getClickedBlock()).getType().equals(Material.SMOKER)) {
+					List<Entity> armorstand = event.getClickedBlock().getWorld().getEntities();
 					double blockX = event.getClickedBlock().getX() + 0.5;
 					double blockZ = event.getClickedBlock().getZ() + 0.5;
 					double blockY = event.getClickedBlock().getY() + 0.3;
 					for(Entity e : armorstand) {
 						if(e.getLocation().getX() == blockX
-								&& e.getLocation().getY() == blockY
-								&& e.getLocation().getZ() == blockZ){
-							Bukkit.getScheduler().runTaskLater(Main.getPlugin(), () -> createFusionCraftingInventory(player), 1);
+						&& e.getLocation().getY() == blockY
+						&& e.getLocation().getZ() == blockZ){
+							if(SaveAdvancements.Config.getBoolean(player.getName() + ".Advancements.draconicTimes")) {
+								Bukkit.getScheduler().runTaskLater(Main.getPlugin(), () -> createFusionCraftingInventory(player), 1);
+						} else {
+							event.setCancelled(true);
+							event.getPlayer().sendMessage("§cIt seems like you don't have the knowledge to use this table...");
 						}
 					}
-				} else {
-						event.setCancelled(true);
-						event.getPlayer().sendMessage("§cIt seems like you don't have the knowledge to use this table...");
-					}
+				}
 			}
 		}
 	}

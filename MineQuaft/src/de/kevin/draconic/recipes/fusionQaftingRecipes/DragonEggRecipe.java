@@ -1,4 +1,4 @@
-package de.kevin.draconic.recipes.fusionCraftingRecipes;
+package de.kevin.draconic.recipes.fusionQaftingRecipes;
 
 import de.kevin.draconic.inventorys.FusionCraftingInventory;
 import de.kevin.draconic.items.ItemStackFactory;
@@ -14,17 +14,16 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.Objects;
 
-public class XtremeQuaftingTabletRecipe implements Listener {
+public class DragonEggRecipe implements Listener {
 
     FusionCraftingInventory fusionCraftingInventory = new FusionCraftingInventory();
 
-    ItemStack dragonScale = ItemStackFactory.getInstance().createDragonScale();
-    ItemStack diamond = new ItemStack(Material.DIAMOND);
-    ItemStack CraftingTable = new ItemStack(Material.CRAFTING_TABLE);
-    ItemStack xqTable = ItemStackFactory.getInstance().getXtremeQuaftingTable();
+    private final ItemStack egg = new ItemStack(Material.EGG);
+    private final int dragonScaleData = Objects.requireNonNull(ItemStackFactory.getInstance().getDragonScale().getItemMeta()).getCustomModelData();
+    private final ItemStack dragonEgg = new ItemStack(Material.DRAGON_EGG);
 
     @EventHandler
-    public void xtremeQuaftingResult(InventoryClickEvent event) {
+    public void dragonEggResult(InventoryClickEvent event) {
         Inventory fcInventory = fusionCraftingInventory.getFusionCraftingInventory();
 
         if(!event.getInventory().equals(fcInventory)) {
@@ -45,17 +44,17 @@ public class XtremeQuaftingTabletRecipe implements Listener {
                             && playerInventory.getItem(37) != null
                             && playerInventory.getItem(43) != null) {
 
-                        if(Objects.requireNonNull(playerInventory.getItem(10)).isSimilar(diamond)
-                                && Objects.requireNonNull(playerInventory.getItem(13)).isSimilar(CraftingTable)
-                                && Objects.requireNonNull(playerInventory.getItem(16)).isSimilar(diamond)
-                                && Objects.requireNonNull(playerInventory.getItem(19)).isSimilar(dragonScale)
-                                && Objects.requireNonNull(playerInventory.getItem(25)).isSimilar(dragonScale)
-                                && Objects.requireNonNull(playerInventory.getItem(28)).isSimilar(dragonScale)
-                                && Objects.requireNonNull(playerInventory.getItem(34)).isSimilar(dragonScale)
-                                && Objects.requireNonNull(playerInventory.getItem(37)).isSimilar(diamond)
-                                && Objects.requireNonNull(playerInventory.getItem(43)).isSimilar(diamond)) {
+                        if(Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(10)).getItemMeta()).getCustomModelData() == dragonScaleData
+                                && Objects.requireNonNull(playerInventory.getItem(13)).isSimilar(egg)
+                                && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(10)).getItemMeta()).getCustomModelData() == dragonScaleData
+                                && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(10)).getItemMeta()).getCustomModelData() == dragonScaleData
+                                && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(10)).getItemMeta()).getCustomModelData() == dragonScaleData
+                                && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(10)).getItemMeta()).getCustomModelData() == dragonScaleData
+                                && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(10)).getItemMeta()).getCustomModelData() == dragonScaleData
+                                && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(10)).getItemMeta()).getCustomModelData() == dragonScaleData
+                                && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(10)).getItemMeta()).getCustomModelData() == dragonScaleData) {
 
-                            int resultamount = Objects.requireNonNull(event.getInventory().getItem(40)).getAmount();
+                            int resultamount = Objects.requireNonNull(playerInventory.getItem(40)).getAmount();
 
                             if(resultamount < 64) {
                                 int amt10 = Objects.requireNonNull(playerInventory.getItem(10)).getAmount();
@@ -78,10 +77,10 @@ public class XtremeQuaftingTabletRecipe implements Listener {
                                 Objects.requireNonNull(playerInventory.getItem(43)).setAmount(amt39 - 1);
 
                                 if(Objects.requireNonNull(event.getInventory().getItem(40)).isSimilar(ItemStackFactory.getInstance().getResultBarrier())) {
-                                    event.getInventory().setItem(40, xqTable);
+                                    event.getInventory().setItem(40, dragonEgg);
                                     ((Player) event.getView().getPlayer()).playSound(event.getView().getPlayer().getLocation(), Sound.BLOCK_FIRE_EXTINGUISH, 0.7F, 0.7F);
-                                } else if (Objects.requireNonNull(event.getInventory().getItem(40)).isSimilar(xqTable)) {
-                                    event.getInventory().addItem(ItemStackFactory.getInstance().getEndirium()).put(resultamount + 1, xqTable);
+                                } else if (Objects.requireNonNull(event.getInventory().getItem(40)).isSimilar(dragonEgg)) {
+                                    event.getInventory().addItem(ItemStackFactory.getInstance().getEndirium()).put(resultamount + 1, dragonEgg);
                                     ((Player) event.getView().getPlayer()).playSound(event.getView().getPlayer().getLocation(), Sound.BLOCK_FIRE_EXTINGUISH, 0.7F, 0.7F);
                                 } else {
                                     event.setCancelled(true);

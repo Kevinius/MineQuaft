@@ -9,9 +9,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Objects;
+
 public class DragonDrop implements Listener{
 
-	ItemStack dragonScale = ItemStackFactory.getInstance().createDragonScale();
+	ItemStack dragonScale = ItemStackFactory.getInstance().getDragonScale();
 
 	@EventHandler
 	public void mobDeath(EntityDeathEvent event) {
@@ -23,7 +25,7 @@ public class DragonDrop implements Listener{
 		if(entity instanceof EnderDragon) {
 			event.getDrops().clear();
 			event.setDroppedExp(0);
-			entity.getLocation().getWorld().dropItem(entity.getLocation(), dragonScale);
+			Objects.requireNonNull(entity.getLocation().getWorld()).dropItem(entity.getLocation(), dragonScale);
 		}
 	}
 }

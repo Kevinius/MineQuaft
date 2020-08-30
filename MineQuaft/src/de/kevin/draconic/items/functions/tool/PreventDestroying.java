@@ -2,35 +2,30 @@ package de.kevin.draconic.items.functions.tool;
 
 import de.kevin.draconic.items.ItemStackFactory;
 import de.kevin.draconic.items.ToolFactory;
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.ItemDespawnEvent;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.Objects;
 
 public class PreventDestroying implements Listener {
 
-    ItemStack endirium = ItemStackFactory.getInstance().getEndirium();
-    ItemStack endiriumPickaxe = ToolFactory.getInstance().getEndiriumPickaxe();
-    ItemStack endiriumSword = ToolFactory.getInstance().getEndiriumSword();
-    ItemStack endiriumAxe = ToolFactory.getInstance().getEndiriumAxe();
-    ItemStack endiriumShovel = ToolFactory.getInstance().getEndiriumShovel();
-    ItemStack endiriumHoe = ToolFactory.getInstance().getEndiriumHoe();
+    private final int endiriumData = Objects.requireNonNull(ItemStackFactory.getInstance().getEndirium().getItemMeta()).getCustomModelData();
+    private final int endiriumPickaxeData = Objects.requireNonNull(ToolFactory.getInstance().getEndiriumPickaxe().getItemMeta()).getCustomModelData();
+    private final int endiriumSwordData = Objects.requireNonNull(ToolFactory.getInstance().getEndiriumSword().getItemMeta()).getCustomModelData();
+    private final int endiriumAxeData = Objects.requireNonNull(ToolFactory.getInstance().getEndiriumAxe().getItemMeta()).getCustomModelData();
+    private final int endiriumShovelData = Objects.requireNonNull(ToolFactory.getInstance().getEndiriumAxe().getItemMeta()).getCustomModelData();
+    private final int endiriumHoeData = Objects.requireNonNull(ToolFactory.getInstance().getEndiriumAxe().getItemMeta()).getCustomModelData();
 
     @EventHandler
     public void onDespawn(ItemDespawnEvent event) {
 
-        if(event.getEntity().getItemStack().isSimilar(endirium)
-        || event.getEntity().getItemStack().isSimilar(endiriumPickaxe)
-        || event.getEntity().getItemStack().isSimilar(endiriumSword)
-        || event.getEntity().getItemStack().isSimilar(endiriumAxe)
-        || event.getEntity().getItemStack().isSimilar(endiriumShovel)
-        || event.getEntity().getItemStack().isSimilar(endiriumHoe)){
+        if(Objects.requireNonNull(event.getEntity().getItemStack().getItemMeta()).getCustomModelData() == endiriumData
+        || Objects.requireNonNull(event.getEntity().getItemStack().getItemMeta()).getCustomModelData() == endiriumPickaxeData
+        || Objects.requireNonNull(event.getEntity().getItemStack().getItemMeta()).getCustomModelData() == endiriumSwordData
+        || Objects.requireNonNull(event.getEntity().getItemStack().getItemMeta()).getCustomModelData() == endiriumAxeData
+        || Objects.requireNonNull(event.getEntity().getItemStack().getItemMeta()).getCustomModelData() == endiriumShovelData
+        || Objects.requireNonNull(event.getEntity().getItemStack().getItemMeta()).getCustomModelData() == endiriumHoeData){
             event.setCancelled(true);
         }
     }

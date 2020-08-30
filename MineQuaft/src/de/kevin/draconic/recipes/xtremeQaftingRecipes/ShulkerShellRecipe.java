@@ -1,4 +1,4 @@
-package de.kevin.draconic.recipes.xtremeCrafting;
+package de.kevin.draconic.recipes.xtremeQaftingRecipes;
 
 import de.kevin.draconic.items.ItemStackFactory;
 import de.kevin.draconic.main.Main;
@@ -15,7 +15,7 @@ import java.util.Objects;
 
 public class ShulkerShellRecipe implements Listener {
 
-    ItemStack dragonScale = ItemStackFactory.getInstance().createDragonScale();
+    private final int dragonScaleData = Objects.requireNonNull(ItemStackFactory.getInstance().getDragonScale().getItemMeta()).getCustomModelData();
     ItemStack resultBarrier = ItemStackFactory.getInstance().getResultBarrier();
     ItemStack chorusFruit = new ItemStack(Material.CHORUS_FRUIT);
     ItemStack blazeRod = new ItemStack(Material.BLAZE_ROD);
@@ -43,11 +43,11 @@ public class ShulkerShellRecipe implements Listener {
                             && playerInventory.getItem(21) != null
                             && playerInventory.getItem(22) != null) {
 
-                        if (Objects.requireNonNull(playerInventory.getItem(0)).isSimilar(dragonScale)
+                        if (Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(0)).getItemMeta()).getCustomModelData() == dragonScaleData
                                 && Objects.requireNonNull(playerInventory.getItem(1)).isSimilar(blazeRod)
                                 && Objects.requireNonNull(playerInventory.getItem(2)).isSimilar(blazeRod)
                                 && Objects.requireNonNull(playerInventory.getItem(3)).isSimilar(blazeRod)
-                                && Objects.requireNonNull(playerInventory.getItem(4)).isSimilar(dragonScale)
+                                && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(0)).getItemMeta()).getCustomModelData() == dragonScaleData
                                 && Objects.requireNonNull(playerInventory.getItem(9)).isSimilar(blazeRod)
                                 && Objects.requireNonNull(playerInventory.getItem(10)).isSimilar(chorusFruit)
                                 && Objects.requireNonNull(playerInventory.getItem(11)).isSimilar(chorusFruit)
@@ -122,11 +122,11 @@ public class ShulkerShellRecipe implements Listener {
                         && playerInventory.getItem(21) != null
                         && playerInventory.getItem(22) != null) {
 
-                    if (Objects.requireNonNull(playerInventory.getItem(0)).isSimilar(dragonScale)
+                    if (Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(0)).getItemMeta()).getCustomModelData() == dragonScaleData
                             && Objects.requireNonNull(playerInventory.getItem(1)).isSimilar(blazeRod)
                             && Objects.requireNonNull(playerInventory.getItem(2)).isSimilar(blazeRod)
                             && Objects.requireNonNull(playerInventory.getItem(3)).isSimilar(blazeRod)
-                            && Objects.requireNonNull(playerInventory.getItem(4)).isSimilar(dragonScale)
+                            && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(0)).getItemMeta()).getCustomModelData() == dragonScaleData
                             && Objects.requireNonNull(playerInventory.getItem(9)).isSimilar(blazeRod)
                             && Objects.requireNonNull(playerInventory.getItem(10)).isSimilar(chorusFruit)
                             && Objects.requireNonNull(playerInventory.getItem(11)).isSimilar(chorusFruit)

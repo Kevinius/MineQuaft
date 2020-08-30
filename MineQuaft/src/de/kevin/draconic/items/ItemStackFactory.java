@@ -1,6 +1,6 @@
 package de.kevin.draconic.items;
 
-import de.kevin.draconic.skullBasement.SkullCreator;
+import de.kevin.draconic.skullCreator.SkullCreator;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
@@ -13,6 +13,7 @@ public class ItemStackFactory {
 
     private ItemStack endirium;
     private ItemStack dragonScalePiece;
+    private ItemStack dragonScale;
     private ItemStack fillItem;
     private ItemStack loadBackround;
     private ItemStack resultBarrier;
@@ -20,7 +21,7 @@ public class ItemStackFactory {
     private ItemStack loadPurple;
     private ItemStack loadOrange;
     private ItemStack loadLightBlue;
-    private ItemStack compressedEndstone;
+    private ItemStack endstoneCluster;
     private ItemStack fusionQuaftingTable;
     private ItemStack xtremeQuaftingTable;
     private ItemStack bigmoq;
@@ -36,16 +37,15 @@ public class ItemStackFactory {
         return instance;
     }
 
-    private ItemStack createEndirium() {
+    private void createEndirium() {
 
         endirium = new ItemStack(Material.REPEATING_COMMAND_BLOCK, 1);
 
         ItemMeta endiriumMeta = endirium.getItemMeta();
         assert endiriumMeta != null;
         endiriumMeta.setDisplayName("§6Endirium");
-        endiriumMeta.setCustomModelData(12321);
+        endiriumMeta.setCustomModelData(100100);
         endirium.setItemMeta(endiriumMeta);
-        return endirium;
     }
 
     public ItemStack getEndirium() {
@@ -55,18 +55,25 @@ public class ItemStackFactory {
         return endirium;
     }
 
-    public ItemStack createDragonScale() {
+    private void createDragonScale() {
 
-        ItemStack dragonScale = new ItemStack(Material.COMMAND_BLOCK);
+        dragonScale = new ItemStack(Material.COMMAND_BLOCK);
 
         ItemMeta dragonScaleMeta = dragonScale.getItemMeta();
         assert dragonScaleMeta != null;
         dragonScaleMeta.setDisplayName("§dDragon Scale");
 		dragonScaleMeta.addEnchant(Enchantment.KNOCKBACK, 1, true);
 		dragonScaleMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-		dragonScale.setItemMeta(dragonScaleMeta);
+        dragonScaleMeta.setCustomModelData(100101);
+        dragonScale.setItemMeta(dragonScaleMeta);
 
-		return dragonScale;
+    }
+
+    public ItemStack getDragonScale() {
+        if(dragonScale == null) {
+            createDragonScale();
+        }
+        return dragonScale;
     }
 
     private void createDragonScalePiece() {
@@ -78,7 +85,7 @@ public class ItemStackFactory {
         dragonScalePieceMeta.setDisplayName("§dDragon Scale Piece");
         dragonScalePieceMeta.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
         dragonScalePieceMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        dragonScalePieceMeta.setCustomModelData(654321);
+        dragonScalePieceMeta.setCustomModelData(100102);
         dragonScalePiece.setItemMeta(dragonScalePieceMeta);
     }
 
@@ -89,16 +96,16 @@ public class ItemStackFactory {
         return dragonScalePiece;
     }
 
-    private ItemStack createConfirmItem() {
+    private void createConfirmItem() {
 
         confirmItem = new ItemStack(Material.GREEN_STAINED_GLASS_PANE);
 
         ItemMeta confirmItemMeta = confirmItem.getItemMeta();
         assert confirmItemMeta != null;
         confirmItemMeta.setDisplayName("§2Craft item!");
+        confirmItemMeta.setCustomModelData(100103);
         confirmItem.setItemMeta(confirmItemMeta);
 
-        return confirmItem;
     }
     public ItemStack getConfirmItem() {
         if(confirmItem == null) {
@@ -107,16 +114,16 @@ public class ItemStackFactory {
         return confirmItem;
     }
 
-    private ItemStack createResultBarrier() {
+    private void createResultBarrier() {
 
         resultBarrier = new ItemStack(Material.BARRIER);
 
         ItemMeta resultBarrierMeta = resultBarrier.getItemMeta();
         assert resultBarrierMeta != null;
         resultBarrierMeta.setDisplayName("§4No Result!");
+        resultBarrierMeta.setCustomModelData(100104);
         resultBarrier.setItemMeta(resultBarrierMeta);
 
-        return resultBarrier;
     }
     public ItemStack getResultBarrier() {
         if(resultBarrier == null) {
@@ -125,16 +132,16 @@ public class ItemStackFactory {
         return resultBarrier;
     }
 
-    private ItemStack createFillItem() {
+    private void createFillItem() {
 
         fillItem = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
 
         ItemMeta fillItemMeta = fillItem.getItemMeta();
         assert fillItemMeta != null;
         fillItemMeta.setDisplayName(" ");
+        fillItemMeta.setCustomModelData(100105);
         fillItem.setItemMeta(fillItemMeta);
 
-        return fillItem;
     }
     public ItemStack getFillItem() {
         if(fillItem == null) {
@@ -143,16 +150,15 @@ public class ItemStackFactory {
         return fillItem;
     }
 
-    private ItemStack createLoadBackground() {
+    private void createLoadBackground() {
 
         loadBackround = new ItemStack(Material.BLUE_STAINED_GLASS_PANE);
 
         ItemMeta loadBackgroundMeta = loadBackround.getItemMeta();
         assert loadBackgroundMeta != null;
         loadBackgroundMeta.setDisplayName(" ");
+        loadBackgroundMeta.setCustomModelData(100106);
         loadBackround.setItemMeta(loadBackgroundMeta);
-
-        return loadBackround;
 
     }
     public ItemStack getLoadBackround() {
@@ -162,16 +168,15 @@ public class ItemStackFactory {
         return loadBackround;
     }
 
-    private ItemStack createLoadLightBlue() {
+    private void createLoadLightBlue() {
 
         loadLightBlue = new ItemStack(Material.LIGHT_BLUE_STAINED_GLASS_PANE);
 
         ItemMeta loadLightBlueMeta = loadLightBlue.getItemMeta();
         assert loadLightBlueMeta != null;
         loadLightBlueMeta.setDisplayName(" ");
+        loadLightBlueMeta.setCustomModelData(100107);
         loadLightBlue.setItemMeta(loadLightBlueMeta);
-
-        return loadLightBlue;
 
     }
     public ItemStack getLoadLightBlue() {
@@ -181,16 +186,16 @@ public class ItemStackFactory {
         return loadLightBlue;
     }
 
-    private ItemStack createLoadPurple() {
+    private void createLoadPurple() {
 
         loadPurple = new ItemStack(Material.PURPLE_STAINED_GLASS_PANE);
 
         ItemMeta loadPurpleMeta = loadPurple.getItemMeta();
         assert loadPurpleMeta != null;
         loadPurpleMeta.setDisplayName(" ");
+        loadPurpleMeta.setCustomModelData(100108);
         loadPurple.setItemMeta(loadPurpleMeta);
 
-        return loadPurple;
     }
 
     public ItemStack getLoadPurple() {
@@ -200,55 +205,54 @@ public class ItemStackFactory {
         return loadPurple;
     }
 
-    private ItemStack createLoadOrange() {
+    private void createLoadOrange() {
 
         loadOrange = new ItemStack(Material.ORANGE_STAINED_GLASS_PANE);
 
         ItemMeta loadOrangeMeta = loadOrange.getItemMeta();
         assert loadOrangeMeta != null;
         loadOrangeMeta.setDisplayName(" ");
+        loadOrangeMeta.setCustomModelData(100109);
         loadOrange.setItemMeta(loadOrangeMeta);
 
-        return loadOrange;
     }
 
     public ItemStack getLoadOrange() {
         if(loadOrange == null) {
-            createLoadPurple();
+            createLoadOrange();
         }
         return loadOrange;
     }
 
-    private ItemStack createCompressedEndstone() {
+    private void createEndstoneCluster() {
 
-        compressedEndstone = new ItemStack(Material.CHAIN_COMMAND_BLOCK);
+        endstoneCluster = new ItemStack(Material.CHAIN_COMMAND_BLOCK);
 
-        ItemMeta compressedEndstoneItemMeta = compressedEndstone.getItemMeta();
-        assert compressedEndstoneItemMeta != null;
-        compressedEndstoneItemMeta.setDisplayName("§6compressed Endstone");
-        compressedEndstone.setItemMeta(compressedEndstoneItemMeta);
-
-        return compressedEndstone;
+        ItemMeta endstoneClusterMeta = endstoneCluster.getItemMeta();
+        assert endstoneClusterMeta != null;
+        endstoneClusterMeta.setDisplayName("§6Endstone cluster");
+        endstoneClusterMeta.setCustomModelData(100110);
+        endstoneCluster.setItemMeta(endstoneClusterMeta);
 
     }
 
-    public ItemStack getCompressedEndstone() {
-        if(compressedEndstone == null) {
-            createCompressedEndstone();
+    public ItemStack getEndstoneCluster() {
+        if(endstoneCluster == null) {
+            createEndstoneCluster();
         }
-        return compressedEndstone;
+        return endstoneCluster;
     }
 
-    private ItemStack createFusionQuaftingTable() {
+    private void createFusionQuaftingTable() {
 
         fusionQuaftingTable = new ItemStack(Material.SMOKER);
 
         ItemMeta fusionQuaftingTableMeta = fusionQuaftingTable.getItemMeta();
         assert fusionQuaftingTableMeta != null;
         fusionQuaftingTableMeta.setDisplayName("§fFusion Quafting Table");
+        fusionQuaftingTableMeta.setCustomModelData(100111);
         fusionQuaftingTable.setItemMeta(fusionQuaftingTableMeta);
 
-        return fusionQuaftingTable;
     }
 
     public ItemStack getFusionQuaftingTable() {
@@ -258,16 +262,16 @@ public class ItemStackFactory {
         return fusionQuaftingTable;
     }
 
-    private ItemStack createXtremeQuaftingTable() {
+    private void createXtremeQuaftingTable() {
 
         xtremeQuaftingTable = new ItemStack(Material.CRAFTING_TABLE);
 
         ItemMeta xtremeQuaftingTableMeta = xtremeQuaftingTable.getItemMeta();
         assert xtremeQuaftingTableMeta != null;
         xtremeQuaftingTableMeta.setDisplayName("§fXtreme Quafting Table");
+        xtremeQuaftingTableMeta.setCustomModelData(100112);
         xtremeQuaftingTable.setItemMeta(xtremeQuaftingTableMeta);
 
-        return xtremeQuaftingTable;
     }
 
     public ItemStack getXtremeQuaftingTable() {
@@ -277,15 +281,15 @@ public class ItemStackFactory {
         return xtremeQuaftingTable;
     }
 
-    private ItemStack createSushi() {
+    private void createSushi() {
         sushi = new ItemStack(Material.COOKED_SALMON);
 
         ItemMeta sushiMeta = sushi.getItemMeta();
         assert sushiMeta != null;
         sushiMeta.setDisplayName("§fSushi");
+        sushiMeta.setCustomModelData(100113);
         sushi.setItemMeta(sushiMeta);
 
-        return sushi;
     }
 
     public ItemStack getSushi() {
@@ -295,15 +299,15 @@ public class ItemStackFactory {
         return sushi;
     }
 
-    private ItemStack createBigMoq() {
+    private void createBigMoq() {
         bigmoq = new ItemStack(Material.COOKED_BEEF);
 
         ItemMeta bigmoqMeta = bigmoq.getItemMeta();
         assert bigmoqMeta != null;
         bigmoqMeta.setDisplayName("§fBig MoQ");
+        bigmoqMeta.setCustomModelData(100114);
         bigmoq.setItemMeta(bigmoqMeta);
 
-        return bigmoq;
     }
 
     public ItemStack getBigMoq() {
@@ -313,15 +317,15 @@ public class ItemStackFactory {
         return bigmoq;
     }
 
-    private ItemStack createDonut() {
+    private void createDonut() {
         donut = new ItemStack(Material.PUMPKIN_PIE);
 
         ItemMeta donutMeta = donut.getItemMeta();
         assert donutMeta != null;
         donutMeta.setDisplayName("§fDonut");
+        donutMeta.setCustomModelData(100115);
         donut.setItemMeta(donutMeta);
 
-        return donut;
     }
 
     public ItemStack getDonut() {

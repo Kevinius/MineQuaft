@@ -7,6 +7,8 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Objects;
+
 public class EntityFactory{
 
     private static EntityFactory instance;
@@ -32,7 +34,8 @@ public class EntityFactory{
         fusionQuaftingArmorstand.setSmall(true);
         fusionQuaftingArmorstand.setGravity(false);
         fusionQuaftingArmorstand.setVisible(false);
-        fusionQuaftingArmorstand.getEquipment().setHelmet(lanternRed);
+        fusionQuaftingArmorstand.setMarker(true);
+        Objects.requireNonNull(fusionQuaftingArmorstand.getEquipment()).setHelmet(lanternRed);
 
         return fusionQuaftingArmorstand;
     }
@@ -49,7 +52,8 @@ public class EntityFactory{
         xtremeQuaftingArmorstand.setSmall(true);
         xtremeQuaftingArmorstand.setGravity(false);
         xtremeQuaftingArmorstand.setVisible(false);
-        xtremeQuaftingArmorstand.getEquipment().setHelmet(lanternBlue);
+        xtremeQuaftingArmorstand.setMarker(true);
+        Objects.requireNonNull(xtremeQuaftingArmorstand.getEquipment()).setHelmet(lanternBlue);
 
         return xtremeQuaftingArmorstand;
     }

@@ -14,16 +14,16 @@ import java.util.Objects;
 
 public class GiveCommand implements CommandExecutor {
 
-    ItemStack xtremeQuaftingTable = ItemStackFactory.getInstance().getXtremeQuaftingTable();
-    ItemStack fusionQuaftingTable = ItemStackFactory.getInstance().getFusionQuaftingTable();
-    ItemStack endirium = ItemStackFactory.getInstance().getEndirium();
-    ItemStack dragonScale = ItemStackFactory.getInstance().createDragonScale();
+    private final ItemStack xtremeQuaftingTable = ItemStackFactory.getInstance().getXtremeQuaftingTable();
+    private final ItemStack fusionQuaftingTable = ItemStackFactory.getInstance().getFusionQuaftingTable();
+    private final ItemStack endirium = ItemStackFactory.getInstance().getEndirium();
+    private final ItemStack dragonScale = ItemStackFactory.getInstance().getDragonScale();
 
-    ItemStack endiriumHoe = ToolFactory.getInstance().getEndiriumHoe();
-    ItemStack endiriumShovel = ToolFactory.getInstance().getEndiriumShovel();
-    ItemStack endiriumSword = ToolFactory.getInstance().getEndiriumSword();
-    ItemStack endiriumPickaxe = ToolFactory.getInstance().getEndiriumPickaxe();
-    ItemStack endiriumAxe = ToolFactory.getInstance().getEndiriumAxe();
+    private final ItemStack endiriumHoe = ToolFactory.getInstance().getEndiriumHoe();
+    private final ItemStack endiriumShovel = ToolFactory.getInstance().getEndiriumShovel();
+    private final ItemStack endiriumSword = ToolFactory.getInstance().getEndiriumSword();
+    private final ItemStack endiriumPickaxe = ToolFactory.getInstance().getEndiriumPickaxe();
+    private final ItemStack endiriumAxe = ToolFactory.getInstance().getEndiriumAxe();
 
 
     @Override

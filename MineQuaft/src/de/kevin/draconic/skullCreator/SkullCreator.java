@@ -1,4 +1,4 @@
-package de.kevin.draconic.skullBasement;
+package de.kevin.draconic.skullCreator;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
