@@ -11,6 +11,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.List;
 import java.util.Objects;
@@ -22,7 +23,10 @@ public class FusionQuaftingTableFunctions implements Listener {
     @EventHandler
     public void placeFusionQuaftingTable(BlockPlaceEvent event) {
 
-        if(Objects.requireNonNull(event.getItemInHand().getItemMeta()).getCustomModelData() == fusionQuaftingTableData) {
+        ItemMeta itemMeta = event.getItemInHand().getItemMeta();
+
+        assert itemMeta != null;
+        if(itemMeta.hasCustomModelData() && itemMeta.getCustomModelData() == fusionQuaftingTableData) {
 
             ArmorStand fusionQuaftingArmorstand = EntityFactory.getInstance().spawnFusionQuaftingArmorstand(
                     event.getBlockPlaced().getLocation(), event.getPlayer());

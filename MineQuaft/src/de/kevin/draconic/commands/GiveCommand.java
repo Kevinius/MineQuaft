@@ -16,8 +16,6 @@ public class GiveCommand implements CommandExecutor {
 
     private final ItemStack xtremeQuaftingTable = ItemStackFactory.getInstance().getXtremeQuaftingTable();
     private final ItemStack fusionQuaftingTable = ItemStackFactory.getInstance().getFusionQuaftingTable();
-    private final ItemStack endirium = ItemStackFactory.getInstance().getEndirium();
-    private final ItemStack dragonScale = ItemStackFactory.getInstance().getDragonScale();
 
     private final ItemStack endiriumHoe = ToolFactory.getInstance().getEndiriumHoe();
     private final ItemStack endiriumShovel = ToolFactory.getInstance().getEndiriumShovel();
@@ -25,12 +23,23 @@ public class GiveCommand implements CommandExecutor {
     private final ItemStack endiriumPickaxe = ToolFactory.getInstance().getEndiriumPickaxe();
     private final ItemStack endiriumAxe = ToolFactory.getInstance().getEndiriumAxe();
 
+    private final ItemStack endirium = ItemStackFactory.getInstance().getEndirium();
+    private final ItemStack dragonScale = ItemStackFactory.getInstance().getDragonScale();
+    private final ItemStack endstoneCluster = ItemStackFactory.getInstance().getEndstoneCluster();
+
+    private final ItemStack donut = ItemStackFactory.getInstance().getDonut();
+    private final ItemStack bigMoq = ItemStackFactory.getInstance().getBigMoq();
+    private final ItemStack sushi = ItemStackFactory.getInstance().getSushi();
+
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, String[] args) {
 
         Player player = (Player) sender;
         if(sender.isOp()) {
+
+            /*---------------Quafting Tables---------------*/
+
             if(args.length == 1 && args[0].equalsIgnoreCase("xqtable"))
             {
                 player.getInventory().addItem(xtremeQuaftingTable);
@@ -39,6 +48,9 @@ public class GiveCommand implements CommandExecutor {
             {
                 player.getInventory().addItem(fusionQuaftingTable);
             }
+
+            /*---------------Endirium Tools---------------*/
+
             if(args.length == 1 && args[0].equalsIgnoreCase("endirium_sword"))
             {
                 player.getInventory().addItem(endiriumSword);
@@ -59,6 +71,9 @@ public class GiveCommand implements CommandExecutor {
             {
                 player.getInventory().addItem(endiriumHoe);
             }
+
+            /*---------------Items---------------*/
+
             if(args.length == 1 && args[0].equalsIgnoreCase("endirium"))
             {
                 player.getInventory().addItem(endirium);
@@ -66,6 +81,25 @@ public class GiveCommand implements CommandExecutor {
             if(args.length == 1 && args[0].equalsIgnoreCase("dragon_scale"))
             {
                 player.getInventory().addItem(dragonScale);
+            }
+            if(args.length == 1 && args[0].equalsIgnoreCase("endstone_cluster"))
+            {
+                player.getInventory().addItem(endstoneCluster);
+            }
+
+            /*---------------Food---------------*/
+
+            if(args.length == 1 && args[0].equalsIgnoreCase("donut"))
+            {
+                player.getInventory().addItem(donut);
+            }
+            if(args.length == 1 && args[0].equalsIgnoreCase("big_moq"))
+            {
+                player.getInventory().addItem(bigMoq);
+            }
+            if(args.length == 1 && args[0].equalsIgnoreCase("sushi"))
+            {
+                player.getInventory().addItem(sushi);
             }
         } else {
             player.sendMessage("§cSeems like you don't have the permission to perform this command");

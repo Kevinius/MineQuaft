@@ -2,6 +2,7 @@ package de.kevin.draconic.recipes.fusionQaftingRecipes;
 
 import de.kevin.draconic.inventorys.FusionCraftingInventory;
 import de.kevin.draconic.items.ItemStackFactory;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -29,30 +30,30 @@ public class DragonEggRecipe implements Listener {
         if(!event.getInventory().equals(fcInventory)) {
             if(event.getInventory().getSize() > 43) {
                 if(event.isLeftClick() && event.getSlot() == 31
-                        || event.isRightClick() && event.getSlot() == 31
-                        || event.isShiftClick() && event.getSlot() == 31) {
+                || event.isRightClick() && event.getSlot() == 31
+                || event.isShiftClick() && event.getSlot() == 31) {
 
                     InventoryView playerInventory= event.getWhoClicked().getOpenInventory();
 
                     if(playerInventory.getItem(10) != null
-                            && playerInventory.getItem(13) != null
-                            && playerInventory.getItem(16) != null
-                            && playerInventory.getItem(19) != null
-                            && playerInventory.getItem(25) != null
-                            && playerInventory.getItem(28) != null
-                            && playerInventory.getItem(34) != null
-                            && playerInventory.getItem(37) != null
-                            && playerInventory.getItem(43) != null) {
+                    && playerInventory.getItem(13) != null
+                    && playerInventory.getItem(16) != null
+                    && playerInventory.getItem(19) != null
+                    && playerInventory.getItem(25) != null
+                    && playerInventory.getItem(28) != null
+                    && playerInventory.getItem(34) != null
+                    && playerInventory.getItem(37) != null
+                    && playerInventory.getItem(43) != null) {
 
-                        if(Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(10)).getItemMeta()).getCustomModelData() == dragonScaleData
-                                && Objects.requireNonNull(playerInventory.getItem(13)).isSimilar(egg)
-                                && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(10)).getItemMeta()).getCustomModelData() == dragonScaleData
-                                && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(10)).getItemMeta()).getCustomModelData() == dragonScaleData
-                                && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(10)).getItemMeta()).getCustomModelData() == dragonScaleData
-                                && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(10)).getItemMeta()).getCustomModelData() == dragonScaleData
-                                && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(10)).getItemMeta()).getCustomModelData() == dragonScaleData
-                                && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(10)).getItemMeta()).getCustomModelData() == dragonScaleData
-                                && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(10)).getItemMeta()).getCustomModelData() == dragonScaleData) {
+                        if(Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(10)).getItemMeta()).hasCustomModelData() && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(10)).getItemMeta()).getCustomModelData() == dragonScaleData
+                        && Objects.requireNonNull(playerInventory.getItem(13)).isSimilar(egg)
+                        && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(16)).getItemMeta()).hasCustomModelData() && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(16)).getItemMeta()).getCustomModelData() == dragonScaleData
+                        && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(19)).getItemMeta()).hasCustomModelData() && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(19)).getItemMeta()).getCustomModelData() == dragonScaleData
+                        && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(25)).getItemMeta()).hasCustomModelData() && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(25)).getItemMeta()).getCustomModelData() == dragonScaleData
+                        && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(28)).getItemMeta()).hasCustomModelData() && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(28)).getItemMeta()).getCustomModelData() == dragonScaleData
+                        && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(34)).getItemMeta()).hasCustomModelData() && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(34)).getItemMeta()).getCustomModelData() == dragonScaleData
+                        && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(37)).getItemMeta()).hasCustomModelData() && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(37)).getItemMeta()).getCustomModelData() == dragonScaleData
+                        && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(43)).getItemMeta()).hasCustomModelData() && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(43)).getItemMeta()).getCustomModelData() == dragonScaleData) {
 
                             int resultamount = Objects.requireNonNull(playerInventory.getItem(40)).getAmount();
 

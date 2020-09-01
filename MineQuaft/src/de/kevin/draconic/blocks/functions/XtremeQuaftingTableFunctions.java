@@ -17,6 +17,7 @@ import org.bukkit.event.block.BlockPistonRetractEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.List;
 import java.util.Objects;
@@ -29,7 +30,10 @@ public class XtremeQuaftingTableFunctions implements Listener {
     @EventHandler
     public void placeXtremeQuaftingTable(BlockPlaceEvent event) {
 
-        if(Objects.requireNonNull(event.getItemInHand().getItemMeta()).getCustomModelData() == xtremeQuaftingTableData) {
+        ItemMeta itemMeta = event.getItemInHand().getItemMeta();
+
+        assert itemMeta != null;
+        if(itemMeta.hasCustomModelData() && itemMeta.getCustomModelData() == xtremeQuaftingTableData) {
 
             ArmorStand xtremeQuaftingArmorstand = EntityFactory.getInstance().spawnXtremeQuaftingArmorstand(
                     event.getBlockPlaced().getLocation(), event.getPlayer());

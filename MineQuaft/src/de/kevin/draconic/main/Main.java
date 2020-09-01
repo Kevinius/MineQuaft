@@ -7,6 +7,7 @@ import de.kevin.draconic.blocks.functions.XtremeQuaftingTableFunctions;
 import de.kevin.draconic.commands.GiveCommand;
 import de.kevin.draconic.inventorys.FusionCraftingInventory;
 import de.kevin.draconic.inventorys.XtremeCraftingInventory;
+import de.kevin.draconic.items.ItemStackFactory;
 import de.kevin.draconic.items.functions.food.Food;
 import de.kevin.draconic.items.functions.tool.PreventDestroying;
 import de.kevin.draconic.mobdrops.DragonDrop;

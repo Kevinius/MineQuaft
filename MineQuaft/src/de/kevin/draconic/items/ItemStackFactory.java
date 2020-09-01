@@ -7,13 +7,31 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
+
 public class ItemStackFactory {
 
     private static ItemStackFactory instance;
 
+    /*---------------Items---------------*/
+
     private ItemStack endirium;
-    private ItemStack dragonScalePiece;
     private ItemStack dragonScale;
+    private ItemStack endstoneCluster;
+
+    /*---------------Quafting Tables---------------*/
+
+    private ItemStack fusionQuaftingTable;
+    private ItemStack xtremeQuaftingTable;
+
+    /*---------------Food---------------*/
+
+    private ItemStack bigmoq;
+    private ItemStack sushi;
+    private ItemStack donut;
+
+    /*---------------Inventory items---------------*/
+
     private ItemStack fillItem;
     private ItemStack loadBackround;
     private ItemStack resultBarrier;
@@ -21,12 +39,6 @@ public class ItemStackFactory {
     private ItemStack loadPurple;
     private ItemStack loadOrange;
     private ItemStack loadLightBlue;
-    private ItemStack endstoneCluster;
-    private ItemStack fusionQuaftingTable;
-    private ItemStack xtremeQuaftingTable;
-    private ItemStack bigmoq;
-    private ItemStack sushi;
-    private ItemStack donut;
 
     private ItemStackFactory(){}
 
@@ -45,6 +57,9 @@ public class ItemStackFactory {
         assert endiriumMeta != null;
         endiriumMeta.setDisplayName("§6Endirium");
         endiriumMeta.setCustomModelData(100100);
+        ArrayList<String> lore = new ArrayList<>();
+        lore.add("§5Even better than Netherite D:");
+        endiriumMeta.setLore(lore);
         endirium.setItemMeta(endiriumMeta);
     }
 
@@ -64,7 +79,10 @@ public class ItemStackFactory {
         dragonScaleMeta.setDisplayName("§dDragon Scale");
 		dragonScaleMeta.addEnchant(Enchantment.KNOCKBACK, 1, true);
 		dragonScaleMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        dragonScaleMeta.setCustomModelData(100101);
+		dragonScaleMeta.setCustomModelData(100101);
+		ArrayList<String> lore = new ArrayList<>();
+		lore.add("§5The Scales of a once powerful dragon");
+		dragonScaleMeta.setLore(lore);
         dragonScale.setItemMeta(dragonScaleMeta);
 
     }
@@ -74,26 +92,6 @@ public class ItemStackFactory {
             createDragonScale();
         }
         return dragonScale;
-    }
-
-    private void createDragonScalePiece() {
-
-        dragonScalePiece = new ItemStack(Material.CHAIN_COMMAND_BLOCK, 9);
-
-        ItemMeta dragonScalePieceMeta = dragonScalePiece.getItemMeta();
-        assert dragonScalePieceMeta != null;
-        dragonScalePieceMeta.setDisplayName("§dDragon Scale Piece");
-        dragonScalePieceMeta.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
-        dragonScalePieceMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        dragonScalePieceMeta.setCustomModelData(100102);
-        dragonScalePiece.setItemMeta(dragonScalePieceMeta);
-    }
-
-    public ItemStack getDragonScalePiece() {
-        if(dragonScalePiece == null) {
-            createDragonScalePiece();
-        }
-        return dragonScalePiece;
     }
 
     private void createConfirmItem() {
@@ -232,6 +230,9 @@ public class ItemStackFactory {
         assert endstoneClusterMeta != null;
         endstoneClusterMeta.setDisplayName("§6Endstone cluster");
         endstoneClusterMeta.setCustomModelData(100110);
+        ArrayList<String> lore = new ArrayList<>();
+        lore.add("§5Do you even have a life?");
+        endstoneClusterMeta.setLore(lore);
         endstoneCluster.setItemMeta(endstoneClusterMeta);
 
     }
@@ -251,6 +252,9 @@ public class ItemStackFactory {
         assert fusionQuaftingTableMeta != null;
         fusionQuaftingTableMeta.setDisplayName("§fFusion Quafting Table");
         fusionQuaftingTableMeta.setCustomModelData(100111);
+        ArrayList<String> lore = new ArrayList<>();
+        lore.add("§5Fuse things together :D");
+        fusionQuaftingTableMeta.setLore(lore);
         fusionQuaftingTable.setItemMeta(fusionQuaftingTableMeta);
 
     }
@@ -270,6 +274,9 @@ public class ItemStackFactory {
         assert xtremeQuaftingTableMeta != null;
         xtremeQuaftingTableMeta.setDisplayName("§fXtreme Quafting Table");
         xtremeQuaftingTableMeta.setCustomModelData(100112);
+        ArrayList<String> lore = new ArrayList<>();
+        lore.add("§5Big upgrade lol");
+        xtremeQuaftingTableMeta.setLore(lore);
         xtremeQuaftingTable.setItemMeta(xtremeQuaftingTableMeta);
 
     }
@@ -288,6 +295,12 @@ public class ItemStackFactory {
         assert sushiMeta != null;
         sushiMeta.setDisplayName("§fSushi");
         sushiMeta.setCustomModelData(100113);
+        ArrayList<String> lore = new ArrayList<>();
+        lore.add("§5The traditional Sushi");
+        lore.add(" ");
+        lore.add("§aHunger: §68");
+        lore.add("§aSaturation: §610.1");
+        sushiMeta.setLore(lore);
         sushi.setItemMeta(sushiMeta);
 
     }
@@ -306,6 +319,12 @@ public class ItemStackFactory {
         assert bigmoqMeta != null;
         bigmoqMeta.setDisplayName("§fBig MoQ");
         bigmoqMeta.setCustomModelData(100114);
+        ArrayList<String> lore = new ArrayList<>();
+        lore.add("§5Big mac MineQuaft edition :D");
+        lore.add(" ");
+        lore.add("§aHunger: §620");
+        lore.add("§aSaturation: §620");
+        bigmoqMeta.setLore(lore);
         bigmoq.setItemMeta(bigmoqMeta);
 
     }
@@ -324,6 +343,15 @@ public class ItemStackFactory {
         assert donutMeta != null;
         donutMeta.setDisplayName("§fDonut");
         donutMeta.setCustomModelData(100115);
+        ArrayList<String> lore = new ArrayList<>();
+        lore.add("§5Speeeeeeeeeeeeeed");
+        lore.add(" ");
+        lore.add("§aHunger: §68");
+        lore.add("§aSaturation: §64.8");
+        lore.add(" ");
+        lore.add("§eBonus Effect:");
+        lore.add("§fSpeed 2 for 5 seconds");
+        donutMeta.setLore(lore);
         donut.setItemMeta(donutMeta);
 
     }

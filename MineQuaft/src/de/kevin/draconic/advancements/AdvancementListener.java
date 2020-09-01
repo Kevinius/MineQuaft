@@ -71,7 +71,7 @@ public class AdvancementListener implements Listener {
         Bukkit.getScheduler().runTaskLater(Main.getPlugin(), () -> {
             if(event.getEntity() instanceof Player) {
                 Player player = (Player) event.getEntity();
-                if(Objects.requireNonNull(event.getItem().getItemStack().getItemMeta()).getCustomModelData() == dragonScaleData) {
+                if(Objects.requireNonNull(event.getItem().getItemStack().getItemMeta()).hasCustomModelData() && Objects.requireNonNull(event.getItem().getItemStack().getItemMeta()).getCustomModelData() == dragonScaleData) {
                     if(manager.getCriteriaProgress(player, draconicTimes) < draconicTimes.getCriteria()) {
                         manager.grantAdvancement(player, draconicTimes);
                         draconicTimes.displayToast(player);
