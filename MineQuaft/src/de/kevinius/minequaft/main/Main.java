@@ -7,6 +7,7 @@ import de.kevinius.minequaft.blocks.functions.XtremeQuaftingTableFunctions;
 import de.kevinius.minequaft.commands.GiveCommand;
 import de.kevinius.minequaft.inventorys.FusionQuaftingInventory;
 import de.kevinius.minequaft.inventorys.XtremeQuaftingInventory;
+import de.kevinius.minequaft.inventorys.recipeInventorys.fusionQuafting.Root;
 import de.kevinius.minequaft.items.functions.food.Food;
 import de.kevinius.minequaft.items.functions.tool.PreventDestroying;
 import de.kevinius.minequaft.mobdrops.DragonDrop;
@@ -63,9 +64,10 @@ public class Main extends JavaPlugin {
 		pluginManager.registerEvents(new Food(), this);
 		pluginManager.registerEvents(new ElytraRecipe(), this);
 		pluginManager.registerEvents(new ShulkerShellRecipe(), this);
+		pluginManager.registerEvents(new Root(), this);
 
 		//commands
-		Objects.requireNonNull(this.getCommand("MineQuaft:give")).setExecutor(new GiveCommand());
+		Objects.requireNonNull(this.getCommand("MineQuaft-give")).setExecutor(new GiveCommand());
 
 		//Configs
 		try {

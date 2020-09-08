@@ -24,7 +24,7 @@ public class DragonEggRecipe implements Listener {
 
     @EventHandler
     public void dragonEggResult(InventoryClickEvent event) {
-        Inventory fcInventory = fusionQuaftingInventory.getFusionCraftingInventory();
+        Inventory fcInventory = fusionQuaftingInventory.getFusionQuaftingInventory();
 
         if(!event.getInventory().equals(fcInventory)) {
             if(event.getInventory().getSize() > 43) {

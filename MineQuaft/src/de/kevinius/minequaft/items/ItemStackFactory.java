@@ -39,6 +39,8 @@ public class ItemStackFactory {
     private ItemStack loadPurple;
     private ItemStack loadOrange;
     private ItemStack loadLightBlue;
+    private ItemStack quaftingBook;
+    private ItemStack back;
 
     private ItemStackFactory(){}
 
@@ -361,6 +363,42 @@ public class ItemStackFactory {
             createDonut();
         }
         return donut;
+    }
+
+    private void createQuaftingBook() {
+
+        quaftingBook = new ItemStack(Material.BOOK);
+
+        ItemMeta quaftingBookMeta = quaftingBook.getItemMeta();
+        assert quaftingBookMeta != null;
+        quaftingBookMeta.setDisplayName("§aRecipes");
+        quaftingBookMeta.setCustomModelData(100116);
+        quaftingBook.setItemMeta(quaftingBookMeta);
+
+    }
+    public ItemStack getQuaftingBook() {
+        if(quaftingBook == null) {
+            createQuaftingBook();
+        }
+        return quaftingBook;
+    }
+
+    private void createBack() {
+
+        back = new ItemStack(Material.ARROW);
+
+        ItemMeta backMeta = back.getItemMeta();
+        assert backMeta != null;
+        backMeta.setDisplayName("§eback");
+        backMeta.setCustomModelData(100117);
+        back.setItemMeta(backMeta);
+
+    }
+    public ItemStack getBack() {
+        if(back == null) {
+            createBack();
+        }
+        return back;
     }
 
     public ItemStack getLanternRed() {

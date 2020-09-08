@@ -1,6 +1,8 @@
 package de.kevinius.minequaft.inventorys;
 
 import de.kevinius.minequaft.advancements.SaveAdvancements;
+import de.kevinius.minequaft.inventorys.functions.NoTakingItems;
+import de.kevinius.minequaft.inventorys.functions.OnCloseInventory;
 import de.kevinius.minequaft.items.ItemStackFactory;
 import de.kevinius.minequaft.main.Main;
 import org.bukkit.Bukkit;
@@ -22,26 +24,32 @@ import java.util.Objects;
 
 public class FusionQuaftingInventory implements Listener {
 	
-	public Inventory fusionCraftingInventory;
-	ItemStack fillItem = ItemStackFactory.getInstance().getFillItem();
-	ItemStack loadBackground = ItemStackFactory.getInstance().getLoadBackground();
-	ItemStack resultBarrier = ItemStackFactory.getInstance().getResultBarrier();
-	ItemStack confirmItem = ItemStackFactory.getInstance().getConfirmItem();
+	private Inventory fusionCraftingInventory;
+	private final ItemStack fillItem = ItemStackFactory.getInstance().getFillItem();
+	private final ItemStack loadBackground = ItemStackFactory.getInstance().getLoadBackground();
+	private final ItemStack resultBarrier = ItemStackFactory.getInstance().getResultBarrier();
+	private final ItemStack confirmItem = ItemStackFactory.getInstance().getConfirmItem();
+	private final ItemStack quaftingBook = ItemStackFactory.getInstance().getQuaftingBook();
+	private final ItemStack back = ItemStackFactory.getInstance().getBack();
 
-	public final String fcName = "§6Fusion §5Quafting";
+	private final NoTakingItems noTakingItems = new NoTakingItems();
+	private final OnCloseInventory onCloseInventory = new OnCloseInventory();
+
+	public String fqName = "§6Fusion §5Quafting";
 
 	public static ArrayList playersInTable = new ArrayList();
 	
 	//==================== INVENTORY =====================================
 	
 	public void createFusionCraftingInventory(Player player) {
-		fusionCraftingInventory = Bukkit.createInventory(null, 9*6, fcName);
+		fusionCraftingInventory = Bukkit.createInventory(null, 9*6, fqName);
 		
 		ItemStack fi = fillItem;
 		ItemStack lb = loadBackground;
 		ItemStack rb = resultBarrier;
 		ItemStack ci = confirmItem;
-		
+		ItemStack qb = quaftingBook;
+
 		lb.setAmount(1);
 		fi.setAmount(1);
 		rb.setAmount(1);
@@ -76,7 +84,7 @@ public class FusionQuaftingInventory implements Listener {
 		
 		fusionCraftingInventory.setItem(20, fi);
 		fusionCraftingInventory.setItem(21, fi);
-		fusionCraftingInventory.setItem(22, fi);
+		fusionCraftingInventory.setItem(22, qb);
 		fusionCraftingInventory.setItem(23, fi);
 		fusionCraftingInventory.setItem(24, fi);
 		
@@ -150,64 +158,18 @@ public class FusionQuaftingInventory implements Listener {
 
 	@EventHandler
 	public void onPlayerCloseInventory(InventoryCloseEvent event) {
-		playersInTable.remove(event.getPlayer().getName());
-		event.getView().getTitle();
-		if (event.getView().getTitle().equals(fcName)) {
-			ItemStack[] arrayOfItemStack;
-			int j = (arrayOfItemStack = event.getInventory().getContents()).length;
-			for (int i = 0; i < j; i++) {
-				ItemStack item = arrayOfItemStack[i];
-				if (item != null && !item.isSimilar(fillItem)
-				 && !item.isSimilar(resultBarrier)
-				 && !item.isSimilar(loadBackground)
-				 && !item.isSimilar(confirmItem)) {
-					event.getPlayer().getWorld().dropItem(event.getPlayer().getLocation(), item);
-				}
-			}
-		}
+		onCloseInventory.onPlayerCloseInventory(event, fusionCraftingInventory);
 	}
-	
-	public Inventory getFusionCraftingInventory() {
-		return fusionCraftingInventory;
-	}
-	
+
 	@EventHandler
 	public void noTakingItems(InventoryClickEvent event) {
-		if(event.getClickedInventory() != null) {
-			if(event.getClickedInventory().equals(fusionCraftingInventory)) {
-				Bukkit.getScheduler().runTaskLater(Main.getPlugin(), () -> {
-					if(event.getWhoClicked().getOpenInventory().getItem(40) == null) {
-						event.getWhoClicked().getOpenInventory().setItem(40, resultBarrier);
-					}
-				}, 1);
-			}
-		}
-		
-		if(fusionCraftingInventory != null) {
-			if(event.getView().getTitle().equals(fcName)) {
-				if(event.getCurrentItem() != null) {
-					event.getClick();
-					if(event.isLeftClick() && event.getCurrentItem().isSimilar(fillItem)
-						|| event.isRightClick() && event.getCurrentItem().isSimilar(fillItem)
-						|| event.isShiftClick() && event.getCurrentItem().isSimilar(fillItem)
-						
-						|| event.isRightClick() && event.getCurrentItem().isSimilar(loadBackground)
-						|| event.isLeftClick() && event.getCurrentItem().isSimilar(loadBackground)
-						|| event.isShiftClick() && event.getCurrentItem().isSimilar(loadBackground)
-						
-						|| event.isShiftClick() && event.getCurrentItem().isSimilar(resultBarrier)
-						|| event.isRightClick() && event.getCurrentItem().isSimilar(resultBarrier)
-						|| event.isLeftClick() && event.getCurrentItem().isSimilar(resultBarrier)
-						
-						|| event.isShiftClick() && event.getCurrentItem().isSimilar(confirmItem)
-						|| event.isRightClick() && event.getCurrentItem().isSimilar(confirmItem)
-						|| event.isLeftClick() && event.getCurrentItem().isSimilar(confirmItem)
-						
-						|| event.getClick().isKeyboardClick()) {
-							event.setCancelled(true);
-					}
-				}
-			}
-		}
+		noTakingItems.noTakingItems(event, fusionCraftingInventory);
 	}
+
+	/*=====================GETTER & SETTER=============================*/
+
+	public Inventory getFusionQuaftingInventory() {
+		return fusionCraftingInventory;
+	}
+
 }

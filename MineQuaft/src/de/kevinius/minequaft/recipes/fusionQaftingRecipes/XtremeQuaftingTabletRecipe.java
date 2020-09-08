@@ -25,7 +25,7 @@ public class XtremeQuaftingTabletRecipe implements Listener {
 
     @EventHandler
     public void xtremeQuaftingResult(InventoryClickEvent event) {
-        Inventory fcInventory = fusionQuaftingInventory.getFusionCraftingInventory();
+        Inventory fcInventory = fusionQuaftingInventory.getFusionQuaftingInventory();
 
         if(!event.getInventory().equals(fcInventory)) {
             if(event.getInventory().getSize() > 43) {
