@@ -41,6 +41,7 @@ public class ItemStackFactory {
     private ItemStack loadLightBlue;
     private ItemStack quaftingBook;
     private ItemStack back;
+    private ItemStack close;
 
     private ItemStackFactory(){}
 
@@ -399,6 +400,24 @@ public class ItemStackFactory {
             createBack();
         }
         return back;
+    }
+
+    private void createClose() {
+
+        close = new ItemStack(Material.BARRIER);
+
+        ItemMeta closeMeta = close.getItemMeta();
+        assert closeMeta != null;
+        closeMeta.setDisplayName("§4close");
+        closeMeta.setCustomModelData(100117);
+        close.setItemMeta(closeMeta);
+
+    }
+    public ItemStack getClose() {
+        if(close == null) {
+            createClose();
+        }
+        return close;
     }
 
     public ItemStack getLanternRed() {

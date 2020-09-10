@@ -3,6 +3,7 @@ package de.kevinius.minequaft.mobdrops;
 import de.kevinius.minequaft.items.ItemStackFactory;
 import org.bukkit.entity.EnderDragon;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Pig;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;

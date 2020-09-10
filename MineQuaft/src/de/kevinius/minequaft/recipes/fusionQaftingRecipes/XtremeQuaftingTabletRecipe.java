@@ -1,7 +1,10 @@
 package de.kevinius.minequaft.recipes.fusionQaftingRecipes;
 
 import de.kevinius.minequaft.inventorys.FusionQuaftingInventory;
+import de.kevinius.minequaft.inventorys.XtremeQuaftingInventory;
 import de.kevinius.minequaft.items.ItemStackFactory;
+import de.kevinius.minequaft.recipes.fusionQaftingRecipes.functions.CraftItem;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -16,22 +19,23 @@ import java.util.Objects;
 
 public class XtremeQuaftingTabletRecipe implements Listener {
 
-    FusionQuaftingInventory fusionQuaftingInventory = new FusionQuaftingInventory();
-
     private final int dragonScaleData = Objects.requireNonNull(ItemStackFactory.getInstance().getDragonScale().getItemMeta()).getCustomModelData();
     private final ItemStack diamond = new ItemStack(Material.DIAMOND);
     private final ItemStack CraftingTable = new ItemStack(Material.CRAFTING_TABLE);
-    private final ItemStack xqTable = ItemStackFactory.getInstance().getXtremeQuaftingTable();
+    private final ItemStack xtremeQuaftingTable = ItemStackFactory.getInstance().getXtremeQuaftingTable();
+
+    private final CraftItem craftItem = new CraftItem();
+
+    private final FusionQuaftingInventory fusionQuaftingInventory = new FusionQuaftingInventory();
 
     @EventHandler
     public void xtremeQuaftingResult(InventoryClickEvent event) {
-        Inventory fcInventory = fusionQuaftingInventory.getFusionQuaftingInventory();
 
-        if(!event.getInventory().equals(fcInventory)) {
+        if(event.getView().getPlayer().getOpenInventory().getTitle().equalsIgnoreCase(fusionQuaftingInventory.fqName)) {
             if(event.getInventory().getSize() > 43) {
                 if(event.isLeftClick() && event.getSlot() == 31
-                        || event.isRightClick() && event.getSlot() == 31
-                        || event.isShiftClick() && event.getSlot() == 31) {
+                || event.isRightClick() && event.getSlot() == 31
+                || event.isShiftClick() && event.getSlot() == 31) {
 
                     InventoryView playerInventory= event.getWhoClicked().getOpenInventory();
 
@@ -49,9 +53,9 @@ public class XtremeQuaftingTabletRecipe implements Listener {
                                 && Objects.requireNonNull(playerInventory.getItem(13)).isSimilar(CraftingTable)
                                 && Objects.requireNonNull(playerInventory.getItem(16)).isSimilar(diamond)
                                 && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(19)).getItemMeta()).getCustomModelData() == dragonScaleData
-                                && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(19)).getItemMeta()).getCustomModelData() == dragonScaleData
-                                && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(19)).getItemMeta()).getCustomModelData() == dragonScaleData
-                                && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(19)).getItemMeta()).getCustomModelData() == dragonScaleData
+                                && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(25)).getItemMeta()).getCustomModelData() == dragonScaleData
+                                && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(28)).getItemMeta()).getCustomModelData() == dragonScaleData
+                                && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(34)).getItemMeta()).getCustomModelData() == dragonScaleData
                                 && Objects.requireNonNull(playerInventory.getItem(37)).isSimilar(diamond)
                                 && Objects.requireNonNull(playerInventory.getItem(43)).isSimilar(diamond)) {
 
@@ -77,15 +81,8 @@ public class XtremeQuaftingTabletRecipe implements Listener {
                                 int amt39 = Objects.requireNonNull(playerInventory.getItem(43)).getAmount();
                                 Objects.requireNonNull(playerInventory.getItem(43)).setAmount(amt39 - 1);
 
-                                if(Objects.requireNonNull(event.getInventory().getItem(40)).isSimilar(ItemStackFactory.getInstance().getResultBarrier())) {
-                                    event.getInventory().setItem(40, xqTable);
-                                    ((Player) event.getView().getPlayer()).playSound(event.getView().getPlayer().getLocation(), Sound.BLOCK_FIRE_EXTINGUISH, 0.7F, 0.7F);
-                                } else if (Objects.requireNonNull(event.getInventory().getItem(40)).isSimilar(xqTable)) {
-                                    event.getInventory().addItem(ItemStackFactory.getInstance().getEndirium()).put(resultamount + 1, xqTable);
-                                    ((Player) event.getView().getPlayer()).playSound(event.getView().getPlayer().getLocation(), Sound.BLOCK_FIRE_EXTINGUISH, 0.7F, 0.7F);
-                                } else {
-                                    event.setCancelled(true);
-                                }
+                                craftItem.onCraftFusionItem(event, xtremeQuaftingTable);
+
                             }
                         }
                     }

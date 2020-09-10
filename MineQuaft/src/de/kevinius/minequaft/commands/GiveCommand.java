@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-public class GiveCommand implements CommandExecutor {
+public class  GiveCommand implements CommandExecutor {
 
     /*---------------Quafting Tables---------------*/
 

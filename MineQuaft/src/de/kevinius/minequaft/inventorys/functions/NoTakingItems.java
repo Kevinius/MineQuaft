@@ -17,6 +17,7 @@ public class NoTakingItems {
     private final ItemStack confirmItem = ItemStackFactory.getInstance().getConfirmItem();
     private final ItemStack quaftingBook = ItemStackFactory.getInstance().getQuaftingBook();
     private final ItemStack back = ItemStackFactory.getInstance().getBack();
+    private final ItemStack close = ItemStackFactory.getInstance().getClose();
 
     public void noTakingItems(InventoryClickEvent event, Inventory inventory) {
         if(event.getClickedInventory() != null) {
@@ -68,6 +69,10 @@ public class NoTakingItems {
                         || event.isShiftClick() && event.getCurrentItem().isSimilar(back)
                         || event.isRightClick() && event.getCurrentItem().isSimilar(back)
                         || event.isLeftClick() && event.getCurrentItem().isSimilar(back)
+
+                        || event.isShiftClick() && event.getCurrentItem().isSimilar(close)
+                        || event.isRightClick() && event.getCurrentItem().isSimilar(close)
+                        || event.isLeftClick() && event.getCurrentItem().isSimilar(close)
 
                         || event.getClick().isKeyboardClick()) {
                     event.setCancelled(true);

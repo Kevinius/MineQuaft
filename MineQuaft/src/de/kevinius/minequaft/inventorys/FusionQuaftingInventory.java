@@ -18,7 +18,6 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -30,101 +29,92 @@ public class FusionQuaftingInventory implements Listener {
 	private final ItemStack resultBarrier = ItemStackFactory.getInstance().getResultBarrier();
 	private final ItemStack confirmItem = ItemStackFactory.getInstance().getConfirmItem();
 	private final ItemStack quaftingBook = ItemStackFactory.getInstance().getQuaftingBook();
-	private final ItemStack back = ItemStackFactory.getInstance().getBack();
 
 	private final NoTakingItems noTakingItems = new NoTakingItems();
 	private final OnCloseInventory onCloseInventory = new OnCloseInventory();
 
 	public String fqName = "§6Fusion §5Quafting";
 
-	public static ArrayList playersInTable = new ArrayList();
-	
 	//==================== INVENTORY =====================================
 	
 	public void createFusionCraftingInventory(Player player) {
 		fusionCraftingInventory = Bukkit.createInventory(null, 9*6, fqName);
-		
-		ItemStack fi = fillItem;
-		ItemStack lb = loadBackground;
-		ItemStack rb = resultBarrier;
-		ItemStack ci = confirmItem;
-		ItemStack qb = quaftingBook;
 
-		lb.setAmount(1);
-		fi.setAmount(1);
-		rb.setAmount(1);
+		loadBackground.setAmount(1);
+		fillItem.setAmount(1);
+		resultBarrier.setAmount(1);
 		
 		//=================== 1 ====================
 		
-		fusionCraftingInventory.setItem(0, lb);
-		fusionCraftingInventory.setItem(1, lb);
-		fusionCraftingInventory.setItem(2, lb);
-		fusionCraftingInventory.setItem(3, lb);
-		fusionCraftingInventory.setItem(4, lb);
-		fusionCraftingInventory.setItem(5, lb);
-		fusionCraftingInventory.setItem(6, lb);
-		fusionCraftingInventory.setItem(7, lb);
-		fusionCraftingInventory.setItem(8, lb);
+		fusionCraftingInventory.setItem(0, loadBackground);
+		fusionCraftingInventory.setItem(1, loadBackground);
+		fusionCraftingInventory.setItem(2, loadBackground);
+		fusionCraftingInventory.setItem(3, loadBackground);
+		fusionCraftingInventory.setItem(4, loadBackground);
+		fusionCraftingInventory.setItem(5, loadBackground);
+		fusionCraftingInventory.setItem(6, loadBackground);
+		fusionCraftingInventory.setItem(7, loadBackground);
+		fusionCraftingInventory.setItem(8, loadBackground);
 		
 		//==================== 2 =====================
 		
-		fusionCraftingInventory.setItem(9, lb);
+		fusionCraftingInventory.setItem(9, loadBackground);
 		
-		fusionCraftingInventory.setItem(11, fi);
-		fusionCraftingInventory.setItem(12, fi);
+		fusionCraftingInventory.setItem(11, fillItem);
+		fusionCraftingInventory.setItem(12, fillItem);
 		
-		fusionCraftingInventory.setItem(14, fi);
-		fusionCraftingInventory.setItem(15, fi);
+		fusionCraftingInventory.setItem(14, fillItem);
+		fusionCraftingInventory.setItem(15, fillItem);
 		
-		fusionCraftingInventory.setItem(17, lb);
+		fusionCraftingInventory.setItem(17, loadBackground);
 		
 		//===================== 3 ====================
 		
-		fusionCraftingInventory.setItem(18, lb);
+		fusionCraftingInventory.setItem(18, loadBackground);
 		
-		fusionCraftingInventory.setItem(20, fi);
-		fusionCraftingInventory.setItem(21, fi);
-		fusionCraftingInventory.setItem(22, qb);
-		fusionCraftingInventory.setItem(23, fi);
-		fusionCraftingInventory.setItem(24, fi);
+		fusionCraftingInventory.setItem(20, fillItem);
+		fusionCraftingInventory.setItem(21, fillItem);
+		fusionCraftingInventory.setItem(22, quaftingBook);
+		fusionCraftingInventory.setItem(23, fillItem);
+		fusionCraftingInventory.setItem(24, fillItem);
 		
-		fusionCraftingInventory.setItem(26, lb);
+		fusionCraftingInventory.setItem(26, loadBackground);
 		
 		//====================== 4 ====================
 		
-		fusionCraftingInventory.setItem(27, lb);
+		fusionCraftingInventory.setItem(27, loadBackground);
 		
-		fusionCraftingInventory.setItem(29, fi);
-		fusionCraftingInventory.setItem(30, fi);
-		fusionCraftingInventory.setItem(31, ci);
-		fusionCraftingInventory.setItem(32, fi);
-		fusionCraftingInventory.setItem(33, fi);
+		fusionCraftingInventory.setItem(29, fillItem);
+		fusionCraftingInventory.setItem(30, fillItem);
+		fusionCraftingInventory.setItem(31, confirmItem);
+		fusionCraftingInventory.setItem(32, fillItem);
+		fusionCraftingInventory.setItem(33, fillItem);
 		
-		fusionCraftingInventory.setItem(35, lb);
+		fusionCraftingInventory.setItem(35, loadBackground);
 		
 		//====================== 5 ====================
 		
-		fusionCraftingInventory.setItem(36, lb);
+		fusionCraftingInventory.setItem(36, loadBackground);
 		
-		fusionCraftingInventory.setItem(38, fi);
-		fusionCraftingInventory.setItem(39, fi);
-		fusionCraftingInventory.setItem(40, rb);
-		fusionCraftingInventory.setItem(41, fi);
-		fusionCraftingInventory.setItem(42, fi);
+		fusionCraftingInventory.setItem(38, fillItem);
+		fusionCraftingInventory.setItem(39, fillItem);
+		fusionCraftingInventory.setItem(40, resultBarrier);
+		fusionCraftingInventory.setItem(41, fillItem);
+		fusionCraftingInventory.setItem(42, fillItem);
 		
-		fusionCraftingInventory.setItem(44, lb);
+		fusionCraftingInventory.setItem(44, loadBackground);
 		
 		//====================== 6 ====================
 		
-		fusionCraftingInventory.setItem(45, lb);
-		fusionCraftingInventory.setItem(46, lb);
-		fusionCraftingInventory.setItem(47, lb);
-		fusionCraftingInventory.setItem(48, lb);
-		fusionCraftingInventory.setItem(49, lb);
-		fusionCraftingInventory.setItem(50, lb);
-		fusionCraftingInventory.setItem(51, lb);
-		fusionCraftingInventory.setItem(52, lb);
-		fusionCraftingInventory.setItem(53, lb);
+		fusionCraftingInventory.setItem(45, loadBackground);
+		fusionCraftingInventory.setItem(46, loadBackground);
+		fusionCraftingInventory.setItem(47, loadBackground);
+		fusionCraftingInventory.setItem(48, loadBackground);
+		fusionCraftingInventory.setItem(49, loadBackground);
+		fusionCraftingInventory.setItem(50, loadBackground);
+		fusionCraftingInventory.setItem(51, loadBackground);
+		fusionCraftingInventory.setItem(52, loadBackground);
+		fusionCraftingInventory.setItem(53, loadBackground);
 		
 		//================== END ======================
 		
@@ -157,9 +147,7 @@ public class FusionQuaftingInventory implements Listener {
 	}
 
 	@EventHandler
-	public void onPlayerCloseInventory(InventoryCloseEvent event) {
-		onCloseInventory.onPlayerCloseInventory(event, fusionCraftingInventory);
-	}
+	public void onPlayerCloseInventory(InventoryCloseEvent event) { onCloseInventory.onPlayerCloseInventory(event, fusionCraftingInventory); }
 
 	@EventHandler
 	public void noTakingItems(InventoryClickEvent event) {
