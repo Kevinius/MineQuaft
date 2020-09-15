@@ -1,5 +1,6 @@
 package de.kevinius.minequaft.recipes.xtremeQaftingRecipes;
 
+import de.kevinius.minequaft.inventorys.XtremeQuaftingInventory;
 import de.kevinius.minequaft.items.ItemStackFactory;
 import de.kevinius.minequaft.main.Main;
 import org.bukkit.Bukkit;
@@ -18,10 +19,12 @@ public class EndstoneClusterRecipe implements Listener {
     private final ItemStack resultBarrier = ItemStackFactory.getInstance().getResultBarrier();
     private final ItemStack endstone = new ItemStack(Material.END_STONE);
 
+    private final XtremeQuaftingInventory xtremeQuaftingInventory = new XtremeQuaftingInventory();
+
 
     @EventHandler
     public void endstoneClusterResult(InventoryClickEvent event) {
-        if(event.getView().getTitle().equals("§3Xtreme Quafting")) {
+        if(event.getView().getTitle().equals(xtremeQuaftingInventory.xqname)) {
             if(event.isRightClick() && event.getRawSlot() < 45 || event.isLeftClick() && event.getRawSlot() < 45 || event.isShiftClick() && event.getRawSlot() > 45) {
                 Bukkit.getScheduler().runTaskLater(Main.getPlugin(), () -> {
                     InventoryView playerInventory = event.getWhoClicked().getOpenInventory();

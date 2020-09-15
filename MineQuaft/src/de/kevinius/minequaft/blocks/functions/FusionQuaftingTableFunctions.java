@@ -2,6 +2,9 @@ package de.kevinius.minequaft.blocks.functions;
 
 import de.kevinius.minequaft.blocks.entitys.EntityFactory;
 import de.kevinius.minequaft.items.ItemStackFactory;
+import de.kevinius.minequaft.main.Main;
+import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.ArmorStand;
@@ -11,6 +14,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.List;
@@ -19,6 +23,7 @@ import java.util.Objects;
 public class FusionQuaftingTableFunctions implements Listener {
 
     private final int fusionQuaftingTableData = Objects.requireNonNull(ItemStackFactory.getInstance().getFusionQuaftingTable().getItemMeta()).getCustomModelData();
+    private final ItemStack fusionQuaftingTable = ItemStackFactory.getInstance().getFusionQuaftingTable();
 
     @EventHandler
     public void placeFusionQuaftingTable(BlockPlaceEvent event) {
@@ -48,6 +53,16 @@ public class FusionQuaftingTableFunctions implements Listener {
                 && entity.getLocation().getZ() == locationZ
                 && entity.getLocation().getY() == locationY) {
                     entity.remove();
+                    entity.remove();
+                    if(event.getPlayer().getGameMode().equals(GameMode.SURVIVAL)) {
+                        event.setCancelled(true);
+                        Objects.requireNonNull(event.getBlock().getLocation().getWorld()).dropItemNaturally(event.getBlock().getLocation(), fusionQuaftingTable);
+                        Bukkit.getScheduler().runTaskLater(Main.getPlugin(), () -> {
+                            if(event.isCancelled()) {
+                                event.getBlock().getLocation().getBlock().setType(Material.AIR);
+                            }
+                        }, 1);
+                    }
                 }
             }
         }

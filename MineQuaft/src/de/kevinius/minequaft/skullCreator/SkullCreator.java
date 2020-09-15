@@ -106,6 +106,7 @@ public class SkullCreator {
         notNull(name, "name");
 
         SkullMeta meta = (SkullMeta) item.getItemMeta();
+        assert meta != null;
         meta.setOwner(name);
         item.setItemMeta(meta);
 
@@ -124,6 +125,7 @@ public class SkullCreator {
         notNull(id, "id");
 
         SkullMeta meta = (SkullMeta) item.getItemMeta();
+        assert meta != null;
         meta.setOwningPlayer(Bukkit.getOfflinePlayer(id));
         item.setItemMeta(meta);
 
@@ -306,7 +308,6 @@ public class SkullCreator {
 
     // suppress warning since PLAYER_HEAD doesn't exist in 1.12.2,
     // but we expect this and catch the error at runtime.
-    @SuppressWarnings("JavaReflectionMemberAccess")
     private static void checkLegacy() {
         try {
             // if both of these succeed, then we are running

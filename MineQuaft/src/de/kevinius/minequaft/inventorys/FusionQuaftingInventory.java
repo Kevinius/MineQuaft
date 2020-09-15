@@ -23,7 +23,7 @@ import java.util.Objects;
 
 public class FusionQuaftingInventory implements Listener {
 	
-	private Inventory fusionCraftingInventory;
+	private Inventory fusionQuaftingInventory;
 	private final ItemStack fillItem = ItemStackFactory.getInstance().getFillItem();
 	private final ItemStack loadBackground = ItemStackFactory.getInstance().getLoadBackground();
 	private final ItemStack resultBarrier = ItemStackFactory.getInstance().getResultBarrier();
@@ -38,7 +38,7 @@ public class FusionQuaftingInventory implements Listener {
 	//==================== INVENTORY =====================================
 	
 	public void createFusionCraftingInventory(Player player) {
-		fusionCraftingInventory = Bukkit.createInventory(null, 9*6, fqName);
+		fusionQuaftingInventory = Bukkit.createInventory(null, 9*6, fqName);
 
 		loadBackground.setAmount(1);
 		fillItem.setAmount(1);
@@ -46,79 +46,80 @@ public class FusionQuaftingInventory implements Listener {
 		
 		//=================== 1 ====================
 		
-		fusionCraftingInventory.setItem(0, loadBackground);
-		fusionCraftingInventory.setItem(1, loadBackground);
-		fusionCraftingInventory.setItem(2, loadBackground);
-		fusionCraftingInventory.setItem(3, loadBackground);
-		fusionCraftingInventory.setItem(4, loadBackground);
-		fusionCraftingInventory.setItem(5, loadBackground);
-		fusionCraftingInventory.setItem(6, loadBackground);
-		fusionCraftingInventory.setItem(7, loadBackground);
-		fusionCraftingInventory.setItem(8, loadBackground);
+		fusionQuaftingInventory.setItem(0, loadBackground);
+		fusionQuaftingInventory.setItem(1, loadBackground);
+		fusionQuaftingInventory.setItem(2, loadBackground);
+		fusionQuaftingInventory.setItem(3, loadBackground);
+		fusionQuaftingInventory.setItem(4, loadBackground);
+		fusionQuaftingInventory.setItem(5, loadBackground);
+		fusionQuaftingInventory.setItem(6, loadBackground);
+		fusionQuaftingInventory.setItem(7, loadBackground);
+		fusionQuaftingInventory.setItem(8, loadBackground);
 		
 		//==================== 2 =====================
 		
-		fusionCraftingInventory.setItem(9, loadBackground);
+		fusionQuaftingInventory.setItem(9, loadBackground);
 		
-		fusionCraftingInventory.setItem(11, fillItem);
-		fusionCraftingInventory.setItem(12, fillItem);
+		fusionQuaftingInventory.setItem(11, fillItem);
+		fusionQuaftingInventory.setItem(12, fillItem);
 		
-		fusionCraftingInventory.setItem(14, fillItem);
-		fusionCraftingInventory.setItem(15, fillItem);
+		fusionQuaftingInventory.setItem(14, fillItem);
+		fusionQuaftingInventory.setItem(15, fillItem);
 		
-		fusionCraftingInventory.setItem(17, loadBackground);
+		fusionQuaftingInventory.setItem(17, loadBackground);
 		
 		//===================== 3 ====================
 		
-		fusionCraftingInventory.setItem(18, loadBackground);
+		fusionQuaftingInventory.setItem(18, loadBackground);
 		
-		fusionCraftingInventory.setItem(20, fillItem);
-		fusionCraftingInventory.setItem(21, fillItem);
-		fusionCraftingInventory.setItem(22, quaftingBook);
-		fusionCraftingInventory.setItem(23, fillItem);
-		fusionCraftingInventory.setItem(24, fillItem);
+		fusionQuaftingInventory.setItem(20, fillItem);
+		fusionQuaftingInventory.setItem(21, fillItem);
+		fusionQuaftingInventory.setItem(22, quaftingBook);
+		fusionQuaftingInventory.setItem(23, fillItem);
+		fusionQuaftingInventory.setItem(24, fillItem);
 		
-		fusionCraftingInventory.setItem(26, loadBackground);
+		fusionQuaftingInventory.setItem(26, loadBackground);
 		
 		//====================== 4 ====================
 		
-		fusionCraftingInventory.setItem(27, loadBackground);
+		fusionQuaftingInventory.setItem(27, loadBackground);
 		
-		fusionCraftingInventory.setItem(29, fillItem);
-		fusionCraftingInventory.setItem(30, fillItem);
-		fusionCraftingInventory.setItem(31, confirmItem);
-		fusionCraftingInventory.setItem(32, fillItem);
-		fusionCraftingInventory.setItem(33, fillItem);
+		fusionQuaftingInventory.setItem(29, fillItem);
+		fusionQuaftingInventory.setItem(30, fillItem);
+		fusionQuaftingInventory.setItem(31, confirmItem);
+		fusionQuaftingInventory.setItem(32, fillItem);
+		fusionQuaftingInventory.setItem(33, fillItem);
 		
-		fusionCraftingInventory.setItem(35, loadBackground);
+		fusionQuaftingInventory.setItem(35, loadBackground);
 		
 		//====================== 5 ====================
 		
-		fusionCraftingInventory.setItem(36, loadBackground);
+		fusionQuaftingInventory.setItem(36, loadBackground);
 		
-		fusionCraftingInventory.setItem(38, fillItem);
-		fusionCraftingInventory.setItem(39, fillItem);
-		fusionCraftingInventory.setItem(40, resultBarrier);
-		fusionCraftingInventory.setItem(41, fillItem);
-		fusionCraftingInventory.setItem(42, fillItem);
+		fusionQuaftingInventory.setItem(38, fillItem);
+		fusionQuaftingInventory.setItem(39, fillItem);
+		fusionQuaftingInventory.setItem(40, resultBarrier);
+		fusionQuaftingInventory.setItem(41, fillItem);
+		fusionQuaftingInventory.setItem(42, fillItem);
 		
-		fusionCraftingInventory.setItem(44, loadBackground);
+		fusionQuaftingInventory.setItem(44, loadBackground);
 		
 		//====================== 6 ====================
 		
-		fusionCraftingInventory.setItem(45, loadBackground);
-		fusionCraftingInventory.setItem(46, loadBackground);
-		fusionCraftingInventory.setItem(47, loadBackground);
-		fusionCraftingInventory.setItem(48, loadBackground);
-		fusionCraftingInventory.setItem(49, loadBackground);
-		fusionCraftingInventory.setItem(50, loadBackground);
-		fusionCraftingInventory.setItem(51, loadBackground);
-		fusionCraftingInventory.setItem(52, loadBackground);
-		fusionCraftingInventory.setItem(53, loadBackground);
+		fusionQuaftingInventory.setItem(45, loadBackground);
+		fusionQuaftingInventory.setItem(46, loadBackground);
+		fusionQuaftingInventory.setItem(47, loadBackground);
+		fusionQuaftingInventory.setItem(48, loadBackground);
+		fusionQuaftingInventory.setItem(49, loadBackground);
+		fusionQuaftingInventory.setItem(50, loadBackground);
+		fusionQuaftingInventory.setItem(51, loadBackground);
+		fusionQuaftingInventory.setItem(52, loadBackground);
+		fusionQuaftingInventory.setItem(53, loadBackground);
 		
 		//================== END ======================
-		
-		player.openInventory(fusionCraftingInventory);
+
+		player.openInventory(fusionQuaftingInventory);
+
 	}
 
 	@EventHandler
@@ -147,17 +148,10 @@ public class FusionQuaftingInventory implements Listener {
 	}
 
 	@EventHandler
-	public void onPlayerCloseInventory(InventoryCloseEvent event) { onCloseInventory.onPlayerCloseInventory(event, fusionCraftingInventory); }
+	public void onPlayerCloseInventory(InventoryCloseEvent event) { onCloseInventory.onPlayerCloseInventory(event, fusionQuaftingInventory); }
 
 	@EventHandler
 	public void noTakingItems(InventoryClickEvent event) {
-		noTakingItems.noTakingItems(event, fusionCraftingInventory);
+		noTakingItems.noTakingItems(event, fusionQuaftingInventory);
 	}
-
-	/*=====================GETTER & SETTER=============================*/
-
-	public Inventory getFusionQuaftingInventory() {
-		return fusionCraftingInventory;
-	}
-
 }

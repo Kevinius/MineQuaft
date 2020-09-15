@@ -1,5 +1,6 @@
 package de.kevinius.minequaft.recipes.xtremeQaftingRecipes;
 
+import de.kevinius.minequaft.inventorys.XtremeQuaftingInventory;
 import de.kevinius.minequaft.items.ItemStackFactory;
 import de.kevinius.minequaft.main.Main;
 import org.bukkit.Bukkit;
@@ -17,15 +18,25 @@ public class ElytraRecipe implements Listener {
 
     private final int dragonScaleData = Objects.requireNonNull(ItemStackFactory.getInstance().getDragonScale().getItemMeta()).getCustomModelData();
     private final ItemStack resultBarrier = ItemStackFactory.getInstance().getResultBarrier();
+    private final ItemStack quaftingBook = ItemStackFactory.getInstance().getQuaftingBook();
     private final ItemStack phantomMembrane = new ItemStack(Material.PHANTOM_MEMBRANE);
     private final ItemStack feather = new ItemStack(Material.FEATHER);
     private final ItemStack dragonEgg = new ItemStack(Material.DRAGON_EGG);
     private final ItemStack result = new ItemStack(Material.ELYTRA);
 
+    private final XtremeQuaftingInventory xtremeQuaftingInventory = new XtremeQuaftingInventory();
+
     @EventHandler
     public void elytraResult(InventoryClickEvent event) {
-        if(event.getView().getTitle().equals("§3Xtreme Quafting")) {
-            if(event.isRightClick() && event.getRawSlot() < 45 || event.isLeftClick() && event.getRawSlot() < 45 || event.isShiftClick() && event.getRawSlot() > 45) {
+        if(event.getView().getTitle().equals(xtremeQuaftingInventory.xqname)) {
+            if(event.isRightClick() && event.getRawSlot() < 45
+            || event.isLeftClick() && event.getRawSlot() < 45
+            || event.isShiftClick() && event.getRawSlot() > 45) {
+                if(event.getCurrentItem() != null) {
+                    if(Objects.requireNonNull(event.getCurrentItem()).isSimilar(quaftingBook)) {
+                        return;
+                    }
+                }
                 Bukkit.getScheduler().runTaskLater(Main.getPlugin(), () -> {
                     InventoryView playerClickInventory = event.getWhoClicked().getOpenInventory();
 

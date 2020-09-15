@@ -43,7 +43,7 @@ public class EndiriumRecipe implements Listener{
 					&& playerInventory.getItem(37) != null
 					&& playerInventory.getItem(43) != null) {
 
-						if(Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(10)).getItemMeta()).hasCustomModelData() && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(10)).getItemMeta()).getCustomModelData() == endstoneClusterData
+						if(Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(10)).getItemMeta()).getCustomModelData() == endstoneClusterData
 						&& Objects.requireNonNull(playerInventory.getItem(13)).isSimilar(new ItemStack(Material.IRON_INGOT))
 						&& Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(16)).getItemMeta()).getCustomModelData() == endstoneClusterData
 						&& Objects.requireNonNull(playerInventory.getItem(19)).isSimilar(dragonEgg)

@@ -2,9 +2,8 @@ package de.kevinius.minequaft.recipes.fusionQaftingRecipes;
 
 import de.kevinius.minequaft.inventorys.FusionQuaftingInventory;
 import de.kevinius.minequaft.items.ItemStackFactory;
+import de.kevinius.minequaft.recipes.fusionQaftingRecipes.functions.CraftItem;
 import org.bukkit.Material;
-import org.bukkit.Sound;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -16,7 +15,8 @@ import java.util.Objects;
 
 public class DragonEggRecipe implements Listener {
 
-    FusionQuaftingInventory fusionQuaftingInventory = new FusionQuaftingInventory();
+    private final FusionQuaftingInventory fusionQuaftingInventory = new FusionQuaftingInventory();
+    private final CraftItem craftItem = new CraftItem();
 
     private final ItemStack egg = new ItemStack(Material.EGG);
     private final int dragonScaleData = Objects.requireNonNull(ItemStackFactory.getInstance().getDragonScale().getItemMeta()).getCustomModelData();
@@ -24,9 +24,8 @@ public class DragonEggRecipe implements Listener {
 
     @EventHandler
     public void dragonEggResult(InventoryClickEvent event) {
-        Inventory fcInventory = fusionQuaftingInventory.getFusionQuaftingInventory();
 
-        if(!event.getInventory().equals(fcInventory)) {
+        if(event.getView().getPlayer().getOpenInventory().getTitle().equalsIgnoreCase(fusionQuaftingInventory.fqName)) {
             if(event.getInventory().getSize() > 43) {
                 if(event.isLeftClick() && event.getSlot() == 31
                 || event.isRightClick() && event.getSlot() == 31
@@ -76,15 +75,7 @@ public class DragonEggRecipe implements Listener {
                                 int amt39 = Objects.requireNonNull(playerInventory.getItem(43)).getAmount();
                                 Objects.requireNonNull(playerInventory.getItem(43)).setAmount(amt39 - 1);
 
-                                if(Objects.requireNonNull(event.getInventory().getItem(40)).isSimilar(ItemStackFactory.getInstance().getResultBarrier())) {
-                                    event.getInventory().setItem(40, dragonEgg);
-                                    ((Player) event.getView().getPlayer()).playSound(event.getView().getPlayer().getLocation(), Sound.BLOCK_FIRE_EXTINGUISH, 0.7F, 0.7F);
-                                } else if (Objects.requireNonNull(event.getInventory().getItem(40)).isSimilar(dragonEgg)) {
-                                    event.getInventory().addItem(ItemStackFactory.getInstance().getEndirium()).put(resultamount + 1, dragonEgg);
-                                    ((Player) event.getView().getPlayer()).playSound(event.getView().getPlayer().getLocation(), Sound.BLOCK_FIRE_EXTINGUISH, 0.7F, 0.7F);
-                                } else {
-                                    event.setCancelled(true);
-                                }
+                                craftItem.onCraftFusionItem(event, dragonEgg);
                             }
                         }
                     }

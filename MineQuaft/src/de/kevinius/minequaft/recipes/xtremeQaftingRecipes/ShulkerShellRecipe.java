@@ -1,5 +1,6 @@
 package de.kevinius.minequaft.recipes.xtremeQaftingRecipes;
 
+import de.kevinius.minequaft.inventorys.XtremeQuaftingInventory;
 import de.kevinius.minequaft.items.ItemStackFactory;
 import de.kevinius.minequaft.main.Main;
 import org.bukkit.Bukkit;
@@ -16,17 +17,27 @@ import java.util.Objects;
 public class ShulkerShellRecipe implements Listener {
 
     private final int dragonScaleData = Objects.requireNonNull(ItemStackFactory.getInstance().getDragonScale().getItemMeta()).getCustomModelData();
-    ItemStack resultBarrier = ItemStackFactory.getInstance().getResultBarrier();
-    ItemStack chorusFruit = new ItemStack(Material.CHORUS_FRUIT);
-    ItemStack blazeRod = new ItemStack(Material.BLAZE_ROD);
-    ItemStack result = new ItemStack(Material.SHULKER_SHELL);
+    private final ItemStack quaftingBook = ItemStackFactory.getInstance().getQuaftingBook();
+    private final ItemStack resultBarrier = ItemStackFactory.getInstance().getResultBarrier();
+    private final ItemStack chorusFruit = new ItemStack(Material.CHORUS_FRUIT);
+    private final ItemStack blazeRod = new ItemStack(Material.BLAZE_ROD);
+    private final ItemStack result = new ItemStack(Material.SHULKER_SHELL);
+
+    private final XtremeQuaftingInventory xtremeQuaftingInventory = new XtremeQuaftingInventory();
 
     @EventHandler
     public void shulkerShellResult(InventoryClickEvent event) {
-        if(event.getView().getTitle().equals("§3Xtreme Quafting")) {
-            if(event.isRightClick() && event.getRawSlot() < 45 || event.isLeftClick() && event.getRawSlot() < 45 || event.isShiftClick() && event.getRawSlot() > 45) {
+        InventoryView playerInventory = event.getWhoClicked().getOpenInventory();
+        if(event.getView().getTitle().equals(xtremeQuaftingInventory.xqname)) {
+            if(event.isRightClick() && event.getRawSlot() < 45
+            || event.isLeftClick() && event.getRawSlot() < 45
+            || event.isShiftClick() && event.getRawSlot() > 45) {
+                if(event.getCurrentItem() != null) {
+                    if(Objects.requireNonNull(event.getCurrentItem()).isSimilar(quaftingBook)) {
+                        return;
+                    }
+                }
                 Bukkit.getScheduler().runTaskLater(Main.getPlugin(), () -> {
-                    InventoryView playerInventory = event.getWhoClicked().getOpenInventory();
 
                     if(playerInventory.getItem(0) != null
                             && playerInventory.getItem(1) != null
@@ -47,7 +58,7 @@ public class ShulkerShellRecipe implements Listener {
                                 && Objects.requireNonNull(playerInventory.getItem(1)).isSimilar(blazeRod)
                                 && Objects.requireNonNull(playerInventory.getItem(2)).isSimilar(blazeRod)
                                 && Objects.requireNonNull(playerInventory.getItem(3)).isSimilar(blazeRod)
-                                && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(0)).getItemMeta()).getCustomModelData() == dragonScaleData
+                                && Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(4)).getItemMeta()).getCustomModelData() == dragonScaleData
                                 && Objects.requireNonNull(playerInventory.getItem(9)).isSimilar(blazeRod)
                                 && Objects.requireNonNull(playerInventory.getItem(10)).isSimilar(chorusFruit)
                                 && Objects.requireNonNull(playerInventory.getItem(11)).isSimilar(chorusFruit)
