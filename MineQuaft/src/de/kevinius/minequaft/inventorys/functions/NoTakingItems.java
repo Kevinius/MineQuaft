@@ -17,6 +17,8 @@ public class NoTakingItems {
     private final ItemStack confirmItem = ItemStackFactory.getInstance().getConfirmItem();
     private final ItemStack loadLightBlue = ItemStackFactory.getInstance().getLoadLightBlue();
     private final ItemStack quaftingBook = ItemStackFactory.getInstance().getQuaftingBook();
+    private final ItemStack loadOrange = ItemStackFactory.getInstance().getLoadOrange();
+    private final ItemStack loadPurple = ItemStackFactory.getInstance().getLoadPurple();
     private final ItemStack back = ItemStackFactory.getInstance().getBack();
     private final ItemStack close = ItemStackFactory.getInstance().getClose();
 
@@ -24,13 +26,11 @@ public class NoTakingItems {
         if(event.getClickedInventory() != null) {
             if(event.getClickedInventory().equals(inventory)) {
                 if(inventory.getItem(40)  != null) {
-                    if(Objects.requireNonNull(inventory.getItem(40)).isSimilar(resultBarrier)) {
-                        Bukkit.getScheduler().runTaskLater(Main.getPlugin(), () -> {
-                            if(event.getWhoClicked().getOpenInventory().getItem(40) == null) {
-                                event.getWhoClicked().getOpenInventory().setItem(40, resultBarrier);
-                            }
-                        }, 1);
-                    }
+                    Bukkit.getScheduler().runTaskLater(Main.getPlugin(), () -> {
+                        if(event.getWhoClicked().getOpenInventory().getItem(40) == null) {
+                            event.getWhoClicked().getOpenInventory().setItem(40, resultBarrier);
+                        }
+                    }, 1);
                 }
                 if(inventory.getItem(25)  != null) {
                     if(Objects.requireNonNull(inventory.getItem(25)).isSimilar(resultBarrier)) {
@@ -44,46 +44,52 @@ public class NoTakingItems {
             }
         }
         if (event.getCurrentItem() != null) {
-            if(Objects.equals(event.getClickedInventory(), inventory)) {
-                if (event.isLeftClick() && event.getCurrentItem().isSimilar(fillItem)
-                 || event.isRightClick() && event.getCurrentItem().isSimilar(fillItem)
-                 || event.isShiftClick() && event.getCurrentItem().isSimilar(fillItem)
+            if (event.isLeftClick() && event.getCurrentItem().isSimilar(fillItem)
+            || event.isRightClick() && event.getCurrentItem().isSimilar(fillItem)
+            || event.isShiftClick() && event.getCurrentItem().isSimilar(fillItem)
 
-                 || event.isRightClick() && event.getCurrentItem().isSimilar(loadBackground)
-                 || event.isLeftClick() && event.getCurrentItem().isSimilar(loadBackground)
-                 || event.isShiftClick() && event.getCurrentItem().isSimilar(loadBackground)
+            || event.isRightClick() && event.getCurrentItem().isSimilar(loadBackground)
+            || event.isLeftClick() && event.getCurrentItem().isSimilar(loadBackground)
+            || event.isShiftClick() && event.getCurrentItem().isSimilar(loadBackground)
 
-                 || event.isShiftClick() && event.getCurrentItem().isSimilar(resultBarrier)
-                 || event.isRightClick() && event.getCurrentItem().isSimilar(resultBarrier)
-                 || event.isLeftClick() && event.getCurrentItem().isSimilar(resultBarrier)
+            || event.isShiftClick() && event.getCurrentItem().isSimilar(resultBarrier)
+            || event.isRightClick() && event.getCurrentItem().isSimilar(resultBarrier)
+            || event.isLeftClick() && event.getCurrentItem().isSimilar(resultBarrier)
 
-                 || event.isShiftClick() && event.getCurrentItem().isSimilar(loadLightBlue)
-                 || event.isRightClick() && event.getCurrentItem().isSimilar(loadLightBlue)
-                 || event.isLeftClick() && event.getCurrentItem().isSimilar(loadLightBlue)
+            || event.isShiftClick() && event.getCurrentItem().isSimilar(loadLightBlue)
+            || event.isRightClick() && event.getCurrentItem().isSimilar(loadLightBlue)
+            || event.isLeftClick() && event.getCurrentItem().isSimilar(loadLightBlue)
 
-                 || event.isShiftClick() && event.getCurrentItem().isSimilar(loadBackground)
-                 || event.isRightClick() && event.getCurrentItem().isSimilar(loadBackground)
-                 || event.isLeftClick() && event.getCurrentItem().isSimilar(loadBackground)
+            || event.isShiftClick() && event.getCurrentItem().isSimilar(loadOrange)
+            || event.isRightClick() && event.getCurrentItem().isSimilar(loadOrange)
+            || event.isLeftClick() && event.getCurrentItem().isSimilar(loadOrange)
 
-                 || event.isShiftClick() && event.getCurrentItem().isSimilar(confirmItem)
-                 || event.isRightClick() && event.getCurrentItem().isSimilar(confirmItem)
-                 || event.isLeftClick() && event.getCurrentItem().isSimilar(confirmItem)
+            || event.isShiftClick() && event.getCurrentItem().isSimilar(loadPurple)
+            || event.isRightClick() && event.getCurrentItem().isSimilar(loadPurple)
+            || event.isLeftClick() && event.getCurrentItem().isSimilar(loadPurple)
 
-                 || event.isShiftClick() && event.getCurrentItem().isSimilar(quaftingBook)
-                 || event.isRightClick() && event.getCurrentItem().isSimilar(quaftingBook)
-                 || event.isLeftClick() && event.getCurrentItem().isSimilar(quaftingBook)
+            || event.isShiftClick() && event.getCurrentItem().isSimilar(loadBackground)
+            || event.isRightClick() && event.getCurrentItem().isSimilar(loadBackground)
+            || event.isLeftClick() && event.getCurrentItem().isSimilar(loadBackground)
 
-                 || event.isShiftClick() && event.getCurrentItem().isSimilar(back)
-                 || event.isRightClick() && event.getCurrentItem().isSimilar(back)
-                 || event.isLeftClick() && event.getCurrentItem().isSimilar(back)
+            || event.isShiftClick() && event.getCurrentItem().isSimilar(confirmItem)
+            || event.isRightClick() && event.getCurrentItem().isSimilar(confirmItem)
+            || event.isLeftClick() && event.getCurrentItem().isSimilar(confirmItem)
 
-                 || event.isShiftClick() && event.getCurrentItem().isSimilar(close)
-                 || event.isRightClick() && event.getCurrentItem().isSimilar(close)
-                 || event.isLeftClick() && event.getCurrentItem().isSimilar(close)
+            || event.isShiftClick() && event.getCurrentItem().isSimilar(quaftingBook)
+            || event.isRightClick() && event.getCurrentItem().isSimilar(quaftingBook)
+            || event.isLeftClick() && event.getCurrentItem().isSimilar(quaftingBook)
 
-                 || event.getClick().isKeyboardClick()) {
-                    event.setCancelled(true);
-                }
+            || event.isShiftClick() && event.getCurrentItem().isSimilar(back)
+            || event.isRightClick() && event.getCurrentItem().isSimilar(back)
+            || event.isLeftClick() && event.getCurrentItem().isSimilar(back)
+
+            || event.isShiftClick() && event.getCurrentItem().isSimilar(close)
+            || event.isRightClick() && event.getCurrentItem().isSimilar(close)
+            || event.isLeftClick() && event.getCurrentItem().isSimilar(close)
+
+            || event.getClick().isKeyboardClick()) {
+                event.setCancelled(true);
             }
         }
     }

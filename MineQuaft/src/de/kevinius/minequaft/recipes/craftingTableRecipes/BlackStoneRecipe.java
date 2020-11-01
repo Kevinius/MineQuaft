@@ -9,7 +9,7 @@ import org.bukkit.inventory.ShapedRecipe;
 
 public class BlackStoneRecipe {
 
-    ItemStack blackStone = new ItemStack(Material.BLACKSTONE);
+    ItemStack blackStone = new ItemStack(Material.BLACKSTONE, 4);
     NamespacedKey key = new NamespacedKey(Main.getPlugin(), "BlackStoneRecipe");
 
     public void createBlackStoneRecipe() {

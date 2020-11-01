@@ -1,10 +1,15 @@
 package de.kevinius.minequaft.items;
 
 import org.bukkit.Material;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
+import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class ToolFactory{
 
@@ -31,11 +36,18 @@ public class ToolFactory{
 
         ItemMeta endiriumSwordMeta = endiriumSword.getItemMeta();
         assert endiriumSwordMeta != null;
-        endiriumSwordMeta.setDisplayName("§6Endirium Sword");
+        endiriumSwordMeta.setDisplayName("§fEndirium Sword");
         endiriumSwordMeta.setCustomModelData(101102);
+        AttributeModifier attackDamagemodifier = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", 8, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        endiriumSwordMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackDamagemodifier);
+        AttributeModifier attackSpeedModifier = new AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", -2.3, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        endiriumSwordMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedModifier);
+        endiriumSwordMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§5Never");
-        lore.add("§dNever");
+        lore.add("");
+        lore.add("§7When in Main Hand:");
+        lore.add(" §29 Attack Damage");
+        lore.add(" §21.7 Attack Speed");
         endiriumSwordMeta.setLore(lore);
         endiriumSword.setItemMeta(endiriumSwordMeta);
     }
@@ -53,11 +65,14 @@ public class ToolFactory{
 
         ItemMeta endiriumPickaxeMeta = endiriumPickaxe.getItemMeta();
         assert endiriumPickaxeMeta != null;
-        endiriumPickaxeMeta.setDisplayName("§6Endirium Pickaxe");
+        endiriumPickaxeMeta.setDisplayName("§fEndirium Pickaxe");
         endiriumPickaxeMeta.setCustomModelData(101101);
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§5Gonna");
-        lore.add("§dGonna");
+        endiriumPickaxeMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        lore.add("");
+        lore.add("§7When in Main Hand:");
+        lore.add(" §26 Attack Damage");
+        lore.add(" §21.2 Attack Speed");
         endiriumPickaxeMeta.setLore(lore);
         endiriumPickaxe.setItemMeta(endiriumPickaxeMeta);
     }
@@ -74,11 +89,14 @@ public class ToolFactory{
 
         ItemMeta endiriumAxeMeta = endiriumAxe.getItemMeta();
         assert endiriumAxeMeta != null;
-        endiriumAxeMeta.setDisplayName("§6Endirium Axe");
+        endiriumAxeMeta.setDisplayName("§fEndirium Axe");
         endiriumAxeMeta.setCustomModelData(101103);
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§5Give");
-        lore.add("§dLet");
+        endiriumAxeMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        lore.add("");
+        lore.add("§7When in Main Hand:");
+        lore.add(" §210 Attack Damage");
+        lore.add(" §21 Attack Speed");
         endiriumAxeMeta.setLore(lore);
         endiriumAxe.setItemMeta(endiriumAxeMeta);
     }
@@ -95,11 +113,14 @@ public class ToolFactory{
 
         ItemMeta endiriumShovelMeta = endiriumShovel.getItemMeta();
         assert endiriumShovelMeta != null;
-        endiriumShovelMeta.setDisplayName("§6Endirium Shovel");
+        endiriumShovelMeta.setDisplayName("§fEndirium Shovel");
         endiriumShovelMeta.setCustomModelData(101104);
+        endiriumShovelMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§5You");
-        lore.add("§dYou");
+        lore.add("");
+        lore.add("§7When in Main Hand:");
+        lore.add(" §26.5 Attack Damage");
+        lore.add(" §21 Attack Speed");
         endiriumShovelMeta.setLore(lore);
         endiriumShovel.setItemMeta(endiriumShovelMeta);
     }
@@ -116,11 +137,14 @@ public class ToolFactory{
 
         ItemMeta endiriumHoeMeta = endiriumHoe.getItemMeta();
         assert endiriumHoeMeta != null;
-        endiriumHoeMeta.setDisplayName("§6Endirium Hoe");
+        endiriumHoeMeta.setDisplayName("§fEndirium Hoe");
         endiriumHoeMeta.setCustomModelData(101105);
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§5Up");
-        lore.add("§dDooown...");
+        endiriumHoeMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        lore.add("");
+        lore.add("§7When in Main Hand:");
+        lore.add(" §21 Attack Damage");
+        lore.add(" §24 Attack Speed");
         endiriumHoeMeta.setLore(lore);
         endiriumHoe.setItemMeta(endiriumHoeMeta);
     }

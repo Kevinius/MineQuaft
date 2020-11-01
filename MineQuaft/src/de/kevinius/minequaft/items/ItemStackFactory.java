@@ -29,6 +29,8 @@ public class ItemStackFactory {
     private ItemStack bigmoq;
     private ItemStack sushi;
     private ItemStack donut;
+    private ItemStack chickmoq;
+    private ItemStack mirrorEgg;
 
     /*---------------Inventory items---------------*/
 
@@ -58,7 +60,7 @@ public class ItemStackFactory {
 
         ItemMeta endiriumMeta = endirium.getItemMeta();
         assert endiriumMeta != null;
-        endiriumMeta.setDisplayName("§6Endirium");
+        endiriumMeta.setDisplayName("§6Endirium Ingot");
         endiriumMeta.setCustomModelData(100100);
         ArrayList<String> lore = new ArrayList<>();
         lore.add("§5Even better than Netherite D:");
@@ -329,7 +331,6 @@ public class ItemStackFactory {
         lore.add("§aSaturation: §620");
         bigmoqMeta.setLore(lore);
         bigmoq.setItemMeta(bigmoqMeta);
-
     }
 
     public ItemStack getBigMoq() {
@@ -356,7 +357,6 @@ public class ItemStackFactory {
         lore.add("§fSpeed 2 for 5 seconds");
         donutMeta.setLore(lore);
         donut.setItemMeta(donutMeta);
-
     }
 
     public ItemStack getDonut() {
@@ -411,13 +411,59 @@ public class ItemStackFactory {
         closeMeta.setDisplayName("§4close");
         closeMeta.setCustomModelData(100117);
         close.setItemMeta(closeMeta);
-
     }
+
     public ItemStack getClose() {
         if(close == null) {
             createClose();
         }
         return close;
+    }
+
+    private void createChickMoq() {
+        chickmoq = new ItemStack(Material.CHICKEN);
+
+        ItemMeta chickmoqMeta = chickmoq.getItemMeta();
+        assert chickmoqMeta != null;
+        chickmoqMeta.setDisplayName("§fChick MoQ");
+        chickmoqMeta.setCustomModelData(100118);
+        ArrayList<String> lore = new ArrayList<>();
+        lore.add("§5Big moq chicken edition :D");
+        lore.add(" ");
+        lore.add("§aHunger: §620");
+        lore.add("§aSaturation: §620");
+        chickmoqMeta.setLore(lore);
+        chickmoq.setItemMeta(chickmoqMeta);
+    }
+
+    public ItemStack getChickmoq() {
+        if(chickmoq == null) {
+            createChickMoq();
+        }
+        return chickmoq;
+    }
+
+    private void createMirrorEgg() {
+        mirrorEgg = new ItemStack(Material.COOKED_PORKCHOP);
+
+        ItemMeta mirrorEggMeta = mirrorEgg.getItemMeta();
+        assert mirrorEggMeta != null;
+        mirrorEggMeta.setDisplayName("§fMirror egg");
+        mirrorEggMeta.setCustomModelData(100119);
+        ArrayList<String> lore = new ArrayList<>();
+        lore.add("§5aka. fried egg");
+        lore.add(" ");
+        lore.add("§aHunger: §63");
+        lore.add("§aSaturation: §64");
+        mirrorEggMeta.setLore(lore);
+        mirrorEgg.setItemMeta(mirrorEggMeta);
+    }
+
+    public ItemStack getMirrorEgg() {
+        if(mirrorEgg == null) {
+            createMirrorEgg();
+        }
+        return mirrorEgg;
     }
 
     public ItemStack getLanternRed() {

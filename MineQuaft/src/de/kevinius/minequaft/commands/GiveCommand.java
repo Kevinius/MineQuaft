@@ -39,6 +39,8 @@ public class  GiveCommand implements CommandExecutor {
     private final ItemStack donut = ItemStackFactory.getInstance().getDonut();
     private final ItemStack bigMoq = ItemStackFactory.getInstance().getBigMoq();
     private final ItemStack sushi = ItemStackFactory.getInstance().getSushi();
+    private final ItemStack chickMoq = ItemStackFactory.getInstance().getChickmoq();
+    private final ItemStack mirrorEgg = ItemStackFactory.getInstance().getMirrorEgg();
 
     /*---------------Armor---------------*/
 
@@ -46,6 +48,7 @@ public class  GiveCommand implements CommandExecutor {
     private final ItemStack endiriumChestplate = ArmorFactory.getInstance().getEndiriumChestplate();
     private final ItemStack endiriumLeggings = ArmorFactory.getInstance().getEndiriumLeggings();
     private final ItemStack endiriumBoots = ArmorFactory.getInstance().getEndiriumBoots();
+    private final ItemStack dragonHelmet = ArmorFactory.getInstance().getDragonHelmet();
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, String[] args) {
@@ -117,6 +120,14 @@ public class  GiveCommand implements CommandExecutor {
             {
                 player.getInventory().addItem(sushi);
             }
+            if(args.length == 1 && args[0].equalsIgnoreCase("chick_moq"))
+            {
+                player.getInventory().addItem(chickMoq);
+            }
+            if(args.length == 1 && args[0].equalsIgnoreCase("mirror_egg"))
+            {
+                player.getInventory().addItem(mirrorEgg);
+            }
 
             /*---------------Armor---------------*/
 
@@ -135,6 +146,10 @@ public class  GiveCommand implements CommandExecutor {
             if(args.length == 1 && args[0].equalsIgnoreCase("endirium_boots"))
             {
                 player.getInventory().addItem(endiriumBoots);
+            }
+            if(args.length == 1 && args[0].equalsIgnoreCase("dragon_helmet"))
+            {
+                player.getInventory().addItem(dragonHelmet);
             }
         } else {
             player.sendMessage("§cSeems like you don't have the permission to perform this command");
